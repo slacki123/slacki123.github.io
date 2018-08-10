@@ -6,11 +6,29 @@
         </head>
     
     <script src="garage.js"></script>
+    
     <body>
     
+    <h1>Garage: Car Rental</h1>
+    
+    <a>Enter car name: <input type="text" id="inputField" value="eg. 'mazda'" onfocus="this.value=''"></a><br>
         
+    <input type="button" onclick="findCar()" value="Find Car"><br>
         
+    <p id="car"></p>
+    
+    <input type="button" onclick="checkIn()" value="Check in car">
+    <input type="button" onclick="checkOut()" value="Check out car">
+    <input type="button" onclick="printContents()" value="Show cars in garage">
+    <br>
+           
+    <pre id="para"></pre>
+        
+    <input type="button" onclick="calculateBill()" value = "Calculate bill for car">
+
    
     </body>
+    
+
     
 </html>
