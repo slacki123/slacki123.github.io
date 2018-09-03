@@ -20,9 +20,9 @@ function rektangles(){
             
             else if (i > 0 && i<(word.length-1)){
                 
-                var space = "&nbsp ";
+                var space = "&nbsp";
                 
-                document.getElementById("para").innerHTML += word.charAt(i) + space.repeat(2*word.length - 4) + word.charAt(word.length-i-1) + "<br />";
+                document.getElementById("para").innerHTML += word.charAt(i) + space.repeat(2*word.length-3) + word.charAt(word.length-i-1) + "<br />";
       
             }
             

@@ -1,0 +1,12 @@
+#para {
+
+
+    display: -moz-inline-box;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    margin-left: 2%;
+    width: 32%;
+    font-family: monospace;
+    font-size: 15px;
+
+}
