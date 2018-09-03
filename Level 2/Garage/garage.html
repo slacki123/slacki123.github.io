@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
         <head>
-            <title></title>
+            <title>Garage</title>
             
         </head>
     
+    <meta charset = "ISO-8859-1">
+    <link href="garage.css" rel ="stylesheet" type="text/css"/>
     <script src="garage.js"></script>
     
     <body>
     
-    <h1>Garage: Car Rental</h1>
+        <center><h2>Garage: Car Rental</h2></center>
     
-    <a>Enter car name: <input type="text" id="inputField" value="eg. 'mazda'" onfocus="this.value=''"></a><br>
+    <form action="#" onsubmit="findCar()">
         
-    <input type="button" onclick="findCar()" value="Find Car"><br>
+    <a>Enter car name or year: <input type="text" id="inputField" value="eg. 'mazda'" onfocus="this.value=''"></a><br>
+        
+    </form>
+        
+       <input type="button" onclick="findCar()" value="Find Car"><br>
         
     <p id="car"></p>
     
@@ -21,10 +27,14 @@
     <input type="button" onclick="checkOut()" value="Check out car">
     <input type="button" onclick="printContents()" value="Show cars in garage">
     <br>
-           
+    
+    <div>    
     <pre id="para"></pre>
+    </div>
         
     <input type="button" onclick="calculateBill()" value = "Calculate bill for car">
+        
+    <p id="bill"></p>
 
    
     </body>

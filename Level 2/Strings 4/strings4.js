@@ -8,6 +8,7 @@ function triple(input){
         if(input.charAt(i)==input.charAt(i+1) && input.charAt(i+1)==input.charAt(i+2)){
             
             document.getElementById("triple").innerHTML += "triple " + input.charAt(i)+input.charAt(i+1)+input.charAt(i+2) + " detected<br\>";
+            triples++
             
         }
     }
