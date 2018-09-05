@@ -15,11 +15,21 @@ request.send();
 function search() {
     
     var input = document.getElementById("input").value;
-    
+	   
     var requestData = request.response;
+	
+	var target;
     
-    var target = requestData.filter(a => Object.values(a).find(b => b.toLowerCase()===input.toLowerCase()));
-    
+	if(input=="") {
+		
+		target = requestData;
+	}
+	
+	else {
+		
+		target = requestData.filter(a => Object.values(a).find(b => b.toLowerCase()===input.toLowerCase())); 
+	}
+
     let para = document.getElementsByTagName('pre')[0];
     
     if(!para){
