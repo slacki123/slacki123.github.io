@@ -6,9 +6,17 @@
     zoom: 1; /* Trigger hasLayout */
     margin-left: 2%;
     font-family: monospace;
-    font-size: 10px;
+    font-size: 15px;
 
 }
+
+/*
+#divId {
+    padding:20px;
+    background:#eee;
+    font-size:12px
+}
+*/
 
 
 /*

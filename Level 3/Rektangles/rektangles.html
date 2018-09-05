@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+	    <title>Rektangles</title>
        <link href="rektangles.css" rel ="stylesheet" type="text/css"/>
+	</head>
         
         <body>
             
             <center><h2>TYPE IN ANY WORD TO MAKE A RECTANGLE OF IT</h2></center>
             
-			word: <input id="inputField" type="text" value="rekt"><br><br>
+			word: <input id="inputField" type="text" value="rekt">
+			<input type="button" value="Change word!" onclick="rektangles();heightInput();"><br><br>
+			
 								
 <!--
 			<div>
@@ -27,15 +31,25 @@
 			<a id="sliderValue2"></a>
 			</div>
 			
+<!--
+			<p>Font size slider:</p>
+			<div id="divId">The text in <span>12</span>px: this is the size</div>
+			<br>
+			<br>
+			<input type="range" min="10" max="20">
+-->
+			
             
             <p id="para"></p>  
            
     
      
         </body>
-        
+        	
+			<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
             <script src = "rektangles.js"></script>
+			
             
         
-    </head>
+
 </html>

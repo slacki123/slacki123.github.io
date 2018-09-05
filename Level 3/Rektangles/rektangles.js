@@ -86,9 +86,10 @@ function heightInput(){
 	
 	for (var h = 0; h < height-1; h++){ //this bit adds height
 	
+		
 	for(var i = 0; i < word.length; i++){
 		
-		if (i > 0 && i < (word.length-1)){  
+		if (i > 0 && i < (word.length-1)){ //reverse this one
 				
 				var first = word.charAt(i) + space.repeat(2*word.length-3) + word.charAt(word.length-i-1);
 				var firstSpaced = space.repeat(2*word.length-3) + word.charAt(i);
@@ -107,8 +108,8 @@ function heightInput(){
 				document.getElementById("para").innerHTML += middleText
 
 		}
-		
-		  else if (i == (word.length-1)) {
+				
+		  else if (i == (word.length-1) ) { //&& height % 2 = 0?
 				
 				var output1 = "";
 			    var output2 = "";
@@ -134,4 +135,8 @@ function heightInput(){
 	
 }
 
-slider.oninput = rektangles(); 
+//$('input').on('change', function () {
+//    var v = $(this).val();
+//    $('div').css('font-size', v + 'px')
+//    $('span').html(v);
+//});
