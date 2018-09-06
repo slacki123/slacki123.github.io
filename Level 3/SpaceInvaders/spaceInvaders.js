@@ -2,7 +2,8 @@ var gunPosX = 300;
 var gunPosY = 300;
 
 var shipMoveSpeed = 5;
-var bulletMoveSpeed = 10;
+var bulletMoveSpeed = 2;
+var enemySpeed = 2;
 
 var ship = document.getElementById("ship");
 var bullet = document.getElementById("bullet");
@@ -47,19 +48,18 @@ function enemyMove() {
 
 	if(direction == "right"){
 
-		increment = increment + 5;
+		increment = increment + enemySpeed;
 		
 		enemy.style.left = increment + "px";
 			
 			if(increment > 300){
 				direction = "fish";
 			}
-		
 	}
 	
 	else {
 		
-		increment = increment - 5;
+		increment = increment - enemySpeed;
 		
 		enemy.style.left = increment + "px";
 		
@@ -67,8 +67,7 @@ function enemyMove() {
 				direction = "right";
 			}	
 	}
-		
-	
+			
 }
 
 function collision() {
