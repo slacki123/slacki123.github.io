@@ -1,7 +1,8 @@
-var gravity = 0.1;
+var gravity = 0.5;
 var yVelocity = 0;
 var xVelocity = 0;
-var magnetAccel = 0.0001;
+var magnetAccel = 0.001;
+var damper = 0.01;
 
 
 var xPos = 0;
@@ -47,7 +48,7 @@ function attract(){
 	var xDiffer = anvilPosX - xPos;
 	var yDiffer = anvilPosY - yPos;
 	
-	gravity = 0;
+//	gravity = 0;
 	
 	yVelocity = yVelocity + gravity;
 	
@@ -57,35 +58,43 @@ function attract(){
 	
 //	console.log(yVelocity);
 	
+	//slinglike
+	var yAcceleration = Math.abs(yDiffer)
+	var xAcceleration = Math.abs(xDiffer)
 	
-	if(anvilPosY> 1000){
+//	//planetLike
+//	yAcceleration = Math.abs(1/(yDiffer+xDiffer))
+//	xAcceleration = Math.abs(1/(yDiffer+xDiffer))
+//	
+	if(anvilPosY> 1500){
 		anvilPosY = 0;
-		anvilPosX = 200;
+		anvilPosX = 200; 
 		yVelocity = 0;
 		xVelocity = 0;
 	}
-		
+	
+	
 
 	if (yDiffer > 0) {
-		yVelocity = yVelocity - magnetAccel*Math.abs(yDiffer);
+		yVelocity = yVelocity - magnetAccel* yAcceleration -yVelocity*damper;
 		anvilPosY = anvilPosY + yVelocity;
 		
 	}
 	
 	if (yDiffer < 0) {
-		yVelocity = yVelocity + magnetAccel*Math.abs(yDiffer);
+		yVelocity = yVelocity + magnetAccel*yAcceleration-yVelocity*damper;
 		anvilPosY = anvilPosY + yVelocity;
 		
 	}
 	
 	if (xDiffer < 0){
-		xVelocity = xVelocity + magnetAccel*Math.abs(xDiffer);
+		xVelocity = xVelocity + magnetAccel*xAcceleration-xVelocity*damper ;
 		anvilPosX = anvilPosX + xVelocity;
 	}
 	
 	
 	if (xDiffer > 0) {
-		xVelocity = xVelocity - magnetAccel*Math.abs(xDiffer);
+		xVelocity = xVelocity - magnetAccel*xAcceleration -xVelocity*damper;
 		anvilPosX = anvilPosX + xVelocity;
 	}
 	
@@ -95,6 +104,8 @@ function attract(){
 	
 	1/xDiffer is like planets
 	xDiffer is like being attached to a sling
+	
+	should have had x and y for accelleration too
 	
 	*/
 		
@@ -112,7 +123,9 @@ function attract(){
 	document.getElementById("magnetPic").style.left = xPos + "px";
 	document.getElementById("magnetPic").style.top = yPos + "px";
 	
-	//make accelleration a function of distance as well
+//	document.getElementById("butt").style.top = xDiffer/2 + "px";
+//	console.log(document.getElementById("butt").style.top);
+
 
 	
 
