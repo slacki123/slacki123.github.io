@@ -27,21 +27,23 @@ var direction = "right";
 var increment = 0;
 
 
-onkeypress = function keyReader() {
+onkeydown = function keyReader() {
 	
-	if(event.keyCode == 97){	
-		gunPosX = gunPosX - shipMoveSpeed;	
+	if(event.key == 'a'){	
+        gunPosX = gunPosX - shipMoveSpeed;
+        ship.style.left = gunPosX + "px";
 	}
 	
-	if(event.key == 'd'){	
-		gunPosX = gunPosX + shipMoveSpeed; 		
+	else if(event.key == 'd'){	
+        gunPosX = gunPosX + shipMoveSpeed; 
+        ship.style.left = gunPosX + "px";
 	}
 	
-	if(event.keyCode == 32){
+	else if(event.keyCode == 32){
 		createBullet();
 	}
 	
-	ship.style.left = gunPosX + "px";	
+		
 }
 
 function enemyMove() {
@@ -102,7 +104,28 @@ function bulletMove(){
 	}
 		
 
-function createBullet(){
+function createBullet() {
+
+    function Bullet(x, y) {
+
+        bullet.style.left = x + "px";
+        bullet.style.top = y + "px";
+
+        this.show = function () {
+
+            bullet.style.left = gunPosX + 20 + "px";
+            bullet.style.top = gunPosY - 30 + "px";
+
+        }
+
+        this.move = function () {
+
+            bulletPosY = bulletPosY - bulletMoveSpeed;
+            bullet.style.top = bulletPosY + "px";
+
+        }
+
+    }
 	
 		
 		bullet.style.left = gunPosX + 20 + "px";
