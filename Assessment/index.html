@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Main Page</title>
+		
+	</head>
+	
+	
+	
+<body>
+	
+  <span id="json" onmouseover="jsonDropdown();"  >JSON</span>
+  <span id="forms" onmouseover="formsDropdown();" style="position:absolute; left:200px"> Forms</span>
+	
+	<div id="jsonDropdown" onmouseout="hide();" hidden="true" >
+		<a id="manipulation" onmouseover="addAsterisk();" href="Trainer/trainers.html">JSON Manipulation</a>
+	</div>
+	
+	<div id="formsDropdown"  hidden="true" style="position:absolute; left:200px; top:25px" >
+		<a id="enform" href="EntryForm/entryform.html" onmouseover="addAsterisk2();" onmouseout="asteriskOut2();">Entry Form</a> <br>
+		
+		<a id="formdata" href="DataForm/formdata.html" onmouseover="addAsterisk3();" onmouseout="asteriskOut3();">Form Data</a>	
+	</div>
+
+</body>
+	
+	
+	<script src="Index/index.js"></script>
+	
+</html>
