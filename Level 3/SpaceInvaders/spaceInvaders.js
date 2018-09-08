@@ -1,7 +1,11 @@
 var gunPosX = 300;
 var gunPosY = 300;
 
-var shipMoveSpeed = 5;
+var toLeft;
+var toRight;
+
+
+var shipMoveSpeed = 2;
 var bulletMoveSpeed = 2;
 var enemySpeed = 2;
 
@@ -29,21 +33,48 @@ var increment = 0;
 
 onkeydown = function keyReader() {
 	
-	if(event.key == 'a'){	
-        gunPosX = gunPosX - shipMoveSpeed;
-        ship.style.left = gunPosX + "px";
+    if (event.key == 'a') {	
+        toLeft = true;
+      
 	}
 	
-	else if(event.key == 'd'){	
-        gunPosX = gunPosX + shipMoveSpeed; 
-        ship.style.left = gunPosX + "px";
+    else if (event.key == 'd') {	
+        toRight = true;
+        
 	}
 	
-	else if(event.keyCode == 32){
+	if(event.keyCode == 32){
 		createBullet();
 	}
 	
 		
+}
+
+onkeyup = function keyReader2() {
+
+    if (event.key == 'a') {
+        toLeft = false;
+    }
+
+    else if (event.key == 'd') {
+        toRight = false;
+    }
+
+}
+
+function move() {
+
+    if (toLeft === true) {
+        gunPosX = gunPosX - shipMoveSpeed;
+        ship.style.left = gunPosX + "px";
+    }
+    else if (toRight === true) {
+        gunPosX = gunPosX + shipMoveSpeed;
+        ship.style.left = gunPosX + "px";
+
+
+    }
+
 }
 
 function enemyMove() {
@@ -137,7 +168,8 @@ function createBullet() {
 
 var x = function game() {
 	
-	enemyMove();
+    enemyMove();
+    move();
 	
 	if(bullet.hidden == false) {
 		bulletMove();
