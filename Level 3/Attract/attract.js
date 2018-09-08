@@ -1,5 +1,8 @@
 var mode = "planet";
 
+var attractor = document.getElementById("magnetPic");
+var attracted = document.getElementById("anvil");
+
 var gravity = 0.0;
 
 var magnetAccel = 0.0;
@@ -95,13 +98,14 @@ function drawSpring(){
 function springMode() {
     mode = "spring";
     document.getElementById("magnetPic").src = "magnet.png";
-    document.getElementById("anvil").src = "anvil.png";
+    document.getElementById("anvil").src = "anvil.jpeg";
     xAcceleration = xDiffer;
     yAcceleration = yDiffer;
     magnetAccel = 0.001;
     gravity = 0.5;
     damper = 0.01;
     attractorSize = 0;
+    document.getElementById("anvil").style.width = "50px";
     //comment
 }
 
@@ -174,13 +178,14 @@ function attract() {
 
     (radius >= 0 && radius < attractorSize) ? yVelocity = 0 : yVelocity = yVelocity;
     (radius >= 0 && radius < attractorSize) ? xVelocity = 0 : xVelocity = xVelocity;
-    (radius >= 0 && radius < attractorSize) ? document.getElementById("anvil").hidden = true : document.getElementById("anvil").hidden = false;
+    (radius >= 0 && radius < attractorSize) ? attracted.hidden = true : attracted.hidden = false;
+ 
 
     document.getElementById("anvil").style.left = anvilPosX + "px";
     document.getElementById("anvil").style.top = anvilPosY + "px";
 	
-	document.getElementById("magnetPic").style.left = xPos - 25 + "px";
-    document.getElementById("magnetPic").style.top = yPos + 10 + "px";
+	document.getElementById("magnetPic").style.left = xPos -17 + "px";
+    document.getElementById("magnetPic").style.top = yPos - 17 + "px";
 
     //debug();
 	
