@@ -112,7 +112,7 @@ function planetMode() {
     
 
     attractorSize = 25;
-    document.getElementById("magnetPic").style.width = "50px";
+    document.getElementById("anvil").style.width = "25px";
     xAcceleration = xDir / radius ** 2;
     yAcceleration = yDir / radius ** 2;
     magnetAccel = 100;
