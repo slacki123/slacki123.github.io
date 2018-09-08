@@ -102,7 +102,7 @@ function springMode() {
     gravity = 0.5;
     damper = 0.01;
     attractorSize = 0;
-
+    //comment
 }
 
 function planetMode() {
