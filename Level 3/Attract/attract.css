@@ -1,3 +1,6 @@
 ﻿img {
     border-radius: 50%;
 }
+.nocursor {
+    cursor: none;
+}

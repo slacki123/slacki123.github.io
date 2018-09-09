@@ -1,5 +1,7 @@
 var mode = "planet";
 
+//document.body.requestPointerLock();
+
 var attractor = document.getElementById("magnetPic");
 var attracted = document.getElementById("anvil");
 
@@ -39,7 +41,7 @@ var radius = Math.sqrt(xDiffer ** 2 + yDiffer ** 2);
 var xDir = 1.0;
 var yDir = 1.0;
 
-var attractorSize = 20;
+var attractorSize = 50;
 
 
 
@@ -68,12 +70,11 @@ onload = function() {
 	
 //}
 
+function drawSpring() {
+  
+      document.getElementById("butt1").style.top = yPos - (1/ 8) * yDiffer + "px";
+      document.getElementById("butt1").style.left = xPos - (1 / 8) * xDiffer + "px";
 
-function drawSpring(){
-
-	document.getElementById("butt1").style.top = yPos - (1/8)*yDiffer + "px";
-	document.getElementById("butt1").style.left = xPos - (1/8)*xDiffer + "px";
-	
 	document.getElementById("butt2").style.top = yPos - (2/8)*yDiffer + "px";
 	document.getElementById("butt2").style.left = xPos - (2/8)*xDiffer + "px";
 	
@@ -102,8 +103,8 @@ function springMode() {
     xAcceleration = xDiffer;
     yAcceleration = yDiffer;
     magnetAccel = 0.001;
-    gravity = 0.5;
-    damper = 0.01;
+    gravity = 0.3;
+    damper = 0.005;
     attractorSize = 0;
     document.getElementById("anvil").style.width = "50px";
     //comment
@@ -115,27 +116,32 @@ function planetMode() {
     document.getElementById("anvil").src = "moon.jpeg";
     
 
-    attractorSize = 25;
+    attractorSize = 37;
     document.getElementById("anvil").style.width = "25px";
-    xAcceleration = xDir / radius ** 2;
-    yAcceleration = yDir / radius ** 2;
-    magnetAccel = 100;
+    xAcceleration = (xDiffer) / radius ** 3;
+    yAcceleration = (yDiffer) / radius ** 3;
+    magnetAccel = 200;
     gravity = 0;
     damper = 0;
 }
 
 function debug() {
-    console.log("accel: " + xAcceleration, yAcceleration);
-    console.log("mouse ", xPos, yPos);
-    console.log("radius", radius);
-    console.log("anvil: ", anvilPosX, anvilPosY);
-    console.log("velo: " + yVelocity, xVelocity);
-    console.log("Dir ", yDir, xDir);
+
+    this.debug = function () {
+        console.log("accel: " + xAcceleration, yAcceleration);
+        console.log("mouse ", xPos, yPos);
+        console.log("radius", radius);
+        console.log("anvil: ", anvilPosX, anvilPosY);
+        console.log("velo: " + yVelocity, xVelocity);
+        console.log("Dir ", yDir, xDir);
+    }
 }
+
 
 
 function attract() {
 
+  
 	
 	document.getElementById("magnetPic").hidden = false;
 	
@@ -149,7 +155,7 @@ function attract() {
     if (xDiffer !== 0 || yDiffer !== 0) {
         radius = Math.sqrt(xDiffer ** 2 + yDiffer ** 2);
     }
-
+ 
     (xDiffer >= 0) ? xDir = 1 : xDir = -1;
     (yDiffer >= 0) ? yDir = 1 : yDir = -1;
 
@@ -184,11 +190,12 @@ function attract() {
     document.getElementById("anvil").style.left = anvilPosX + "px";
     document.getElementById("anvil").style.top = anvilPosY + "px";
 	
-	document.getElementById("magnetPic").style.left = xPos -17 + "px";
-    document.getElementById("magnetPic").style.top = yPos - 17 + "px";
+	document.getElementById("magnetPic").style.left = xPos -12 + "px";
+    document.getElementById("magnetPic").style.top = yPos -12 + "px";
 
     //debug();
-	
+
+    console.log(radius);
 	
 	
 

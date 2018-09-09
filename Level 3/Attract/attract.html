@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html onmousemove="mousePosition(event);" >
+<html onmousemove="mousePosition(event);" class="nocursor" >
 <head>
     <title>Attract</title>
     <link rel="stylesheet" type="text/css" href="attract.css">
@@ -9,15 +9,16 @@
         <div style="position:relative" onmouseover="attractor.hidden = true;">
             <input type="button" value="Click for planet mode" onclick="planetMode();" >
             <input type="button" value="Click for rubber mode" onclick="springMode();">
+     
         </div>
 
 
-        <div id="images" style="position:relative">
+        <div id="images" style="position:relative" >
             <img src="anvil.jpeg" id="anvil" value="Magnet" style="position:absolute; height: 25px; width:50px" alt="#picture">
 
             <img src="magnet.png" id="magnetPic" style="position:absolute; height: 50px; width:50px" hidden>
 
-            <img id="butt1" src="dot.jpeg" height="5px" width="5px" style="position:absolute"><img id="butt2" src="dot.jpeg" height="5" width="5" style="position:absolute"><img id="butt3" src="dot.jpeg" height="5px" width="5px" style="position:absolute">		<img id="butt4" src="dot.jpeg" height="5px" width="5px" style="position:absolute"><img id="butt5" src="dot.jpeg" height="5px" width="5px" style="position:absolute"><img id="butt6" src="dot.jpeg" height="5px" width="5px" style="position:absolute">
+            <img id="butt1" src="dot.jpeg" height="10px" width="10px" style="position:absolute"><img id="butt2" src="dot.jpeg" height="5" width="5" style="position:absolute"><img id="butt3" src="dot.jpeg" height="5px" width="5px" style="position:absolute">		<img id="butt4" src="dot.jpeg" height="5px" width="5px" style="position:absolute"><img id="butt5" src="dot.jpeg" height="5px" width="5px" style="position:absolute"><img id="butt6" src="dot.jpeg" height="5px" width="5px" style="position:absolute">
             <img id="butt7" src="dot.jpeg" height="5px" width="5px" style="position:absolute">
         </div>
 
