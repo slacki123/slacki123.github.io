@@ -48,13 +48,54 @@ var yDir = 1.0;
 
 var attractorSize = 50;
 
+var mousePressed = false;
+var clicked = true;
+
+document.addEventListener("mousedown", function () {mousePressed = true;});
+document.addEventListener("mouseup", function (){mousePressed = false;});
+
+document.addEventListener("click", function () {
+    if(yTrack > 80) {
+        clicked = !clicked;
+    }
+});
+
+//Just for mouse tracking
+var yTrack;
+var xTrack;
+
+function track(event) {
+
+    xTrack = event.clientX;
+    yTrack = event.clientY;
+
+}
+//Mouse tracking ends
 
 
 function mousePosition(event){
-	
-	xPos = parseFloat(event.clientX - 20);
-	yPos = parseFloat(event.clientY - 50);
-		
+
+    if(clicked == true) {
+    
+        if(yTrack > 80) {
+            yPos = parseFloat(event.clientY - 70);
+        }
+
+        //The extra code below defines a rectangle 80 by 450 on which the planet can not be shown
+        // if(yTrack < 80 && xTrack > 450) {
+        //     yPos = parseFloat(event.clientY - 70);
+        // }
+        // if(xTrack > 450){
+        //     xPos = parseFloat(event.clientX - 20);    
+        // }
+
+        // if(xTrack < 450 && yTrack > 80) {
+        //     xPos = parseFloat(event.clientX - 20);     
+        // }
+
+        xPos = parseFloat(event.clientX - 20); 
+
+    }	
 }
 
 
@@ -65,8 +106,8 @@ onload = function() {
 var increment = 0;
 function drawSpring() {
   
-      document.getElementById("butt1").style.top = yPos - (1/ 8) * yDiffer + "px";
-      document.getElementById("butt1").style.left = xPos - (1 / 8) * xDiffer + "px";
+    document.getElementById("butt1").style.top = yPos - (1/ 8) * yDiffer + "px";
+    document.getElementById("butt1").style.left = xPos - (1 / 8) * xDiffer + "px";
 
 	document.getElementById("butt2").style.top = yPos - (2/8)*yDiffer + "px";
 	document.getElementById("butt2").style.left = xPos - (2/8)*xDiffer + "px";

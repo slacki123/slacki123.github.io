@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html onmousemove="mousePosition(event);" >
+<html onmousemove="mousePosition(event);track(event);" >
 <head>
     <title>Attract</title>
     <link rel="stylesheet" type="text/css" href="attract.css">
@@ -30,7 +30,7 @@
         </div>
 
 
-        <div id="images" style="position:relative" >
+        <div class="unselectable" id="images" style="position:relative" >
             <img src="anvil.jpeg" id="anvil" value="Magnet" style="position:absolute; height: 25px; width:50px" alt="#picture">
 
             <img src="magnet.png" id="magnetPic" style="position:absolute; height: 50px; width:50px" hidden>

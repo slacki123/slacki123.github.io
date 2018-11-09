@@ -4,3 +4,10 @@
 .nocursor {
     cursor: none;
 }
+
+.unselectable {
+
+    user-select: none;
+    pointer-events: none;
+
+}
