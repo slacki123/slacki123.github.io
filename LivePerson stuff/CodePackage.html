@@ -80,7 +80,13 @@
         ///////////////////////////////////////////////////////////////
         //Structured content...
 
-        var notifyWhenDone = function(err) {
+ 
+
+    function sendRichContent(){
+
+        var cmdName = lpTag.agentSDK.cmdNames.writeSC; 
+
+               var notifyWhenDone = function(err) {
     if (err) {
         // Do something with the error
     }
@@ -88,7 +94,7 @@
     // or when the action terminated with an error.
 };
 
-var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
+// = "Write StructuredContent"
 var data = {
   json: {
     "text": yourBusinessName,
@@ -122,8 +128,6 @@ var data = {
             {"type":"ExternalId","id":"soccer486"}
         ]
 };
-
-    function sendRichContent(){
 
         lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 
