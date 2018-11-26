@@ -1,15 +1,5 @@
 
-function sendRichContent() {
-
-  var notifyWhenDone = function(err) {
-      if (err) {
-          // Do something with the error
-      }
-      // called when the command is completed successfully,
-      // or when the action terminated with an error.
-  };
-
-  var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
+ var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
   var data = {
     json: {
       "text": yourBusinessName,
@@ -38,11 +28,23 @@ function sendRichContent() {
       ],
       "metadata": { "fallback": url_link_map_link }
     },
-    metadata: [	//metadata is optional
-  			{"type":"ExternalId","id":"running364"},
-  			{"type":"ExternalId","id":"soccer486"}
-  		]
+    metadata: [ //metadata is optional
+        {"type":"ExternalId","id":"running364"},
+        {"type":"ExternalId","id":"soccer486"}
+      ]
   };
+
+function sendRichContent() {
+
+  var notifyWhenDone = function(err) {
+      if (err) {
+          // Do something with the error
+      }
+      // called when the command is completed successfully,
+      // or when the action terminated with an error.
+  };
+
+ 
 
     try {
       lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
