@@ -7,21 +7,21 @@ function sendRichContent() {
   cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
     data = {
       json: {
-        "text": yourBusinessName,
+        "text": "yourBusinessName",
         "type": "vertical",
         "elements": [
           {
             "type": "map",
-            "lo": yourLongitude,
-            "la": yourLatitude,
+            "lo": "yourLongitude",
+            "la": "yourLatitude",
             "tooltip": "Map",
             "click": {
               "actions": [
                 {
                   "type": "navigate",
                   "name": "navigate",
-                  "lo": yourLongitude,
-                  "la": yourLatitude
+                  "lo": "yourLongitude",
+                  "la": "yourLatitude"
                 }  
               ]
             }
@@ -31,7 +31,7 @@ function sendRichContent() {
             "text": "1234 Hollywood Boulevard, Los Angeles, CA"
           },
         ],
-        "metadata": { "fallback": url_link_map_link }
+        "metadata": { "fallback": "url_link_map_link" }
       },
       metadata: [ //metadata is optional
           {"type":"ExternalId","id":"running364"},
