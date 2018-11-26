@@ -1,6 +1,6 @@
 
- var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
-  var data = {
+var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
+var data = {
     json: {
       "text": yourBusinessName,
       "type": "vertical",
@@ -33,25 +33,3 @@
         {"type":"ExternalId","id":"soccer486"}
       ]
   };
-
-function sendRichContent() {
-
-  var notifyWhenDone = function(err) {
-      if (err) {
-          // Do something with the error
-          console.log("hey mum");
-      }
-      // called when the command is completed successfully,
-      // or when the action terminated with an error.
-  };
-
- 
-
-    try {
-      lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
-
-      } catch (e) {
-        console.log(e);
-      }
-
-}
