@@ -11,24 +11,25 @@ function sendRichContent() {
       "json":  {
         "type": "vertical",
           "elements": 
-            [{
-              "type": "image",
-              "url": "https://s0.geograph.org.uk/geophotos/04/17/37/4173703_d031288b.jpg",
-              "tooltip": "image tooltip"
-            }, {
-              "type": "text",
-              "text": "product name (The picture above)",
-              "tooltip": "product name (Title)"
-            }, {
-              "type": "text",
-              "text": "product category (Any)",
-              "tooltip": "product category (type)"
-            }, {
-              "type": "text",
-              "text": "$155.99",
-              "tooltip": "$155.99"
-            }]
-    };
+          [{
+            "type": "image",
+            "url": "https://s0.geograph.org.uk/geophotos/04/17/37/4173703_d031288b.jpg",
+            "tooltip": "image tooltip"
+          }, {
+            "type": "text",
+            "text": "product name (The picture above)",
+            "tooltip": "product name (Title)"
+          }, {
+            "type": "text",
+            "text": "product category (Any)",
+            "tooltip": "product category (type)"
+          }, {
+            "type": "text",
+            "text": "$155.99",
+            "tooltip": "$155.99"
+          }]
+           }
+                };
 
     // cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
     // data = {text: "WORKS MAFAKA"};
