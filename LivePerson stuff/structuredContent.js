@@ -39,7 +39,6 @@ function sendRichContent() {
   var notifyWhenDone = function(err) {
       if (err) {
           // Do something with the error
-          console.log("hey mum");
       }
       // called when the command is completed successfully,
       // or when the action terminated with an error.
