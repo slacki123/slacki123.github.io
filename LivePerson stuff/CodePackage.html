@@ -90,7 +90,9 @@
     <script type="text/javascript" src="client-SDK.js"></script>
     <script type="text/javascript" src="structuredContent.js"></script>
 
-    <script>lpTag.agentSDK.init();</script>
+    <script>
+    document.html.onload = lpTag.agentSDK.init();
+    </script>
 <!--     <script type="text/javascript" src="lpTag.js"></script> -->
 
 
