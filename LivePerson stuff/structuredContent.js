@@ -4,9 +4,7 @@ var data;
 
 function sendRichContent() {
 
-  lpTag.agentSDK.init();
-
-  cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
+   cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
     data = {
       "json":  {
         "type": "vertical",
