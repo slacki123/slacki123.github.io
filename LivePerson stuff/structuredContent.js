@@ -11,11 +11,11 @@ function sendRichContent() {
           "elements": 
           [
 
-          // {
-          //   "type": "image",
-          //   "url": "https://s0.geograph.org.uk/geophotos/04/17/37/4173703_d031288b.jpg",
-          //   "tooltip": "image tooltip"
-          // }, 
+          {
+            "type": "image",
+            "url": "https://s0.geograph.org.uk/geophotos/04/17/37/4173703_d031288b.jpg",
+            "tooltip": "image tooltip"
+          }, 
 
           {
             "type": "text",
