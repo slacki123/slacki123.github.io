@@ -15,13 +15,14 @@ function sendRichContent() {
             "tooltip": "image tooltip",
             "caption": "test caption",   
 
-            // "click": {
-            //   "actions": [{
-            //     "type": "link",
-            //     "name": "I play pokemon go everyday",
-            //     "uri": "https://www.liveperson.com"
-            //   }]  
-            // },
+            "click": {
+              "actions": [{
+                "type": "link",
+                "name": "I play pokemon go everyday",
+                "uri": "https://s0.geograph.org.uk"
+              }]  
+            },
+            
           }, {
             "type": "text",
             "text": "product name (The picture above)",
