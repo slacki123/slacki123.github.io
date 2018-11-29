@@ -14,16 +14,14 @@ function sendRichContent() {
             "url": "https://s0.geograph.org.uk/geophotos/04/17/37/4173703_d031288b.jpg",
             "tooltip": "image tooltip",
             "caption": "test caption",   
-            "click": {
-              "actions": [{
-                "type": "link",
-                "name": "I play pokemon go everyday",
-                "uri": "https://www.liveperson.com"
-              }]  
-            },
-            "style" : {
-              "background-color": "###3E47A0"
-            }  
+
+            // "click": {
+            //   "actions": [{
+            //     "type": "link",
+            //     "name": "I play pokemon go everyday",
+            //     "uri": "https://www.liveperson.com"
+            //   }]  
+            // },
           }, {
             "type": "text",
             "text": "product name (The picture above)",
