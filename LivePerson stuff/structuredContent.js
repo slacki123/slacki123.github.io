@@ -23,7 +23,6 @@ function sendRichContent() {
             },
             "style" : {
               "background-color": "###3E47A0",
-              "cursor": "pointer"
             }  
           }, {
             "type": "text",
