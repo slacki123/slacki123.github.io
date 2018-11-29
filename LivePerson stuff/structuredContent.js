@@ -22,7 +22,7 @@ function sendRichContent() {
               }]  
             },
             "style" : {
-              "background-color": "###3E47A0",
+              "background-color": "###3E47A0"
             }  
           }, {
             "type": "text",
