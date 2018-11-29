@@ -13,7 +13,7 @@ function sendRichContent() {
             "type": "image",
             "url": "https://s0.geograph.org.uk/geophotos/04/17/37/4173703_d031288b.jpg",
             "tooltip": "image tooltip",
-            "caption": "test caption",
+            "caption": "test caption",   
             "click": {
               "actions": [{
                 "type": "link",
@@ -22,7 +22,8 @@ function sendRichContent() {
               }]  
             },
             "style" : {
-              "background-color": "###3E47A0"
+              "background-color": "###3E47A0",
+              "cursor": "pointer"
             }  
           }, {
             "type": "text",
