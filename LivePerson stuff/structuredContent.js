@@ -22,7 +22,7 @@ function sendRichContent() {
                 "uri": "https://s0.geograph.org.uk"
               }]  
             },
-            
+
           }, {
             "type": "text",
             "text": "product name (The picture above)",
@@ -38,6 +38,7 @@ function sendRichContent() {
           }]
            }
                 };
+
 
     // cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
     // data = {text: "WORKS MAFAKA"};
@@ -59,5 +60,11 @@ function sendRichContent() {
         } catch (e) {
           console.log(e);
         }
+
+      var lastChatImage = document.getElementsByClassName("lp-json-pollock-element-image").length - 1; 
+
+      var imageContainer = document.getElementsByClassName("lp-json-pollock-element-image")[lastChatImage];
+
+      imageContainer.setAttribute("style", "cursor:pointer");
 
 }
