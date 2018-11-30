@@ -92,6 +92,11 @@
 
     <script>
     window.onload = lpTag.agentSDK.init();
+
+    if(document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1]) {
+         document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1].style.cursor = "pointer";
+    }
+
     </script>
 <!--     <script type="text/javascript" src="lpTag.js"></script> -->
 
