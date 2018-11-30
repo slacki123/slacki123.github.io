@@ -61,14 +61,19 @@ function sendRichContent() {
           console.log(e);
         }
 
+
       // var lastChatImage = document.getElementsByClassName("lp-json-pollock-element-image").length - 1; 
 
       // var imageContainer = document.getElementsByClassName("lp-json-pollock-element-image")[lastChatImage];
 
       // imageContainer.setAttribute("style", "cursor:pointer");
 
-      // document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1].setAttribute("style","cursor:pointer");
+      function cursor() {
+        document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1].setAttribute("style","cursor:pointer");
+      }
 
-   
+      setTimeout(cursor, 3000);
+
+
 
 }
