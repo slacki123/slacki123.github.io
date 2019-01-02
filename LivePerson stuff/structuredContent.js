@@ -8,9 +8,8 @@ cmdName = lpTag.agentSDK.cmdNames.writeSC;
 data = 
 	{"json" : 
 		{
-		// "type": "carousel",
-		"type": "vertical",
-		// "padding": 10,
+		"type": "carousel",
+		"padding": 10,
 		"elements": [{
 			"type": "vertical",
 			"elements": [{
@@ -50,7 +49,74 @@ data =
 					}]
 				}
 			}]
-		}]
+		},
+		
+	{
+      "type": "vertical",
+      "elements": [
+        {
+          "type": "image",
+          "url": "https://cdn.zeplin.io/5aa650d695bfea607a2c9351/assets/CF63C36C-CF8E-4AA5-9376-BC89EDAE43B7.png",
+          "tooltip": "Swap plan",
+          "click": {
+            "metadata": [
+              {
+                "type": "ExternalId",
+                "id": "11114444"
+              }
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "text": "Medium plan 15GB data",
+          "tooltip": "Medium plan",
+          "rtl": false,
+          "style": {
+            "bold": true,
+            "italic": false,
+            "color": "#000000"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Unlimited national talk",
+          "tooltip": "Unlimited",
+          "rtl": false,
+          "style": {
+            "bold": true,
+            "italic": false,
+            "color": "#000000"
+          }
+        },
+        {
+          "type": "text",
+          "text": "69$ per month",
+          "tooltip": "Unlimited",
+          "rtl": false,
+          "style": {
+            "bold": true,
+            "italic": false,
+            "color": "#000000"
+          }
+        },
+        {
+          "type": "button",
+          "tooltip": "Buy now",
+          "title": "Buy now",
+          "click": {
+            "actions": [
+              {
+                "type": "link",
+                "name": "Add to cart",
+                "uri": "http://www.google.com"
+              }
+            ]
+          }
+        }
+      ]
+    }
+		]
 	}
 };
 
