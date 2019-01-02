@@ -6,7 +6,7 @@ function testRichContent() {
 
 cmdName = lpTag.agentSDK.cmdNames.writeSC;	
 data = 
-	{"json" : 
+	// {"json" : 
 		{
 		// "type": "carousel",
 		"type": "vertical",
@@ -51,7 +51,7 @@ data =
 				}
 			}]
 		}]
-	}
+	// }
 };
 
 	var notifyWhenDone = function(err) {
