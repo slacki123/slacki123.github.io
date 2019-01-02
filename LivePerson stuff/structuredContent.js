@@ -10,7 +10,7 @@ data =
 		{
 		// "type": "carousel",
 		"type": "vertical",
-		"padding": 10,
+		// "padding": 10,
 		"elements": [{
 			"type": "vertical",
 			"elements": [{
