@@ -2,6 +2,56 @@
 var cmdName;
 var data;
 
+function testRichContent() {
+		data = 
+		{"json" : 
+			{
+			"type": "carousel",
+			"padding": 10,
+			"elements": [{
+				"type": "vertical",
+				"elements": [{
+					"type": "image",
+					"url": "https://aca-static-content.eu-gb.mybluemix.net/CCC%20DEMO%20Pictures/Refrigerator%20Sales/Medium/Screen%20Shot%202018-12-20%20at%2007.45.29.png",
+					"click": {
+						"actions": [{
+							"type": "link",
+							"uri": "https://www.google.com/"
+						}]
+					}
+				}, {
+					"type": "text",
+					"text": "BOWMANN KG32",
+					"rtl": false,
+					"style": {
+						"bold": true,
+						"italic": false,
+						"color": "#000000"
+					}
+				}, {
+					"type": "text",
+					"text": "€405, Silver, 1430 mm",
+					"rtl": false,
+					"style": {
+						"bold": false,
+						"italic": false,
+						"color": "#000000"
+					}
+				}, {
+					"type": "button",
+					"title": "Buy Now",
+					"click": {
+						"actions": [{
+							"type": "link",
+							"uri": "https://www.mediamarkt.de/de/product/_bomann-kg-322-2214622.html"
+						}]
+					}
+				}]
+			}]
+		}
+	}
+}
+
 function sendRichContent() {
 
    cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
@@ -68,11 +118,13 @@ function sendRichContent() {
 
       // imageContainer.setAttribute("style", "cursor:pointer");
 
-      function cursor() {
-        document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1].setAttribute("style","cursor:pointer");
-      }
+      //below is for a certain problem to do with the hand on hover
 
-      setTimeout(cursor, 3000);
+      // function cursor() {
+      //   document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1].setAttribute("style","cursor:pointer");
+      // }
+
+      // setTimeout(cursor, 3000);
 
 
 
