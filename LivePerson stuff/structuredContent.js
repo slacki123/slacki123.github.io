@@ -8,7 +8,8 @@ cmdName = lpTag.agentSDK.cmdNames.writeSC;
 data = 
 	{"json" : 
 		{
-		"type": "carousel",
+		// "type": "carousel",
+		"type": "vertical",
 		"padding": 10,
 		"elements": [{
 			"type": "vertical",
@@ -53,18 +54,18 @@ data =
 	}
 };
 
-var notifyWhenDone = function(err) {
-    if (err) {
-        // Do something with the error
-        console.log(err);
-    }
-};
+	var notifyWhenDone = function(err) {
+	    if (err) {
+	        // Do something with the error
+	        console.log(err);
+	    }
+	};
 
-try {
-  	lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
-} catch (e) {
-    console.log(e);
-};
+	try {
+	  	lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+	} catch (e) {
+	    console.log(e);
+	};
 
 }
 
