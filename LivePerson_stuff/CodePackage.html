@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--The viewport is important for Mobile/Tablet User experience. It opens chat as an overlay rather than a new tab-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Demo</title>
+
+
+    <script>
+
+
+
+
+        //Defines lpTag if it hasn't already been defined within lpTag.js
+/*        window.lpTag = window.lpTag || {};
+
+        //Section values are used for targetting.
+        lpTag.section = ["codeDemo"];
+
+        //Example SDE pushing 
+        lpTag.sdes = lpTag.sdes || [];
+        lpTag.sdes.push(
+            {
+                "type": "lead",  //MANDATORY
+                "lead": {
+                    "topic": "luxury car test drive 2015",  //TOPIC OR NAME OF A SUBMITTED LEAD
+                    "value": 1111,  //EVALUATED VALUE OF THE LEAD
+                    "leadId": '07387928659'  //LEAD IDENTIFIER OR TICKET ID
+                }
+            }
+        );
+
+        // LivePerson Tag Manager loop code. This checks for lpTag and starts it up once found. 
+        var startLpTag = setInterval(function () {
+            console.log('~~~ LivePerson *** looking for the LivePerson START function....');
+            if (lpTag.start) {
+                clearInterval(startLpTag); // cancel the loop
+                lpTag.isDom = true; //Setting the isDom var to true because the dom already loaded
+                lpTag.start(); // call the start function
+                console.log('~~~ LivePerson *** START function FOUND! ... starting...');
+            } else {
+                console.log('~~~ LivePerson *** START function not found....wait 500ms and try again...');
+            }
+
+        }, 500);
+
+
+        //Sending SDEs on click rather than a full page load
+        function sendSdesOnClick() {
+            try {
+                lpTag.sdes.send({
+                    "type": "ctmrinfo",  //MANDATORY
+                    "info": {
+                        "cstatus": "cancelled",  //CUSTOMER LIFECYCLE STATUS. FROM PRE-DEFINED LIST
+                        "ctype": "vip",  //CUSTOMER TYPE OR TIER. FROM PRE-DEFINED LIST
+                        "customerId": "138766AC"  //UNIQUE CUSTOMER IDENTIFIER
+                    }
+                });
+                console.log("SDEs Sent");
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+
+
+
+        lpTag.section = ["Four"];
+*/
+        //Tells LivePerson that a partial page refresh has occured and allows for the updating of URL, sections and SDEs. Usually used in single page applications. 
+        // lpTag.newPage("http://www.salesenglish.com/", {
+        //     section: ["unit-sales", "lang-english", "lob-sales-english"],
+        //     sdes: [{
+        //         "type": "lead",  //MANDATORY
+        //         "lead": {
+        //             "topic": "luxury car test drive 2015",  //TOPIC OR NAME OF A SUBMITTED LEAD
+        //             "value": 22.22,  //EVALUATED VALUE OF THE LEAD
+        //             "currency": "USD",  //CURRENCY CODE
+        //             "leadId": "xyz123"  //LEAD IDENTIFIER OR TICKET ID
+        //         }
+        //     }]
+        // });    
+
+
+
+    </script>
+
+    <script type="text/javascript" src="client-SDK.js"></script>
+    <script type="text/javascript" src="structuredContent.js"></script>
+
+    <script>
+    window.onload = lpTag.agentSDK.init();
+
+    if((document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1]) !== "undefined") {
+         document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1].style.cursor = "pointer";
+    }
+
+    </script>
+<!--     <script type="text/javascript" src="lpTag.js"></script> -->
+
+
+
+
+</head>
+
+<body>
+    <h1 id="title">Code Demo</h1>
+
+    <!--Embedded Button Example-->
+    <div id="buttonid"></div>
+    <div id="ContactUsLivePersonButton"></div>
+    <!--Button to trigger the sending of variables after full page load-->
+    <button onclick="sendSdesOnClick()">Click here to send SDEs on demand</button>
+    <button onclick="sendRichContent()">Click  here to send rich content</button>
+    <button onclick="testRichContent()">Click to send "test rich content"</button>
+    <button onclick="sendQuickReplies()">Click to send quick replies</button>
+    <button onclick="sendQuickRepliesAsSC()">Click here to send quick replies as structured content</button>
+
+</body>
+
+</html>
