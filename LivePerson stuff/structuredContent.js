@@ -3,53 +3,69 @@ var cmdName;
 var data;
 
 function testRichContent() {
-		data = 
-		{"json" : 
-			{
-			"type": "carousel",
-			"padding": 10,
+
+cmdName = lpTag.agentSDK.cmdNames.writeSC;	
+data = 
+	{"json" : 
+		{
+		"type": "carousel",
+		"padding": 10,
+		"elements": [{
+			"type": "vertical",
 			"elements": [{
-				"type": "vertical",
-				"elements": [{
-					"type": "image",
-					"url": "https://aca-static-content.eu-gb.mybluemix.net/CCC%20DEMO%20Pictures/Refrigerator%20Sales/Medium/Screen%20Shot%202018-12-20%20at%2007.45.29.png",
-					"click": {
-						"actions": [{
-							"type": "link",
-							"uri": "https://www.google.com/"
-						}]
-					}
-				}, {
-					"type": "text",
-					"text": "BOWMANN KG32",
-					"rtl": false,
-					"style": {
-						"bold": true,
-						"italic": false,
-						"color": "#000000"
-					}
-				}, {
-					"type": "text",
-					"text": "€405, Silver, 1430 mm",
-					"rtl": false,
-					"style": {
-						"bold": false,
-						"italic": false,
-						"color": "#000000"
-					}
-				}, {
-					"type": "button",
-					"title": "Buy Now",
-					"click": {
-						"actions": [{
-							"type": "link",
-							"uri": "https://www.mediamarkt.de/de/product/_bomann-kg-322-2214622.html"
-						}]
-					}
-				}]
+				"type": "image",
+				"url": "https://aca-static-content.eu-gb.mybluemix.net/CCC%20DEMO%20Pictures/Refrigerator%20Sales/Medium/Screen%20Shot%202018-12-20%20at%2007.45.29.png",
+				"click": {
+					"actions": [{
+						"type": "link",
+						"uri": "https://www.google.com/"
+					}]
+				}
+			}, {
+				"type": "text",
+				"text": "BOWMANN KG32",
+				"rtl": false,
+				"style": {
+					"bold": true,
+					"italic": false,
+					"color": "#000000"
+				}
+			}, {
+				"type": "text",
+				"text": "€405, Silver, 1430 mm",
+				"rtl": false,
+				"style": {
+					"bold": false,
+					"italic": false,
+					"color": "#000000"
+				}
+			}, {
+				"type": "button",
+				"title": "Buy Now",
+				"click": {
+					"actions": [{
+						"type": "link",
+						"uri": "https://www.mediamarkt.de/de/product/_bomann-kg-322-2214622.html"
+					}]
+				}
 			}]
-		}
+		}]
 	}
+};
+
+var notifyWhenDone = function(err) {
+    if (err) {
+        // Do something with the error
+        console.log(err);
+    }
+};
+
+try {
+  	lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+} catch (e) {
+    console.log(e);
+};
+
 }
 
 function sendRichContent() {
