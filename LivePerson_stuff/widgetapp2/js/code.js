@@ -34,19 +34,18 @@ function processData(data) {
     $(".userOS").html(visitorOS);
     var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     console.log("USER OS: " + userOS);
-
+    $(".getButton").html(userOS);
  
-
     if(userOS === "windows") {
         //.userOS button goes blue
-        $('.userOS').css({"background-color":"blue"});
+        $(".userOS").css({"background-color":"blue"});
     }
     else if(userOS == "android"){
         //.userOS button goes green
-        $('.userOS').css('background-color', 'green');
+        $('.userOS').css({'background-color' : 'green'});
     }
     else if(userOS === "osx"){
-        $('.userOS').css('background-color', 'white');
+        $('.userOS').css({'background-color' : 'white'});
     }
     getLogFunction('INFO', 'bind success!')(data);
 }
