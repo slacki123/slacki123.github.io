@@ -28,10 +28,16 @@ function bindUser() {
 function processData(data) {
     var visitorId = JSON.stringify(data.newValue.visitorId);
     var visitorDevice = JSON.stringify(data.newValue.device);
-    var visitorBrowser = JSON.stringify(data.newValue.browser);
+    var visitorOS = JSON.stringify(data.newValue.operatingSystem);
     $(".userId").html("Visitor ID: " + visitorId);
     $(".userDevice").html(visitorDevice);
-    $(".userBrowser").html(visitorBrowser);
+    $(".userOS").html(visitorOS);
+    if(visitorOS.replace(/['"]+/g, '') === "WINDOWS") {
+        //.userOS button goes blue
+    }
+    else if(visitorOS.replace(/['"]+/g, '') == "ANDROID"){
+        //.userOS button goes green
+    }
     getLogFunction('INFO', 'bind success!')(data.newValue.visitorId);
 }
 
