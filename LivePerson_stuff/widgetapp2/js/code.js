@@ -48,7 +48,7 @@ function processData(data) {
     else if(userOS === "osx"){
         $('.userOS').css('color', 'white');
     }
-    getLogFunction('INFO', 'bind success!')(userOS);
+    getLogFunction('INFO', 'bind success!')(data);
 }
 
 // function writeCommand() {
