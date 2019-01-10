@@ -27,14 +27,15 @@ function bindUser() {
 }
 function processData(data) {
     var visitorId = JSON.stringify(data.newValue.visitorId);
+    var userOS = visitorOS.replace(/['"]+/g, '').toLower();
     var visitorDevice = JSON.stringify(data.newValue.device);
     var visitorOS = JSON.stringify(data.newValue.operatingSystem);
-    $(".userId").html("Visitor ID: " + visitorOS);
+    $(".userId").html("Visitor ID: " + userOS);
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     // var userOS = visitorOS.split(" ")[0].toLower();
-    var userOS = visitorOS.replace(/['"]+/g, '').toLower();
+    
     console.log("USER OS: " + userOS);
     $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
 
