@@ -34,7 +34,7 @@ function processData(data) {
     $(".userOS").html(visitorOS);
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     // var userOS = visitorOS.split(" ")[0].toLower();
-    var userOS = visitorOS.split(" ").toLower();
+    var userOS = visitorOS.replace(/['"]+/g, '')
     console.log("USER OS: " + userOS);
  
     if(userOS === "windows") {
