@@ -27,10 +27,10 @@ function bindUser() {
 }
 function processData(data) {
     var visitorId = JSON.stringify(data.newValue.visitorId);
-    
     var visitorDevice = JSON.stringify(data.newValue.device);
     var visitorOS = JSON.stringify(data.newValue.operatingSystem);
     var userOS = visitorOS.replace(/['"]+/g, '').toLower();
+    var userOS = visitorOS.length;
     $(".userId").html("Visitor ID: " + userOS);
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
