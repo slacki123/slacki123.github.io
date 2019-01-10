@@ -26,7 +26,7 @@ function bindUser() {
     SDK.bind(bindId, processData, createCallback('Bind'));
 }
 function processData(data) {
-    var visitorId = JSON.stringify(data.newValue.visitorId);
+    var visitorId = JSON.stringify(data.newValue.visitorId).replace(/['"]+/g, '');
     var visitorDevice = JSON.stringify(data.newValue.device);
     var visitorOS = JSON.stringify(data.newValue.operatingSystem);
     $(".userId").html("Visitor ID: " + visitorId);
