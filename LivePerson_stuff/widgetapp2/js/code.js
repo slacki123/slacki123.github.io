@@ -17,7 +17,7 @@ function getLogFunction(type, message){
 }
 
 function bindUserId() {
-    var bindId = visitorInfo.visitorId;
+    var bindId = "visitorInfo.visitorId";
     function renderText(data) {
         $(".userId").html("Visitor ID: " + JSON.stringify(data));
         getLogFunction('INFO', 'bind success!')(data);
