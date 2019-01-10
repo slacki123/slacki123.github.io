@@ -21,13 +21,18 @@ function getLogFunction(type, message){
     }
 }
 
-function bindUserId() {
-    var bindId = "visitorInfo.visitorId";
+function bindUser() {
+    var bindId = "visitorInfo";
     SDK.bind(bindId, renderText, createCallback('Bind'));
 }
 function renderText(data) {
-    $(".userId").html(JSON.stringify(data.newValue));
-    getLogFunction('INFO', 'bind success!')(data.newValue);
+    var visitorId = JSON.stringify(data.newValue.VisitorId);
+    var visitorDevice = JSON.stringify(data.newValue.device);
+    var visitorBrowser = JSON.stringify(data.newValue.browser);
+    $(".userId").html("Visitor ID: " + visitorId);
+    $(".userDevice").html(visitorDevice);
+    $(".userBrowser").val() = visitorBrowser;
+    getLogFunction('INFO', 'bind success!')(data.newValue.visitorId);
 }
 
 function bindUserDevice() {
@@ -35,7 +40,17 @@ function bindUserDevice() {
     SDK.bind(bindId, renderDeviceText, createCallback('Bind'));
 }
 function renderDeviceText(data) {
+    device = JSON.stringify(data.newValue);
 
+    if (device == "Android") {
+
+    } 
+    else if (device == "iOS") {
+
+    }
+    else if (device == "bla") {
+
+    }
 }
 
 // function writeCommand() {

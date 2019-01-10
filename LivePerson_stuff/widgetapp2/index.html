@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/example1.css" type="text/css">
 </head>
 <body>
-	<h1>Alright m8</h1>
+	<h1>User info task</h1>
 <!-- 	<div class="commandBox">
 		<input class="commandInput" type="text" name="commandInput" />
 		<button class="commandButton" onclick="writeCommand()" title="Write">Write</button>
@@ -19,21 +19,20 @@
 		<button class="getButton" onclick="get()" title="Write">Get</button>
 		<div class="getResults"></div>
 	</div>
-	<div class="bindBox">
+<!-- 	<div class="bindBox">
 		<input class="bindInput" type="text" name="bindInput" />
 		<button class="bindButton" onclick="bind()" title="bind">Bind</button><button class="unbindButton" onclick="unbind()" title="bind">Unbind</button>
 		<div class="bindResults"></div>
 	</div>
-	<div class="logBox">
-		<textarea disabled></textarea>
+ -->
+
+	<div class="userId"></div>
+
+	<div>
+		<button class="userDevice" type="button" disabled></button>
+		<button class="userBrowser" type="button" disabled></button>
 	</div>
-	<button onclick="bindUserId()">Click to get visitor ID</button>
-	<div class="userId">
-		
-	</div>
-	<div class="userDevice">
-		
-	</div>
+
 	<div class="agentChoice">
 		
 	</div>
@@ -56,11 +55,15 @@
 		<textarea disabled></textarea>
 	</div> -->
 
+	<div class="logBox">
+		<textarea disabled></textarea>
+	</div>
+
 	<script> 
-		
+
 		window.onload = function () {
 			if(lpTag.agentSDK){
-				bindUserId();
+				bindUser();
 			}	
 		}
 
