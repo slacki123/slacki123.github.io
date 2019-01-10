@@ -37,10 +37,12 @@ function processData(data) {
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     // var userOS = visitorOS.split(" ")[0].toLower();
     
-    console.log("USER OS: " + visitorOS.split(" ")[0] + " " + visitorOS.length);
+    console.log("USER OS: " + visitorOS.split(" ")[0].replace(/['"]+/g, '') + " " + visitorOS.length);
+
+    //for some reason having the variable "userOS" or the method .toLower, broke the function at the point where either of these were... WTF
     // $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
 
-    if(visitorOS.split(" ")[0] === "\"Windows") {
+    if(visitorOS.split(" ")[0] === "\"Windows" || "\"Windows\"") {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
     }
