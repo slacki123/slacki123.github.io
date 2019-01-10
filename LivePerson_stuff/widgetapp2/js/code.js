@@ -37,7 +37,7 @@ function processData(data) {
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     // var userOS = visitorOS.split(" ")[0].toLower();
     
-    console.log("USER OS: " + visitorOS.split(" ")[0] + " " + visitorOS.length);
+    console.log("USER OS: " + visitorOS.split(" ")[0].toLower() + " " + visitorOS.length);
     $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
 
     if(visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower() === "windows") {
