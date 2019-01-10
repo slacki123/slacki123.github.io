@@ -35,11 +35,11 @@ function processData(data) {
     var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     console.log("USER OS: " + userOS);
 
-    $('.userDevice').css('color', 'purple');
+    $("button.userDevice").css({"color":"purple"});
 
     if(userOS === "windows") {
         //.userOS button goes blue
-        $('.userOS').css('color', 'blue');
+        $('.userOS').css({"color":"blue"});
     }
     else if(userOS == "android"){
         //.userOS button goes green
