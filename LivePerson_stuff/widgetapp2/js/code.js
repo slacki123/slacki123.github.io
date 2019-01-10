@@ -23,11 +23,19 @@ function getLogFunction(type, message){
 
 function bindUserId() {
     var bindId = "visitorInfo.visitorId";
-    function renderText(data) {
-        $(".userId").html(JSON.stringify(data));
-        getLogFunction('INFO', 'bind success!')(data);
-    }
     SDK.bind(bindId, renderText, createCallback('Bind'));
+}
+function renderText(data) {
+    $(".userId").html(JSON.stringify(data.newValue));
+    getLogFunction('INFO', 'bind success!')(data.newValue);
+}
+
+function bindUserDevice() {
+    var bindId = "";
+    SDK.bind(bindId, renderDeviceText, createCallback('Bind'));
+}
+function renderDeviceText(data) {
+
 }
 
 // function writeCommand() {
@@ -41,8 +49,7 @@ function get() {
     SDK.get(getKey, getSuccess, getLogFunction('ERROR', 'Error in get!'));
 }
 function bind() {
-    // var bindKey = $(".bindInput").val();
-    var bindkey = "visitorInfo.visitorId";
+    var bindKey = $(".bindInput").val();
     SDK.bind(bindKey, bindSuccess, createCallback('Bind'));
 }
 function unbind() {
