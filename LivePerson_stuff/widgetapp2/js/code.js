@@ -32,10 +32,12 @@ function processData(data) {
     $(".userId").html("Visitor ID: " + visitorId);
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
-    if(visitorOS.replace(/['"]+/g, '') === "WINDOWS") {
+    var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
+    console.log(userOS);
+    if(userOS === "windows") {
         //.userOS button goes blue
     }
-    else if(visitorOS.replace(/['"]+/g, '') == "ANDROID"){
+    else if(userOS == "android"){
         //.userOS button goes green
     }
     getLogFunction('INFO', 'bind success!')(data.newValue.visitorId);
