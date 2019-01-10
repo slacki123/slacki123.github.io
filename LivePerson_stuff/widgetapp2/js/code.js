@@ -22,9 +22,9 @@ function getLogFunction(type, message){
 }
 
 function bindUserId() {
-    var bindId = "visitorInfo.visitorId.newValue";
+    var bindId = "visitorInfo.visitorId";
     function renderText(data) {
-        $(".userId").html("Visitor ID: " + JSON.stringify(data));
+        $(".userId").html(JSON.stringify(data));
         getLogFunction('INFO', 'bind success!')(data);
     }
     SDK.bind(bindId, renderText, createCallback('Bind'));
