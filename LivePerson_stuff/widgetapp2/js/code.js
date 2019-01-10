@@ -36,7 +36,8 @@ function processData(data) {
     // var userOS = visitorOS.split(" ")[0].toLower();
     var userOS = visitorOS.replace(/['"]+/g, '').toLower();
     console.log("USER OS: " + userOS);
- 
+    $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
+    
     if(userOS === "windows") {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
@@ -50,7 +51,7 @@ function processData(data) {
     }
     getLogFunction('INFO', 'bind success!')(data);
 }
-
+{"ass"}
 // function writeCommand() {
 //     var commandVal = $(".commandInput").val();
 //     SDK.command('Write ChatLine',{text:commandVal}, createCallback('Write'));
