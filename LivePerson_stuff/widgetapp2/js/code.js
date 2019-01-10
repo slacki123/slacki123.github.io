@@ -32,7 +32,8 @@ function processData(data) {
     $(".userId").html("Visitor ID: " + visitorId);
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
-    var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
+    // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
+    var userOS = visitorOS.split(" ")[0].toLower();
     console.log("USER OS: " + userOS);
     $(".getButton").html(userOS);
  
