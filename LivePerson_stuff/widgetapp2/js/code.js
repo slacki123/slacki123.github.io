@@ -26,13 +26,13 @@ function bindUser() {
     SDK.bind(bindId, renderText, createCallback('Bind'));
 }
 function renderText(data) {
-    var visitorId = JSON.stringify(data);
-    var visitorDevice = JSON.stringify(data.device);
-    var visitorBrowser = JSON.stringify(data.browser);
+    var visitorId = JSON.stringify(data.newValue.visitorId);
+    var visitorDevice = JSON.stringify(data.newValue.device);
+    var visitorBrowser = JSON.stringify(data.newValue.browser);
     $(".userId").html("Visitor ID: " + visitorId);
     $(".userDevice").html(visitorDevice);
     $(".userBrowser").val() = visitorBrowser;
-    getLogFunction('INFO', 'bind success!')(data.visitorId);
+    getLogFunction('INFO', 'bind success!')(data.newValue.visitorId);
 }
 
 function bindUserDevice() {
