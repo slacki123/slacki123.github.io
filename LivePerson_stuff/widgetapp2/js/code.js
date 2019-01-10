@@ -41,9 +41,9 @@ function processData(data) {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
     }
-    else if(userOS == "android"){
+    else if(userOS === "android"){
         //.userOS button goes green
-        $('.userOS').css({'background-color' : 'green'});
+        $(".userOS").css({'background-color' : 'green'});
     }
     else if(userOS === "osx"){
         $('.userOS').css({'background-color' : 'white'});
