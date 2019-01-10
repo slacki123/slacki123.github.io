@@ -29,22 +29,22 @@ function processData(data) {
     var visitorId = JSON.stringify(data.newValue.visitorId);
     var visitorDevice = JSON.stringify(data.newValue.device);
     var visitorOS = JSON.stringify(data.newValue.operatingSystem);
-    var userOS = visitorOS.replace(/['"]+/g, '').toLower();
-    var userOS = visitorOS.length;
-    $(".userId").html("Visitor ID: " + userOS);
+    // var userOS = visitorOS.replace(/['"]+/g, '').toLower();
+    // var userOS = visitorOS.length;
+    $(".userId").html("Visitor ID: " + visitorId);
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     // var userOS = visitorOS.split(" ")[0].toLower();
     
-    console.log("USER OS: " + userOS);
+    console.log("USER OS: ");
     $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
 
-    if(userOS === "windows") {
+    if(visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower() === "windows") {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
     }
-    else if(userOS === "android"){
+    else if(visitorOS.replace(/['"]+/g, '').toLower() === "android"){
         //.userOS button goes green
         $(".userOS").css({'background-color' : 'green'});
     }
