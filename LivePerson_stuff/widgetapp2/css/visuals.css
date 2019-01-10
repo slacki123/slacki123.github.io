@@ -433,6 +433,14 @@ small,
   font-weight: 400;
 }
 
+.userDevice {
+  background-color: purple;
+}
+
+.getButton {
+  background-color : green;
+}
+
 mark,
 .mark {
   padding: 0.2em;
