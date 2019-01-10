@@ -7,6 +7,11 @@ $(function() {
     });
 });
 
+
+function userChoice(firstChoice, secondChoice, thirdChoice){
+
+}
+
 function getLogFunction(type, message){
     return function(data) {
         if (typeof data === 'object') {
@@ -17,7 +22,7 @@ function getLogFunction(type, message){
 }
 
 function bindUserId() {
-    var bindId = "visitorInfo.visitorId";
+    var bindId = "visitorInfo.visitorId.newValue";
     function renderText(data) {
         $(".userId").html("Visitor ID: " + JSON.stringify(data));
         getLogFunction('INFO', 'bind success!')(data);
