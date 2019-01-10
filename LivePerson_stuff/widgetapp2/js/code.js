@@ -29,6 +29,8 @@ function processData(data) {
     var visitorId = JSON.stringify(data.newValue.visitorId);
     var visitorDevice = JSON.stringify(data.newValue.device);
     var visitorOS = JSON.stringify(data.newValue.operatingSystem);
+    var OS = visitorOS.split(" ")[0].replace(/['"]+/g, '');
+    console.log(OS);
     // var userOS = visitorOS.replace(/['"]+/g, '').toLower();
     // var userOS = visitorOS.length;
     $(".userId").html("Visitor ID: " + visitorId);
@@ -37,7 +39,7 @@ function processData(data) {
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     // var userOS = visitorOS.split(" ")[0].toLower();
     
-    console.log("USER OS: " + visitorOS.split(" ")[0].replace(/['"]+/g, '') + " " + visitorOS.length);
+    console.log("USER OS: " + visitorOS.split(" ")[0].replace(/['"]+/g, '').toLower() + " " + visitorOS.length);
 
     //for some reason having the variable "userOS" or the method .toLower, broke the function at the point where either of these were... WTF
     // $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
