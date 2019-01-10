@@ -16,19 +16,19 @@ function getLogFunction(type, message){
     }
 }
 
-function getUserId() {
-    var getId = visitorInfo.visitorId;
+function bindUserId() {
+    var bindId = visitorInfo.visitorId;
     function renderText(data) {
-        $(".userId").html(JSON.stringify(data));
-        getLogFunction('INFO', 'Get success!')(data);
+        $(".userId").html("Visitor ID: " + JSON.stringify(data));
+        getLogFunction('INFO', 'bind success!')(data);
     }
-    SDK.get(getId, renderText, getLogFunction('ERROR', 'Error in get!'));
+    SDK.bind(bindId, renderText, createCallback('Bind'));
 }
 
-function writeCommand() {
-    var commandVal = $(".commandInput").val();
-    SDK.command('Write ChatLine',{text:commandVal}, createCallback('Write'));
-}
+// function writeCommand() {
+//     var commandVal = $(".commandInput").val();
+//     SDK.command('Write ChatLine',{text:commandVal}, createCallback('Write'));
+// }
 
 //the below selects the element with class "getInput" and takes its 'value'
 function get() {
