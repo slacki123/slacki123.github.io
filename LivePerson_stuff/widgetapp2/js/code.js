@@ -42,7 +42,7 @@ function processData(data) {
     console.log("USER OS: " + OS + " " + visitorOS.length);
 
     //for some reason having the variable "userOS" or the method .toLower, broke the function at the point where either of these were... WTF
-    // $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
+    $(".agentChoice").html("Testing");
 
     if(OS === "Windows" || OS === "WINDOWS") {
         //.userOS button goes blue
