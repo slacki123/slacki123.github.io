@@ -18,9 +18,9 @@ function getLogFunction(type, message){
 
 function getUserId() {
     var getId = visitorInfo.visitorId;
-    function renderText(getIdResult) {
-        $(".userId").html(JSON.stringify(getIdResult));
-        getLogFunction('INFO', 'Get success!')(getIdResult);
+    function renderText(data) {
+        $(".userId").html(JSON.stringify(data));
+        getLogFunction('INFO', 'Get success!')(data);
     }
     SDK.get(getId, renderText, getLogFunction('ERROR', 'Error in get!'));
 }
