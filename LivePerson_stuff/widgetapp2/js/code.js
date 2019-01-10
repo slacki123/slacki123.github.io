@@ -38,7 +38,7 @@ function processData(data) {
     // var userOS = visitorOS.split(" ")[0].toLower();
     
     console.log("USER OS: " + visitorOS.split(" ")[0] + " " + visitorOS.length);
-    $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
+    // $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
 
     if(visitorOS.split(" ")[0] === "\"Windows") {
         //.userOS button goes blue
