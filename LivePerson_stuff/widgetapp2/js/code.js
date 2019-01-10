@@ -44,15 +44,15 @@ function processData(data) {
     //for some reason having the variable "userOS" or the method .toLower, broke the function at the point where either of these were... WTF
     // $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
 
-    if(visitorOS.split(" ")[0] === "\"Windows" || "\"Windows\"") {
+    if(OS === "Windows" || "WINDOWS") {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
     }
-    else if(visitorOS === "\"ANDROID\""){
+    else if(OS === "ANDROID"){
         //.userOS button goes green
         $(".userOS").css({'background-color' : 'green'});
     }
-    else if(visitorOS === "\"OSX\""){
+    else if(OS === "OSX"){
         $('.userOS').css({"background-color" : "white"});
     }
     getLogFunction('INFO', 'bind success!')(data);
