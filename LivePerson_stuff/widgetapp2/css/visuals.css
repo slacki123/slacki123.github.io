@@ -434,11 +434,21 @@ small,
 }
 
 .userDevice {
+  color : text-black-50;
   background-color: purple;
+  border: none;
+  padding : 5px 5px;
+}
+
+.userOS {
+  border: none;
+  padding : 5px 5px;
 }
 
 .getButton {
-  background-color : green;
+  background-color : #4CAF50;
+  border : none;
+  padding : 5px 5px;
 }
 
 mark,
