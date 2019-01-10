@@ -23,34 +23,16 @@ function getLogFunction(type, message){
 
 function bindUser() {
     var bindId = "visitorInfo";
-    SDK.bind(bindId, renderText, createCallback('Bind'));
+    SDK.bind(bindId, processData, createCallback('Bind'));
 }
-function renderText(data) {
+function processData(data) {
     var visitorId = JSON.stringify(data.newValue.visitorId);
     var visitorDevice = JSON.stringify(data.newValue.device);
     var visitorBrowser = JSON.stringify(data.newValue.browser);
     $(".userId").html("Visitor ID: " + visitorId);
     $(".userDevice").html(visitorDevice);
-    $(".userBrowser").val() = visitorBrowser;
+    $(".userBrowser").html(visitorBrowser);
     getLogFunction('INFO', 'bind success!')(data.newValue.visitorId);
-}
-
-function bindUserDevice() {
-    var bindId = "";
-    SDK.bind(bindId, renderDeviceText, createCallback('Bind'));
-}
-function renderDeviceText(data) {
-    device = JSON.stringify(data.newValue);
-
-    if (device == "Android") {
-
-    } 
-    else if (device == "iOS") {
-
-    }
-    else if (device == "bla") {
-
-    }
 }
 
 // function writeCommand() {
