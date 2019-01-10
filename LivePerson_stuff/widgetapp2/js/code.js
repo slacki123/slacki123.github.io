@@ -33,6 +33,7 @@ function processData(data) {
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
     var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
+    console.log("USER OS: " + userOS);
 
     $('.userDevice').css('color', 'purple');
 
@@ -43,6 +44,9 @@ function processData(data) {
     else if(userOS == "android"){
         //.userOS button goes green
         $('.userOS').css('color', 'green');
+    }
+    else if(userOS === "osx"){
+        $('.userOS').css('color', 'white');
     }
     getLogFunction('INFO', 'bind success!')(userOS);
 }
