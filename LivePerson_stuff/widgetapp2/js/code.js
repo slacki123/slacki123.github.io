@@ -37,14 +37,14 @@ function processData(data) {
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
     // var userOS = visitorOS.split(" ")[0].toLower();
     
-    console.log("USER OS: " + visitorOS.split(" ")[0].toLower() + " " + visitorOS.length);
+    console.log("USER OS: " + visitorOS.split(" ")[0] + " " + visitorOS.length);
     $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
 
-    if(visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower() === "windows") {
+    if(visitorOS.split(" ")[0] === "\"Windows") {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
     }
-    else if(visitorOS.replace(/['"]+/g, '').toLower() === "android"){
+    else if(visitorOS === "\"ANDROID\""){
         //.userOS button goes green
         $(".userOS").css({'background-color' : 'green'});
     }
