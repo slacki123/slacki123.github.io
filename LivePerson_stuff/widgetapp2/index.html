@@ -27,7 +27,10 @@
 	<div class="logBox">
 		<textarea disabled></textarea>
 	</div>
-	<div class="userId"></div>
+	<button onclick="bindUserId()">Click to get visitor ID</button>
+	<div class="userId">
+		
+	</div>
 	<div class="userDevice">
 		
 	</div>
@@ -54,7 +57,13 @@
 	</div> -->
 
 	<script> 
-		window.onload = bindUserId();
+		
+		window.onload = function () {
+			if(lpTag.agentSDK){
+				bindUserId();
+			}	
+		}
+
 	</script>
 
 </body>
