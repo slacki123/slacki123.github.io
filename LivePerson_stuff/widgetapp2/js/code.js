@@ -33,14 +33,16 @@ function processData(data) {
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
     var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
-    console.log(userOS);
+    
     if(userOS === "windows") {
         //.userOS button goes blue
+        $('.userOS').css('color', 'blue');
     }
     else if(userOS == "android"){
         //.userOS button goes green
+        $('.userOS').css('color', 'green');
     }
-    getLogFunction('INFO', 'bind success!')(data.newValue.visitorId);
+    getLogFunction('INFO', 'bind success!')(userOS);
 }
 
 // function writeCommand() {
