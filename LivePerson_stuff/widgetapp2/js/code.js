@@ -29,7 +29,7 @@ function processData(data) {
     var visitorId = JSON.stringify(data.newValue.visitorId);
     var visitorDevice = JSON.stringify(data.newValue.device);
     var visitorOS = JSON.stringify(data.newValue.operatingSystem);
-    $(".userId").html("Visitor ID: " + visitorId);
+    $(".userId").html("Visitor ID: " + visitorOS);
     $(".userDevice").html(visitorDevice);
     $(".userOS").html(visitorOS);
     // var userOS = visitorOS.replace(/['"]+/g, '').split(" ")[0].toLower();
@@ -37,7 +37,7 @@ function processData(data) {
     var userOS = visitorOS.replace(/['"]+/g, '').toLower();
     console.log("USER OS: " + userOS);
     $(".agentChoice").html("USER OS: " + userOS +" and VisitorOS: " + visitorOS);
-    
+
     if(userOS === "windows") {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
