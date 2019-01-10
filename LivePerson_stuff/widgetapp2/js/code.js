@@ -7,10 +7,29 @@ $(function() {
     });
 });
 
+var userSelections;
 
-function userChoice(firstChoice, secondChoice, thirdChoice){
-
+function setUserSelections(firstChoice, secondChoice, thirdChoice){
+    userSelections = {
+        "firstChoice" : firstChoice,
+        "secondChoice" : secondChoice,
+        "thirdChoice" : thirdChoice
+    }
 }
+
+function getUserSelections(){
+    return userSelections;
+}
+
+function selection() {
+    var firstChoice = $('.dropDown1').val();
+    var secondChoice = $('.dropDown2').val();
+    var thirdChoice = $('.dropDown3').val();
+    setUserSelections(firstChoice, secondChoice, thirdChoice);
+    $(".agentChoice").html(JSON.stringify(getUserSelections()));
+    return console.log("Users selected");
+}
+
 
 function getLogFunction(type, message){
     return function(data) {
@@ -42,8 +61,6 @@ function processData(data) {
     console.log("USER OS: " + OS + " " + visitorOS.length);
 
     //for some reason having the variable "userOS" or the method .toLower, broke the function at the point where either of these were... WTF
-    $(".agentChoice").html("Testing");
-
     if(OS === "Windows" || OS === "WINDOWS") {
         //.userOS button goes blue
         $(".userOS").css({"background-color":"blue"});
