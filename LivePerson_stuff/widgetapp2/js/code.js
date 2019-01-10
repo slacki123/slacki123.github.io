@@ -41,7 +41,8 @@ function get() {
     SDK.get(getKey, getSuccess, getLogFunction('ERROR', 'Error in get!'));
 }
 function bind() {
-    var bindKey = $(".bindInput").val();
+    // var bindKey = $(".bindInput").val();
+    var bindkey = "visitorInfo.visitorId";
     SDK.bind(bindKey, bindSuccess, createCallback('Bind'));
 }
 function unbind() {
