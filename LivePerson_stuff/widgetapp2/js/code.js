@@ -45,7 +45,7 @@ function processData(data) {
         //.userOS button goes green
         $(".userOS").css({'background-color' : 'green'});
     }
-    else if(visitorOS === "OSX"){
+    else if(visitorOS === "\"OSX\""){
         $('.userOS').css({'background-color' : 'white'});
     }
     getLogFunction('INFO', 'bind success!')(data);
