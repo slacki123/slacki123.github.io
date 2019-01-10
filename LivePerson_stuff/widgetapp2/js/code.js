@@ -26,7 +26,7 @@ function bindUser() {
     SDK.bind(bindId, renderText, createCallback('Bind'));
 }
 function renderText(data) {
-    var visitorId = JSON.stringify(data.visitorId);
+    var visitorId = JSON.stringify(data);
     var visitorDevice = JSON.stringify(data.device);
     var visitorBrowser = JSON.stringify(data.browser);
     $(".userId").html("Visitor ID: " + visitorId);
