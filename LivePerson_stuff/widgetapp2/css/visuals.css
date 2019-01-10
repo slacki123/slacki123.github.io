@@ -441,6 +441,7 @@ small,
 }
 
 .userOS {
+  color : text-black-50;
   border: none;
   padding : 5px 5px;
 }
