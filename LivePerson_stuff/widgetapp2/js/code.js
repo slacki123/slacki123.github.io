@@ -15,6 +15,8 @@ function setUserSelections(firstChoice, secondChoice, thirdChoice){
         "secondChoice" : secondChoice,
         "thirdChoice" : thirdChoice
     }
+
+    return console.log("Variables assigned");
 }
 
 function getUserSelections(){
@@ -27,7 +29,7 @@ function selection() {
     var thirdChoice = $('.dropDown3').val();
     setUserSelections(firstChoice, secondChoice, thirdChoice);
     $(".agentChoice").html(JSON.stringify(getUserSelections()));
-    return console.log("Users selected");
+
 }
 
 
