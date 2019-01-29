@@ -81,12 +81,58 @@
 
       var cmdName = lpTag.agentSDK.cmdNames.writeSC;
       // var cmdName = lpTag.agentSDK.cmdNames.write;
-      var data = textarea.value;
+       var data = {
+      "text": "Some text",
+      "quickReplies": {
+        "type": "quickReplies",
+        "itemsPerRow": 8,
+        "replies": [
+          {
+            "type": "button",
+            "tooltip": "yes i do",
+            "title": "yes",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "yep"
+                }
+              ],
+              "metadata": [
+                {
+                  "type": "ExternalId",
+                  "id": "Yes-1234"
+                }
+              ]
+            }
+          },
+          {
+            "type": "button",
+            "tooltip": "No!",
+            "title": "No!",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "No!"
+                }
+              ],
+              "metadata": [
+                { 
+                  "type": "ExternalId",
+                  "id": "No-4321"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    };
 
       lpTag.agentSDK.command(cmdName, data, function(err) {
         if(err) {console.log(err);}
-        var resSpan = document.getElementById('resultText');
-        resSpan.textContent = err ? 'error: ' + err: 'done';
+        //var resSpan = document.getElementById('resultText');
+        //resSpan.textContent = err ? 'error: ' + err: 'done';
       });
     }
 
