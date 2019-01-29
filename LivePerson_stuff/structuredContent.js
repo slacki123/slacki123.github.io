@@ -133,7 +133,7 @@ data =
 	    console.log(e);
 	};
 
-}
+};
 
 function sendRichContent() {
 
@@ -208,9 +208,7 @@ function sendRichContent() {
 
       // setTimeout(cursor, 3000);
 
-
-
-}
+};
 
 function sendQuickReplies() {
 
@@ -285,10 +283,10 @@ function sendQuickReplies() {
         }
  }
 
- function sendQuickRepliesAsSC() {
+function sendQuickRepliesAsSC() {
 
    cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
-var data = {
+  data = {
       json: {
         "type": "text",
         "text": "product name",
@@ -365,4 +363,4 @@ var data = {
         } catch (e) {
           console.log(e);
         }
- }
+ };
