@@ -168,8 +168,8 @@ function sendRichContent() {
       "text": "$155.99",
       "tooltip": "$155.99"
     }]
-  };
-}
+  }
+};
 
 
     // cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
