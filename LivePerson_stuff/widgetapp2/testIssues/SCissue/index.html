@@ -82,8 +82,16 @@
       var cmdName = lpTag.agentSDK.cmdNames.writeSC;
       // var cmdName = lpTag.agentSDK.cmdNames.write;
        var data = {
-      "text": "Some text",
-      "quickReplies": {
+      json: {
+        "type": "text",
+        "text": "product name",
+        "tooltip": "text tooltip",
+        "style": {
+          "bold": true,
+          "size": "large"
+        }
+      },
+      quickReplies: {
         "type": "quickReplies",
         "itemsPerRow": 8,
         "replies": [
@@ -118,7 +126,7 @@
                 }
               ],
               "metadata": [
-                { 
+                {
                   "type": "ExternalId",
                   "id": "No-4321"
                 }
@@ -127,7 +135,7 @@
           }
         ]
       }
-    };
+   };
 
       lpTag.agentSDK.command(cmdName, data, function(err) {
         if(err) {console.log(err);}
