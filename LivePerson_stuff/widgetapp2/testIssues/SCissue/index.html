@@ -6,61 +6,8 @@
   <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
   <script src="script.js"></script>
   <script>
-    var card = {
-      "json": {
-        "type": "text",
-        "text": "product name",
-        "tooltip": "text tooltip",
-        "style": {
-          "bold": true,
-          "size": "large"
-        }
-      },
-      "quickReplies": {
-        "type": "quickReplies",
-        "itemsPerRow": 8,
-        "replies": [
-          {
-            "type": "button",
-            "tooltip": "yes i do",
-            "title": "yes",
-            "click": {
-              "actions": [
-                {
-                  "type": "publishText",
-                  "text": "yep"
-                }
-              ],
-              "metadata": [
-                {
-                  "type": "ExternalId",
-                  "id": "Yes-1234"
-                }
-              ]
-            }
-          },
-          {
-            "type": "button",
-            "tooltip": "No!",
-            "title": "No!",
-            "click": {
-              "actions": [
-                {
-                  "type": "publishText",
-                  "text": "No!"
-                }
-              ],
-              "metadata": [
-                {
-                  "type": "ExternalId",
-                  "id": "No-4321"
-                }
-              ]
-            }
-          }
-        ]
-      }
-   };
+    console.log(quickReplies);
+    
 
     function sendSC() {
       var textarea = document.getElementById('jsonInput');
@@ -119,8 +66,11 @@
 <body>
   <h2>Add Sctructured Content json here</h2>
   <textarea id="jsonInput" style="width:95%;height:300px;"></textarea>
-  <button onclick="sendSC(card)">Send</button>
-  <button onclick="addCard(card)">Add Quick Replies JSON</button>
+  <button onclick="sendSC()">Send</button>
+  <button onclick="addCard(quickReplies)">Add Quick Replies JSON</button> <br>
+  <button onclick="addCard(carousel)">Add Carousel JSON</button>
+  <button onclick="addCard(vertical)">Add Vertical JSON</button>
+  <br>
   <span id="resultText"></span>
 
 
