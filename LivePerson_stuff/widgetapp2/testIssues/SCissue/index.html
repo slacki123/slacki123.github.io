@@ -99,14 +99,14 @@
       });
     }
 
-    function addCard() {      
+    function addCard(input) {      
       var textarea = document.getElementById('jsonInput');
-      textarea.value = JSON.stringify(card);
+      textarea.value = JSON.stringify(input);
     }
 
-    function sendCard() {      
+    function sendCard(input) {      
       var textarea = document.getElementById('jsonInput');
-      textarea.value = JSON.stringify(card);
+      textarea.value = JSON.stringify(input);
     }
 
     window.onload = function() {
@@ -119,8 +119,8 @@
 <body>
   <h2>Add Sctructured Content json here</h2>
   <textarea id="jsonInput" style="width:95%;height:300px;"></textarea>
-  <button onclick="sendSC()">Send</button>
-  <button onclick="addCard()">Add Card</button>
+  <button onclick="sendSC(card)">Send</button>
+  <button onclick="addCard(card)">Add Quick Replies JSON</button>
   <span id="resultText"></span>
 
 
