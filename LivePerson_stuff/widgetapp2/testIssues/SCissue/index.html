@@ -88,9 +88,13 @@
           data = JSON.parse(data);
         }
       } catch (err) {
-        var resSpan = document.getElementById('resultText');
-        resSpan.textContent = err ? 'Error: ' + err: '';
-        throw new Error(err);
+          var resSpan = document.getElementById('resultText');
+          if(data === ""){
+            resSpan.textContent = 'Error: You must enter text into the textbox';
+          } else {
+            resSpan.textContent = 'Error: ' + err
+            throw new Error(err);
+          }
       }
     
       lpTag.agentSDK.command(cmdName, data, function(err) {
@@ -100,8 +104,6 @@
           if(err && typeof data === 'object'){
             console.log(err);
             resSpan.textContent = 'Error: Invalid JSON input. Maybe your structured content needs to start with \" {\"json\":\" ?'; 
-          } else if (err) {
-             resSpan.textContent = 'Error: You must enter text into the textbox'
           } else {
               resSpan.textContent = err ? 'Error: ' + err: 'Done';
           }     
