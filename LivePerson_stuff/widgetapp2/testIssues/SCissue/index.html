@@ -83,9 +83,9 @@
       // var cmdName = lpTag.agentSDK.cmdNames.write;
       var data = textarea.value;
 
-      if(typeof data !== 'object') {
-        data = JSON.parse(data);
-      }
+      // if(typeof data !== 'object') {
+      //   data = JSON.parse(data);
+      // }
       
 
       lpTag.agentSDK.command(cmdName, data, function(err) {
