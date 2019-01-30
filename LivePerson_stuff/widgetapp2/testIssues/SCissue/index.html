@@ -7,74 +7,60 @@
   <script src="script.js"></script>
   <script>
     var card = {
-      "id": "04e7cd9a-40e7-440e-884a-82ca6af574e9",
-      "type": "vertical",
-      "elements": [{
-        "type": "image",
-        "url": "http://cdn.bgr.com/2016/08/iphone-8-concept.jpg",
-        "tooltip": "image tooltip",
-        "action": {
-          "type": "navigate",
-          "id": "98446950-2f54-4594-b89b-1d60a9fdda49",
-          "name": "Navigate to store via image",
-          "lo": 23423423,
-          "la": 2423423423
-        }
-      }, {
+      "json": {
         "type": "text",
-        "text": "IPhone 8",
-        "tooltip": "brand new iphone 8",
+        "text": "product name",
+        "tooltip": "text tooltip",
         "style": {
           "bold": true,
-          "size": 'large'
+          "size": "large"
         }
-      }, {
-        "type": "text",
-        "text": "Now on sale!"
-      }, {
-        "type": "text",
-        "text": "$155.99",
-        "tooltip": "155.99"
-      }, {
-        "type": "button",
-        "title": "Add to cart",
-        "action": {
-          "type": "link",
-          "id": "febf3237-f7d9-44bc-a17f-fc8abdfb0f25",
-          "name": "add to cart",
-          "uri": "http://www.google.com",
-          "ios": {
-            "uri": "specific uri for iOS"
+      },
+      "quickReplies": {
+        "type": "quickReplies",
+        "itemsPerRow": 8,
+        "replies": [
+          {
+            "type": "button",
+            "tooltip": "yes i do",
+            "title": "yes",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "yep"
+                }
+              ],
+              "metadata": [
+                {
+                  "type": "ExternalId",
+                  "id": "Yes-1234"
+                }
+              ]
+            }
           },
-          "android": {
-            "uri": "specific uri for Android"
-          },
-          "web": {
-            "uri": "specific uri for Web"
+          {
+            "type": "button",
+            "tooltip": "No!",
+            "title": "No!",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "No!"
+                }
+              ],
+              "metadata": [
+                {
+                  "type": "ExternalId",
+                  "id": "No-4321"
+                }
+              ]
+            }
           }
-        }
-      }, {
-        "type": "button",
-        "title": "Navigate to store",
-        "tooltip": "store is the thing",
-        "action": {
-          "type": "navigate",
-          "id": "98446950-2f54-4594-b89b-1d60a9fdda49",
-          "name": "Navigate to store",
-          "lo": 23423423,
-          "la": 2423423423
-        }
-      }, {
-        "type": "button",
-        "title": "More details",
-        "action": {
-          "type": "link",
-          "id": "15ffab70-de0e-42df-9576-290c2249aa24",
-          "uri": "http://www.google.com",
-          "name": "open browser"
-        }
-      }]
-    }
+        ]
+      }
+   };
 
     function sendSC() {
       var textarea = document.getElementById('jsonInput');
@@ -104,7 +90,7 @@
 
           if(err && typeof data === 'object'){
             console.log(err);
-            resSpan.textContent = 'Error: Invalid JSON input. Maybe your structured content needs to start with \" {\"json\":\" ?'; 
+            resSpan.textContent = 'Error: Invalid JSON input. Maybe your JSON needs to start with \" {\"json\":\" ?'; 
           } else {
               resSpan.textContent = err ? 'Error: ' + err: 'Done';
           }     
