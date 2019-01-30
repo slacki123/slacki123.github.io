@@ -94,14 +94,17 @@
       }
     
       lpTag.agentSDK.command(cmdName, data, function(err) {
-          console.log(err);
+          
           var resSpan = document.getElementById('resultText');
 
-          if(typeof data === 'object'){
-            resSpan.textContent = 'Error: Invalid JSON input. Maybe your structured content needs to start with {\"json\":?';
-            return; 
+          if(err && typeof data === 'object'){
+            console.log(err);
+            resSpan.textContent = 'Error: Invalid JSON input. Maybe your structured content needs to start with \'{\"json\":\'?'; 
+          } else {
+             resSpan.textContent = err ? 'Error: ' + err: 'Done';
           }          
-          resSpan.textContent = err ? 'Error: ' + err: 'Done';
+         
+
       });
     }
 
