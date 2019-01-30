@@ -6,8 +6,7 @@
   <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
   <script src="script.js"></script>
   <script>
-    console.log(quickReplies);
-    
+      
 
     function sendSC() {
       var textarea = document.getElementById('jsonInput');
@@ -37,7 +36,7 @@
 
           if(err && typeof data === 'object'){
             console.log(err);
-            resSpan.textContent = 'Error: Invalid JSON input. Maybe your JSON doesn\'t take the format of \" {\"json\": {...}\" ?'; 
+            resSpan.textContent = 'Error: Invalid JSON input. Maybe your JSON doesn\'t take the format of \" {\"json\": {...}\"? \nCheck for any typos? \nMaybe you have images that need to be whitelisted?'; 
           } else {
               resSpan.textContent = err ? 'Error: ' + err: 'Done';
           }     
