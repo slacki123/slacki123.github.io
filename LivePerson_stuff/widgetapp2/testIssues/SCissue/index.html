@@ -81,13 +81,13 @@
 
       var cmdName = lpTag.agentSDK.cmdNames.writeSC;
       // var cmdName = lpTag.agentSDK.cmdNames.write;
-      var data = '{ "json":' + textarea.value + '}'; 
+      var data = textarea.value; 
       data = JSON.parse(data);
 
       lpTag.agentSDK.command(cmdName, data, function(err) {
         if(err) {console.log(err);}
-        //var resSpan = document.getElementById('resultText');
-        //resSpan.textContent = err ? 'error: ' + err: 'done';
+        var resSpan = document.getElementById('resultText');
+        resSpan.textContent = err ? 'error: ' + err: 'done';
       });
     }
 
