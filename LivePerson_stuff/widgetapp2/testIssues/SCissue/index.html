@@ -88,9 +88,9 @@
           data = JSON.parse(data);
         }
       } catch (err) {
-        console.log(err);
         var resSpan = document.getElementById('resultText');
         resSpan.textContent = err ? 'Error: ' + err: '';
+        throw new Error(err);
       }
       
       
