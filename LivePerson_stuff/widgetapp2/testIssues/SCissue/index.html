@@ -51,11 +51,6 @@
       textarea.value = JSON.stringify(input);
     }
 
-    function sendCard(input) {      
-      var textarea = document.getElementById('jsonInput');
-      textarea.value = JSON.stringify(input);
-    }
-
     window.onload = function() {
       lpTag.agentSDK.init({});
     }
@@ -64,9 +59,9 @@
 </head>
 
 <body>
-  <h2>Add Sctructured Content json here</h2>
+  <h2>Add Structured Content JSON here</h2>
   <textarea id="jsonInput" style="width:95%;height:300px;"></textarea>
-  <button onclick="sendSC()">Send</button>
+  <button onclick="sendSC()">Send</button><br><br>
   <button onclick="addCard(quickReplies)">Add Quick Replies JSON</button> <br>
   <button onclick="addCard(carousel)">Add Carousel JSON</button>
   <button onclick="addCard(vertical)">Add Vertical JSON</button>
