@@ -89,9 +89,12 @@
       
 
       lpTag.agentSDK.command(cmdName, data, function(err) {
-        if(err) {console.log(err);}
-        var resSpan = document.getElementById('resultText');
-        resSpan.textContent = err ? 'error: ' + err: 'done';
+        if(err) {
+          console.log(err);
+          var resSpan = document.getElementById('resultText');
+          resSpan.textContent = err ? 'Error: ' + err: 'Done';
+        }
+        
       });
     }
 
