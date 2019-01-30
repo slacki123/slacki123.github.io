@@ -37,7 +37,7 @@
 
           if(err && typeof data === 'object'){
             console.log(err);
-            resSpan.textContent = 'Error: Invalid JSON input. Maybe your JSON needs to start with \" {\"json\":\" ?'; 
+            resSpan.textContent = 'Error: Invalid JSON input. Maybe your JSON doesn\'t take the format of \" {\"json\": {...}\" ?'; 
           } else {
               resSpan.textContent = err ? 'Error: ' + err: 'Done';
           }     
