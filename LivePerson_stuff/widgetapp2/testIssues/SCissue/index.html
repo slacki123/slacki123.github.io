@@ -91,6 +91,7 @@
           var resSpan = document.getElementById('resultText');
           if(data === ""){
             resSpan.textContent = 'Error: You must enter text into the textbox';
+            throw new Error(err);
           } else {
             resSpan.textContent = 'Error: ' + err
             throw new Error(err);
