@@ -8,7 +8,9 @@
 <script type="text/javascript">
 var closedWindow = 'false';
 
-	  function chatProcessThis(data){
+// edited
+
+function chatProcessThis(data){
      if(data && data.state && data.state === 'offline' && closedWindow && closedWindow === 'false' && window.location.href.match(/closeWindow=yes/) !== null) {
      	console.log('running the function');
      	var closeButtons = document.getElementsByClassName('lp_close');
