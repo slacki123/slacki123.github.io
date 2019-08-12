@@ -29,6 +29,8 @@
  
 		
 		var SDK = lpTag.agentSDK || {};
+		$(".userDevice").html("No Data");
+		$(".userOS").html("No Data");
 		
 		$(function() {
 			SDK.init({
@@ -50,7 +52,13 @@
 		function bindUser() {
 			var bindId = "visitorInfo";
 			SDK.bind(bindId, processData, createCallback('Bind'));
+			SDK.bind("SDE", bindSDE, createCallback('Bind2'));
 		}
+		function bindSDE(data) {
+			var SDE = JSON.stringify(data.newValue.SDE);
+			$(".userId").html(SDE);
+		}
+		
 		function processData(data) {
 			var visitorId = JSON.stringify(data.newValue.visitorId);
 			var visitorDevice = JSON.stringify(data.newValue.device);
