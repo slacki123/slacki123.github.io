@@ -23,7 +23,7 @@
 		var SDK = lpTag.agentSDK || {};
 		
 		// Binds to retrieve visitor ID
-		bindUser();
+		window.onload = bindUser();
 		
 		function yourCallBack() {
 			console.log("callback triggered");
