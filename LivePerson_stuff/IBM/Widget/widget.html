@@ -55,7 +55,7 @@
 			SDK.bind("SDE", bindSDE, createCallback('Bind2'));
 		}
 		function bindSDE(data) {
-			var SDE = JSON.stringify(data.newValue.SDE);
+			var SDE = JSON.stringify(data.newValue);
 			$(".userId").html(SDE);
 		}
 		
