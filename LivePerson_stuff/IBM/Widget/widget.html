@@ -87,16 +87,6 @@
 			}
 		}
 
-		function getSuccess(data){
-			//the below selects an element and adds text by using the .html command
-			$(".getResults").html(JSON.stringify(data));
-			getLogFunction('INFO', 'Get success!')(data);
-		}
-		function bindSuccess(data){
-			$(".bindResults").html(JSON.stringify(data));
-			getLogFunction('INFO', 'Bind success!')(data);
-		}
-
 		function logger(type, text){
 			if (typeof text === 'object') {
 				text = JSON.stringify(text, null, 2);
