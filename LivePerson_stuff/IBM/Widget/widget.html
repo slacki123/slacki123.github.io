@@ -15,16 +15,37 @@
 		<button class="userDevice" type="button" disabled></button>
 		<button class="userOS" type="button" disabled></button>
 	</div>
-	
+	<br>
 	<button onclick="bindUser()"> Click to bind</button>
-		
+	<br>	
+	<div class="logBox"></div>
+	
+	
 
 	<br>
 
 	<script> 
 		
+ 
+		
 		var SDK = lpTag.agentSDK || {};
 		
+		$(function() {
+			SDK.init({
+				notificationCallback: getLogFunction('INFO', 'Notification received!'),
+				visitorFocusedCallback: getLogFunction('INFO', 'Visitor Focused received!'),
+				visitorBlurredCallback: getLogFunction('INFO', 'Visitor Blurred received!')
+			});
+		});
+
+		function getLogFunction(type, message){
+			return function(data) {
+				if (typeof data === 'object') {
+					data = JSON.stringify(data, null, 2);
+				}
+				logger(type, message + ' The ' + type + ' data: ' + data);
+			}
+		}
 
 		function bindUser() {
 			var bindId = "visitorInfo";
@@ -53,19 +74,38 @@
 			else if(OS === "OSX"){
 				$('.userOS').css({"background-color" : "white"});
 			}
+			getLogFunction('INFO', 'bind success!')(data);
 		}
 
 		function createCallback(name) {
 			return function(error) {
 				if (error) {
-					console.error(error);
+					getLogFunction('ERROR', 'Error in ' + name + '!')(error);
 				} else {
-					console.log("SUCCESS!");
+					getLogFunction('INFO', name + ' success!')();
 				}
 			}
 		}
 
+		function getSuccess(data){
+			//the below selects an element and adds text by using the .html command
+			$(".getResults").html(JSON.stringify(data));
+			getLogFunction('INFO', 'Get success!')(data);
+		}
+		function bindSuccess(data){
+			$(".bindResults").html(JSON.stringify(data));
+			getLogFunction('INFO', 'Bind success!')(data);
+		}
 
+		function logger(type, text){
+			if (typeof text === 'object') {
+				text = JSON.stringify(text, null, 2);
+			}
+			var area = $(".logBox");
+			area.val(new Date().toTimeString() + ":  " + type + " - " + text + '\n' + area.val());
+		}
+
+	
 
 	</script>
 
