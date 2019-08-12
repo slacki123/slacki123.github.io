@@ -15,17 +15,12 @@
 		<button class="userDevice" type="button" disabled></button>
 		<button class="userOS" type="button" disabled></button>
 	</div>
+	
+	<button onclick="bindUser()"> Click to bind</button>
 
 	<br>
 
 	<script> 
-
-		window.onload = function () {
-			if(lpTag.agentSDK){
-				bindUser();
-
-			}	
-		}
 		
 		var SDK = lpTag.agentSDK || {};
 		
