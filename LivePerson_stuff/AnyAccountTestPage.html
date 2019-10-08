@@ -37,7 +37,7 @@
       }
 
       window.onload = () => {
-         const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId');
+         const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId') || 'Not inserted into textbox yet?';
          document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
       }    
 
