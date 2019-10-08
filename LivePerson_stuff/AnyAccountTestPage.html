@@ -16,12 +16,16 @@
    <p1>
       Enter An Account Id to save to LocalStorage. (Might require a page refresh if the correct account doesn't load)
    </p1> <br>
-   <input id="accountInput" placeholder="Please enter an account ID">
+   <input id="accountInput" placeholder="Enter an account ID">
    <button onclick="saveAccountToStorage()">Set Test Page Account ID</button>
+   <br><br>
+   <p1 id='currentAccountId'></p1>
    <script type="text/javascript">
       function saveAccountToStorage(){
-         const text = document.getElementById('accountInput').value;
-         localStorage.setItem('slacki123-TestPage-InputAccountId', text.trim());
+         const text = document.getElementById('accountInput').value.trim();
+         localStorage.setItem('slacki123-TestPage-InputAccountId', text);
+         const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId');
+         document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
       }
 
    </script>
