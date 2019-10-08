@@ -29,6 +29,9 @@
    <script type="text/javascript">
       function saveAccountToStorage(){
          const text = document.getElementById('accountInput').value.trim();
+         if(!text) {
+            return;
+         }
          localStorage.setItem('slacki123-TestPage-InputAccountId', text);
          const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId');
          document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
