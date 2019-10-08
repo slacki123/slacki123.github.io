@@ -33,9 +33,11 @@
          const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId');
          document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
          setTagAndSiteId(accountId);
+         location.reload();
       }
 
       window.onload = () => {
+         const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId');
          document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
       }    
 
