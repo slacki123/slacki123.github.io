@@ -27,7 +27,7 @@
    <br>
 
    <input id='sectionInput' placeHolder='Enter Section name (optional)'>
-   <button onclick='saveSectionToStorageAndSet()'>Set Section Array as section</button>
+   <button onclick='saveSectionToStorage()'>Set Section Array as section</button>
    <button onclick='pushSectionToArray()'>Push Section To Array</button>
    <button onclick='clearSectionArray()'>Clear section array</button>
    <p1 id='sectionArray'></p1>
@@ -65,8 +65,8 @@
          sections = [];
       }
 
-      function saveSectionToStorageAndSet() {
-         const section = sections.toString();
+      function saveSectionToStorage() {
+         const section = JSON.stringify(section);
          localStorage.setItem('slacki123-TestPage-InputSectionValue', section);
          const sectionNames = localStorage.getItem('slacki123-TestPage-InputSectionValue');
          // document.getElementById('currentSection').innerHtml = 'The current section values are: ' + sectionNames;
