@@ -24,8 +24,15 @@
    </p1> <br>
    <input id="accountInput" placeholder="Enter an account ID">
    <button onclick="saveAccountToStorage()">Set Test Page Account ID</button>
+   <br>
+
+   <input id='sectionInput' placeHolder='Enter Section name (optional)'>
+   <button onclick='saveSectionToStorage()'>Set Section Name</button>
+
    <br><br>
    <p1 id='currentAccountId'></p1>
+   <p1 id='currentSection'></p1>
+
    <script type="text/javascript">
       function saveAccountToStorage(){
          const text = document.getElementById('accountInput').value.trim();
@@ -39,9 +46,23 @@
          location.reload();
       }
 
+      function saveSectionToStorage() {
+         const text = document.getElementById('sectionInput');
+         if(!text) {
+            return;
+         }
+         localStorage.setItem('slacki123-TestPage-InputSectionValue', text);
+         const sectionNames = localStorage.getItem('slacki123-TestPage-InputSectionValue');
+         document.getElementById('currentSection').innerHtml = 'The current section values are: ' + sectionNames;
+         location.reload();
+      }
+
       window.onload = () => {
          const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId') || 'Not inserted into textbox yet?';
+         lpTag.section = localStorage.getItem('slacki123-TestPage-InputSectionValue') || null;
+         const sectionNames = JSON.stringify(lpTag.section) || 'No specific section defined';
          document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
+         document.getElementById('currentSection').innerHTML = 'The current section values are: ' + sectionNames;
       }    
 
    </script>
