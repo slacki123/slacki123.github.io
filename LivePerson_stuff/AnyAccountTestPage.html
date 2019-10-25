@@ -80,11 +80,11 @@
       }
 
       window.onload = () => {
-         const section = localStorage.getItem('slacki123-TestPage-InputSectionValue') || null;
-         let sectionArray = null;
-         if(section) {
-            sectionArray = JSON.parse(section).sectionArr;
-         } 
+         // const section = localStorage.getItem('slacki123-TestPage-InputSectionValue') || null;
+         // let sectionArray = null;
+         // if(section) {
+         //    sectionArray = JSON.parse(section).sectionArr;
+         // } 
          lpTag.section = sectionArray;
          const sectionNames = (' [ ' + lpTag.section.toString() + ' ]') || 'No specific section defined';
          document.getElementById('currentSection').innerHTML = 'The current section values are: ' + sectionNames;
