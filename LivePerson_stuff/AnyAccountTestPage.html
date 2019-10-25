@@ -81,7 +81,7 @@
             sectionArray = JSON.parse(section);
          } 
          lpTag.section = sectionArray;
-         const sectionNames = lpTag.section.toString() || 'No specific section defined';
+         const sectionNames = (' [ ' + lpTag.section.toString() + ' ]') || 'No specific section defined';
          document.getElementById('currentSection').innerHTML = 'The current section values are: ' + sectionNames;
 
          const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId') || 'Not inserted into textbox yet?';
