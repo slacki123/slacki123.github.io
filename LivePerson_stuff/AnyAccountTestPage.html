@@ -27,13 +27,17 @@
    <br>
 
    <input id='sectionInput' placeHolder='Enter Section name (optional)'>
-   <button onclick='saveSectionToStorage()'>Set Section Name</button>
+   <button onclick='saveSectionToStorageAndSet()'>Set Section Array as section</button>
+   <button onclick='pushSectionToArray()'>Push Section To Array</button>
+   <button onclick='clearSectionArray()'>Clear section array</button>
 
    <br><br>
-   <p1 id='currentAccountId'></p1>
+   <p1 id='currentAccountId'></p1> <br>
    <p1 id='currentSection'></p1>
 
    <script type="text/javascript">
+      const sections = [];
+
       function saveAccountToStorage(){
          const text = document.getElementById('accountInput').value.trim();
          if(!text) {
@@ -46,23 +50,39 @@
          location.reload();
       }
 
-      function saveSectionToStorage() {
-         const text = document.getElementById('sectionInput');
+      function pushSectionToArray() {
+         const text = document.getElementById('sectionInput').value.trim();
          if(!text) {
             return;
          }
-         localStorage.setItem('slacki123-TestPage-InputSectionValue', text);
+         sections.push(text);
+      }
+
+      function clearSectionArray() {
+         sections = [];
+      }
+
+      function saveSectionToStorageAndSet() {
+         const section = JSON.stringify(sections);
+         localStorage.setItem('slacki123-TestPage-InputSectionValue', section);
          const sectionNames = localStorage.getItem('slacki123-TestPage-InputSectionValue');
          document.getElementById('currentSection').innerHtml = 'The current section values are: ' + sectionNames;
          location.reload();
       }
 
       window.onload = () => {
-         const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId') || 'Not inserted into textbox yet?';
-         lpTag.section = localStorage.getItem('slacki123-TestPage-InputSectionValue') || null;
-         const sectionNames = JSON.stringify(lpTag.section) || 'No specific section defined';
-         document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
+         const section = localStorage.getItem('slacki123-TestPage-InputSectionValue') || null;
+         let sectionArray = null;
+         if(section) {
+            sectionArray = JSON.parse(section);
+         } 
+         lpTag.section = sectionArray;
+         const sectionNames = lpTag.section.toString() || 'No specific section defined';
          document.getElementById('currentSection').innerHTML = 'The current section values are: ' + sectionNames;
+
+         const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId') || 'Not inserted into textbox yet?';
+         document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
+
       }    
 
    </script>
