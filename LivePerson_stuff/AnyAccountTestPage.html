@@ -68,6 +68,7 @@
 
       function saveSectionToStorage() {
          const section = '{ sectionArr: '+ JSON.stringify(sections) + '}';
+         console.log('section string: ', section);
          localStorage.setItem('slacki123-TestPage-InputSectionValue', section);
          const sectionNames = localStorage.getItem('slacki123-TestPage-InputSectionValue');
          // document.getElementById('currentSection').innerHtml = 'The current section values are: ' + sectionNames;
