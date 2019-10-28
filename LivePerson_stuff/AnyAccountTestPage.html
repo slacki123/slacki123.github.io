@@ -30,6 +30,7 @@
    </p1> <br>
    <input id="accountInput" placeholder="Enter an account ID">
    <button onclick="saveAccountToStorage()">Set Test Page Account ID</button>
+   <p1 id='currentAccountId'></p1>
    <br>
 
    <input id='sectionInput' placeHolder='Enter Section name (optional)'>
@@ -40,7 +41,7 @@
    <button onclick='saveSectionToStorage()'>Set newPage with the values above</button>
 
    <br><br>
-   <p1 id='currentAccountId'></p1> <br>
+   
    <p1 id='currentSection'></p1>
 
    <br><br><br>
@@ -58,7 +59,7 @@
          localStorage.setItem('slacki123-TestPage-InputAccountId', text);
          const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId');
          window.lpTag.site = accountId;
-         // document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
+         document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
          // setTagAndSiteId(accountId);
          // location.reload();
       }
@@ -70,12 +71,12 @@
          }
          sections.push(text);
          document.getElementById('sectionInput').value = '';
-         document.getElementById('sectionArray').innerHTML = JSON.stringify(section);
+         document.getElementById('sectionArray').innerHTML = JSON.stringify(sections);
       }
 
       function clearSectionArray() {
          sections = [];
-         document.getElementById('sectionArray').innerHTML = JSON.stringify(section);
+         document.getElementById('sectionArray').innerHTML = JSON.stringify(sections);
       }
 
       function saveSectionToStorage() {
