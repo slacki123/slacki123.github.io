@@ -70,12 +70,12 @@
          }
          sections.push(text);
          document.getElementById('sectionInput').value = '';
-         document.getElementById('sectionArray').innerHTML = sections;
+         document.getElementById('sectionArray').innerHTML = JSON.stringify(section);
       }
 
       function clearSectionArray() {
          sections = [];
-         document.getElementById('sectionArray').innerHTML = sections;
+         document.getElementById('sectionArray').innerHTML = JSON.stringify(section);
       }
 
       function saveSectionToStorage() {
