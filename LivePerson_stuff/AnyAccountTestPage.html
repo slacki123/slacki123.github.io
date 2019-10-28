@@ -33,10 +33,11 @@
    <br>
 
    <input id='sectionInput' placeHolder='Enter Section name (optional)'>
-   <button onclick='saveSectionToStorage()'>Set Section Array as section</button>
    <button onclick='pushSectionToArray()'>Push Section To Array</button>
    <button onclick='clearSectionArray()'>Clear section array</button>
    <p1 id='sectionArray'></p1>
+   <br><br>
+   <button onclick='saveSectionToStorage()'>Set newPage with the values above</button>
 
    <br><br>
    <p1 id='currentAccountId'></p1> <br>
@@ -56,6 +57,7 @@
          }
          localStorage.setItem('slacki123-TestPage-InputAccountId', text);
          const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId');
+         window.lpTag.site = accountId;
          // document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
          // setTagAndSiteId(accountId);
          // location.reload();
