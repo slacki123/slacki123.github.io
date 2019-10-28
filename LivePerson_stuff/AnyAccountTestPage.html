@@ -38,14 +38,14 @@
    <button onclick='clearSectionArray()'>Clear section array</button>
    <p1 id='sectionArray'></p1>
    <br><br>
-   <button onclick='saveSectionToStorage()'>Set newPage with the values above</button>
+   <!-- <button onclick='saveSectionToStorage()'>Set newPage with the values above</button> -->
 
    <br><br>
    
    <p1 id='currentSection'></p1>
 
    <br><br><br>
-   <button onclick='window.lpTag.start()'>Start Tag With The Settings Above</button>
+   <button onclick='saveSectionToStorage()'>Start Tag With The Settings Above</button>
    <button onclick='location.reload()'>Reset The Tag</button>
 
    <script type="text/javascript">
@@ -87,11 +87,12 @@
          // document.getElementById('currentSection').innerHtml = 'The current section values are: ' + sectionNames;
          // location.reload();
          setNewPageSettings(null, sections, null);
+         window.lpTag.start();
       }
 
       function setNewPageSettings(url, sections, sdes) {
          lpTag.newPage(url || [], {
-            section : sections || [],
+            section : sections || '',
             sdes: sdes || [],
             taglets: {
                rendererStub:{
