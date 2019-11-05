@@ -36,6 +36,7 @@
    <input id='sectionInput' placeHolder='Enter Section name (optional)'>
    <button onclick='pushSectionToArray()'>Push Section To Array</button>
    <button onclick='clearSectionArray()'>Clear section array</button>
+   <button onclick='saveSectionToStorage()'>Assign section settings</button>
    <p1 id='sectionArray'></p1>
    <br><br>
    <!-- <button onclick='saveSectionToStorage()'>Set newPage with the values above</button> -->
@@ -45,7 +46,7 @@
    <p1 id='currentSection'></p1>
 
    <br><br><br>
-   <button onclick='saveSectionToStorage()'>Start Tag With The Settings Above</button>
+   <button onclick='startTag()'>Start Tag</button>
    <button onclick='location.reload()'>Reset The Tag</button>
 
    <script type="text/javascript">
@@ -87,6 +88,9 @@
          // document.getElementById('currentSection').innerHtml = 'The current section values are: ' + sectionNames;
          // location.reload();
          setNewPageSettings(null, sections, null);
+      }
+
+      function startTag() {
          window.lpTag.start();
       }
 
