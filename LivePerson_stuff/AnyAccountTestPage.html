@@ -95,16 +95,9 @@
       }
 
       function setNewPageSettings(url, sections, sdes) {
-         lpTag.newPage(url || [], {
+         lpTag.newPage(url || location.href, {
             section : sections || '',
-            sdes: sdes || [],
-            taglets: {
-               rendererStub:{
-                  divIdsToKeep: {
-                     "divId": true
-                  }
-               }
-            }
+            sdes: sdes || []
          });
       }
 

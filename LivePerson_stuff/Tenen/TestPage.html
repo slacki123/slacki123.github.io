@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <script>
+   
 lpTag.sdes.push({
     "type": "prodView", //MANDATORY
     "currency": "USD", //CURRENCY CODE
@@ -22,6 +23,16 @@ lpTag.sdes.push({
               "price": "44.5" //SINGLE PRODUCT PRICE
          }
     }]
+});
+
+lpTag.events.bind('lpUnifiedWindow', 'state', (data) => { 
+   console.log(data);
+   if(data && data.state === 'waiting'){
+      //set time out to wait for the window to load...
+      setTimeout(()=>{showInitMenu(); }, 500);
+      console.log('Should trigger show init menu here')
+      
+   }
 });
 </script>
 
