@@ -39,11 +39,6 @@ lpTag.events.bind('lpUnifiedWindow', 'state', (data) => {
       URL = text;
       document.getElementById('urlInput').value = URL;
       document.getElementById('urlString').innerHTML = JSON.stringify(URL);
-      runTheSettings();
-   }
-
-
-   function runTheSettings() {
       setNewPageSettings(URL, sections, null);
    }
 
@@ -57,7 +52,7 @@ lpTag.events.bind('lpUnifiedWindow', 'state', (data) => {
    window.onload = () => {
       document.getElementById('urlString').innerHTML = JSON.stringify(URL);
       document.getElementById('urlInput').value = URL;
-      runTheSettings();
+      setNewPageSettings(URL, sections, null);
    }    
 
 </script>
