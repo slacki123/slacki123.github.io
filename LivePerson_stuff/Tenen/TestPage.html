@@ -12,18 +12,7 @@
 
 <script>
 lpTag.section = ['tenen-sales'];
-lpTag.sdes.push({
-    "type": "prodView", //MANDATORY
-    "currency": "USD", //CURRENCY CODE
-    "products": [{ //ARRAY OF PRODUCTS
-         "product": {
-              "name": "Gold Necklace", //PRODUCT NAME
-              "category": "Necklaces", //PRODUCT CATEGORY NAME
-              "sku": "5656-565", //PRODUCT SKU OR UNIQUE IDENTIFIER
-              "price": "44.5" //SINGLE PRODUCT PRICE
-         }
-    }]
-});
+
 var prodName = $('.ProductTitle').find('h1').text() || 'this product';
 lpTag.events.bind('lpUnifiedWindow', 'state', (data) => { 
    console.log(data);
@@ -38,9 +27,62 @@ lpTag.events.bind('lpUnifiedWindow', 'state', (data) => {
    }
 });
 </script>
+<script type="text/javascript">
+   let URL = 'https://www.mynamenecklace.com/Product.aspx?p=4542';
+   let sections = ['tenen-sales'];
+
+   function assignUrl() {
+      const text = document.getElementById('urlInput').value.trim();
+      if(!text){
+         return;
+      }
+      URL = text;
+      document.getElementById('urlInput').value = URL;
+      document.getElementById('urlString').innerHTML = JSON.stringify(URL);
+      runTheSettings();
+   }
+
+
+   function runTheSettings() {
+      setNewPageSettings(URL, sections, null);
+   }
+
+   function setNewPageSettings(url, sections, sdes) {
+      lpTag.newPage(url || location.href, {
+         section : sections || '',
+         sdes: sdes || []
+      });
+   }
+
+   window.onload = () => {
+      document.getElementById('urlString').innerHTML = JSON.stringify(URL);
+      document.getElementById('urlInput').value = URL;
+      runTheSettings();
+   }    
+
+</script>
 
 
 <body>
+
+
+   <br>
+   <br>
+   <p1>Please change the URL below to the one you'd like to see the questions for</p1>
+   <br>
+   <textarea style='width:1000px' id='urlInput' placeHolder='Enter URL (optional)'></textarea><br>
+   <button onclick='assignUrl()'>Assign URL</button><br><br>
+   <p1>The current URL is set to:</p1><br>
+   <p1 id='urlString'></p1>
+   <br><br>
+  
+   
+   <br><br>
+   <!-- <button onclick='saveSectionToStorage()'>Set newPage with the values above</button> -->
+
+   <br><br>
+   
+
 
 </body>
 </html>
