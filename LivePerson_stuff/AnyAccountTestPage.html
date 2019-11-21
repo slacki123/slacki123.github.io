@@ -36,7 +36,14 @@
    <input id='sectionInput' placeHolder='Enter Section name (optional)'>
    <button onclick='pushSectionToArray()'>Push Section To Array</button>
    <button onclick='clearSectionArray()'>Clear section array</button>
-   <button onclick='saveSectionToStorage()'>Assign section settings</button>
+   <p1 id='sectionArray'></p1>
+
+   <br>
+
+   <input id='urlInput' placeHolder='Enter URL (optional)'>
+   <button onclick='assignUrl()'>Assign URL</button>
+   <p1 id='urlString'></p1>
+   
    <p1 id='sectionArray'></p1>
    <br><br>
    <!-- <button onclick='saveSectionToStorage()'>Set newPage with the values above</button> -->
@@ -46,11 +53,12 @@
    <p1 id='currentSection'></p1>
 
    <br><br><br>
-   <button onclick='startTag()'>Start Tag</button>
-   <button onclick='location.reload()'>Reset The Tag</button>
+   <button onclick='runTheSettings()'>Run the settings above</button>
 
    <script type="text/javascript">
       let sections = [];
+      let URLending = ''
+      let URL;
 
       function saveAccountToStorage(){
          const text = document.getElementById('accountInput').value.trim();
@@ -63,6 +71,16 @@
          document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
          // setTagAndSiteId(accountId);
          location.reload();
+      }
+
+      function assignUrl() {
+         const text = document.getElementById('urlInput').value.trim();
+         if(!text){
+            return;
+         }
+         URL = text;
+         document.getElementById('urlInput').value = '';
+         document.getElementById('urlString').innerHTML = JSON.stringify(URL);
       }
 
       function pushSectionToArray() {
@@ -80,18 +98,8 @@
          document.getElementById('sectionArray').innerHTML = JSON.stringify(sections);
       }
 
-      function saveSectionToStorage() {
-         // const section = '{ sectionArr: '+ JSON.stringify(sections) + '}';
-         // console.log('section string: ', section);
-         // localStorage.setItem('slacki123-TestPage-InputSectionValue', section);
-         // const sectionNames = localStorage.getItem('slacki123-TestPage-InputSectionValue');
-         // document.getElementById('currentSection').innerHtml = 'The current section values are: ' + sectionNames;
-         // location.reload();
-         setNewPageSettings(null, sections, null);
-      }
-
-      function startTag() {
-         window.lpTag.start();
+      function runTheSettings() {
+         setNewPageSettings(URL, sections, null);
       }
 
       function setNewPageSettings(url, sections, sdes) {
@@ -102,14 +110,6 @@
       }
 
       window.onload = () => {
-         // const section = localStorage.getItem('slacki123-TestPage-InputSectionValue') || null;
-         // let sectionArray = null;
-         // if(section) {
-         //    sectionArray = JSON.parse(section).sectionArr;
-         // } 
-         // lpTag.section = sectionArray;
-         // const sectionNames = (' [ ' + lpTag.section.toString() + ' ]') || 'No specific section defined';
-         // document.getElementById('currentSection').innerHTML = 'The current section values are: ' + sectionNames;
 
          const accountId = localStorage.getItem('slacki123-TestPage-InputAccountId') || 'Not inserted into textbox yet?';
          document.getElementById('currentAccountId').innerHTML = 'The current accountId is: ' + accountId;
