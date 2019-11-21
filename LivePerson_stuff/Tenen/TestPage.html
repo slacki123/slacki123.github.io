@@ -10,54 +10,6 @@
 <script type="text/javascript" src='./javascript.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<script>
-lpTag.section = ['tenen-sales'];
-
-var prodName = $('.ProductTitle').find('h1').text() || 'this product';
-lpTag.events.bind('lpUnifiedWindow', 'state', (data) => { 
-   console.log(data);
-   if(data && data.state === 'waiting'){
-      //set time out to wait for the window to load...
-      setTimeout(()=>{    
-         $('.lpview_form_textarea').val("I'm interested in " + prodName);
-         $('.lp_send_button').prop('disabled', false).trigger('click'); 
-      }, 500);
-      console.log('Should trigger show init menu here')
-      
-   }
-});
-</script>
-<script type="text/javascript">
-   let URL = 'https://www.mynamenecklace.com/Product.aspx?p=4542';
-   let sections = ['tenen-sales'];
-
-   function assignUrl() {
-      const text = document.getElementById('urlInput').value.trim();
-      if(!text){
-         return;
-      }
-      URL = text;
-      document.getElementById('urlInput').value = URL;
-      document.getElementById('urlString').innerHTML = JSON.stringify(URL);
-      setNewPageSettings(URL, sections, null);
-   }
-
-   function setNewPageSettings(url, sections, sdes) {
-      lpTag.newPage(url || location.href, {
-         section : sections || '',
-         sdes: sdes || []
-      });
-   }
-
-   window.onload = () => {
-      document.getElementById('urlString').innerHTML = JSON.stringify(URL);
-      document.getElementById('urlInput').value = URL;
-      setNewPageSettings(URL, sections, null);
-   }    
-
-</script>
-
-
 <body>
 
 
@@ -76,8 +28,84 @@ lpTag.events.bind('lpUnifiedWindow', 'state', (data) => {
    <!-- <button onclick='saveSectionToStorage()'>Set newPage with the values above</button> -->
 
    <br><br>
+   <p1>Current page title for this URL is</p1>
+   <div class='ProductTitle'>
+      <h1 style='font-weight:bold;font-size:large' id='currentPageTitle'></h1>
+   </div>
    
-
-
+   
 </body>
+
+<script type="text/javascript">
+   let URL = 'https://www.mynamenecklace.com/Product.aspx?p=6378';
+   let sections = ['tenen-sales'];
+
+
+   function showCurrentPage() {
+      var urlToPageTitleMappings = {
+         'https://www.mynamenecklace.com/ShoppingCart.aspx?': 'Shopping Cart',
+         'https://www.mynamenecklace.com/Product.aspx?p=6378': 'Men bracelet with small custom beads in silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=5961': 'Men bracelet with small custom beads in silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=5630': 'Bangle Bracelet with Heart Shape Pendants in Silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=5633': 'Bangle Bracelet with Heart Shape Pendants in Silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=2088': 'Personalized Classic Name Necklace in 18k Gold Plating',
+         'https://www.mynamenecklace.com/Product.aspx?p=2074': 'Small Classic Name Necklace in 18k Gold Plated Sterling Silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=1079': 'Small Classic Name Necklace in 18k Gold Plated Sterling Silver ',
+         'https://www.mynamenecklace.com/Product.aspx?p=5240': 'Engraved 3D Bar Necklace in Sterling Silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=5241': 'Engraved 3D Bar Necklace in Sterling Silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=5242': 'Engraved 3D Bar Necklace in Sterling Silver',
+         'https://www.mynamenecklace.com/Product.aspx?p=4542': 'Russian ring',
+         'https://www.mynamenecklace.com/NEED_ENDPOINT_HERE':'Personalized 14k Gold Carrie Name Necklace'
+      }
+      var currentPage = urlToPageTitleMappings[window.lpTag.url];
+      document.getElementById('currentPageTitle').innerHTML = currentPage;
+   }
+
+   function assignUrl() {
+      const text = document.getElementById('urlInput').value.trim();
+      if(!text){
+         return;
+      }
+      URL = text;
+      document.getElementById('urlInput').value = URL;
+      document.getElementById('urlString').innerHTML = JSON.stringify(URL);
+      setNewPageSettings(URL, sections, null);
+      showCurrentPage();
+   }
+
+   function setNewPageSettings(url, sections, sdes) {
+      lpTag.newPage(url || location.href, {
+         section : sections || '',
+         sdes: sdes || []
+      });
+   }
+
+   window.onload = () => {
+      document.getElementById('urlString').innerHTML = JSON.stringify(URL);
+      document.getElementById('urlInput').value = URL;
+      setNewPageSettings(URL, sections, null);
+      showCurrentPage();
+   }    
+
+</script>
+
+<script>
+      lpTag.section = ['tenen-sales'];
+      
+      var prodName = $('.ProductTitle').find('h1').text() || 'this product';
+      lpTag.events.bind('lpUnifiedWindow', 'state', (data) => { 
+         console.log(data);
+         if(data && data.state === 'waiting'){
+            //set time out to wait for the window to load...
+            setTimeout(()=>{    
+               $('.lpview_form_textarea').val("I'm interested in " + prodName);
+               $('.lp_send_button').prop('disabled', false).trigger('click'); 
+            }, 500);
+            console.log('Should trigger show init menu here')
+            
+         }
+      });
+      
+      </script>
+
 </html>
