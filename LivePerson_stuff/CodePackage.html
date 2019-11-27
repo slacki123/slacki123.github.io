@@ -1,123 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <!--The viewport is important for Mobile/Tablet User experience. It opens chat as an overlay rather than a new tab-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Demo</title>
-
-
-    <script>
-
-
-
-
-        //Defines lpTag if it hasn't already been defined within lpTag.js
-/*        window.lpTag = window.lpTag || {};
-
-        //Section values are used for targetting.
-        lpTag.section = ["codeDemo"];
-
-        //Example SDE pushing 
-        lpTag.sdes = lpTag.sdes || [];
-        lpTag.sdes.push(
-            {
-                "type": "lead",  //MANDATORY
-                "lead": {
-                    "topic": "luxury car test drive 2015",  //TOPIC OR NAME OF A SUBMITTED LEAD
-                    "value": 1111,  //EVALUATED VALUE OF THE LEAD
-                    "leadId": '07387928659'  //LEAD IDENTIFIER OR TICKET ID
-                }
-            }
-        );
-
-        // LivePerson Tag Manager loop code. This checks for lpTag and starts it up once found. 
-        var startLpTag = setInterval(function () {
-            console.log('~~~ LivePerson *** looking for the LivePerson START function....');
-            if (lpTag.start) {
-                clearInterval(startLpTag); // cancel the loop
-                lpTag.isDom = true; //Setting the isDom var to true because the dom already loaded
-                lpTag.start(); // call the start function
-                console.log('~~~ LivePerson *** START function FOUND! ... starting...');
-            } else {
-                console.log('~~~ LivePerson *** START function not found....wait 500ms and try again...');
-            }
-
-        }, 500);
-
-
-        //Sending SDEs on click rather than a full page load
-        function sendSdesOnClick() {
-            try {
-                lpTag.sdes.send({
-                    "type": "ctmrinfo",  //MANDATORY
-                    "info": {
-                        "cstatus": "cancelled",  //CUSTOMER LIFECYCLE STATUS. FROM PRE-DEFINED LIST
-                        "ctype": "vip",  //CUSTOMER TYPE OR TIER. FROM PRE-DEFINED LIST
-                        "customerId": "138766AC"  //UNIQUE CUSTOMER IDENTIFIER
-                    }
-                });
-                console.log("SDEs Sent");
-            } catch (e) {
-                console.log(e);
-            }
-        }
-
-
-
-
-        lpTag.section = ["Four"];
-*/
-        //Tells LivePerson that a partial page refresh has occured and allows for the updating of URL, sections and SDEs. Usually used in single page applications. 
-        // lpTag.newPage("http://www.salesenglish.com/", {
-        //     section: ["unit-sales", "lang-english", "lob-sales-english"],
-        //     sdes: [{
-        //         "type": "lead",  //MANDATORY
-        //         "lead": {
-        //             "topic": "luxury car test drive 2015",  //TOPIC OR NAME OF A SUBMITTED LEAD
-        //             "value": 22.22,  //EVALUATED VALUE OF THE LEAD
-        //             "currency": "USD",  //CURRENCY CODE
-        //             "leadId": "xyz123"  //LEAD IDENTIFIER OR TICKET ID
-        //         }
-        //     }]
-        // });    
-
-
-
-    </script>
-
-    <script type="text/javascript" src="client-SDK.js"></script>
-    <script type="text/javascript" src="structuredContent.js"></script>
-
-    <script>
-    window.onload = lpTag.agentSDK.init();
-
-    if((document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1]) !== "undefined") {
-         document.getElementsByClassName("lp-json-pollock-element-image")[document.getElementsByClassName("lp-json-pollock-element-image").length - 1].style.cursor = "pointer";
-    }
-
-    </script>
-<!--     <script type="text/javascript" src="lpTag.js"></script> -->
-
-
-
-
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1671.6">
+  <style type="text/css">
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 12.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 13.0px; font: 11.0px '.SF NS Text'; color: #000000; color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: rgba(0, 0, 0, 0.85)}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; background-color: #b3b3b3}
+    span.s3 {font: 12.0px Times; font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
+  </style>
 </head>
-
 <body>
-    <h1 id="title">Code Demo</h1>
-
-    <!--Embedded Button Example-->
-    <div id="buttonid"></div>
-    <div id="ContactUsLivePersonButton"></div>
-    <!--Button to trigger the sending of variables after full page load-->
-    <button onclick="sendSdesOnClick()">Click here to send SDEs on demand</button>
-    <button onclick="sendRichContent()">Click  here to send rich content</button>
-    <button onclick="testRichContent()">Click to send "test rich content"</button>
-    <button onclick="sendQuickReplies()">Click to send quick replies</button>
-    <button onclick="sendQuickRepliesAsSC()">Click here to send quick replies as structured content</button>
-
+<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; line-height: 28.0px; font: 24.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Code Demo</b></span></h1>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2">Click here to send SDEs on demand</span><span class="s3"> </span><span class="s2">Click here to send rich content</span><span class="s3"> </span><span class="s2">Click to send "test rich content"</span><span class="s3"> </span><span class="s2">Click to send quick replies</span><span class="s3"> </span><span class="s2">Click here to send quick replies as structured content</span><span class="s3"><span class="Apple-converted-space"> </span></span></p>
 </body>
-
 </html>
