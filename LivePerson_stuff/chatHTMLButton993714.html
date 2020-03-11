@@ -18,7 +18,7 @@
 </script>
 
 <script>
-    lpTag.events.bind('LP_OFFERS', 'OFFER_IMPRESSION', function (data) { 
+    lpTag.events.bind('LP_OFFERS', 'OFFER_IMPRESSION', function (data) {
         var lpDiv = document.getElementById('LP_DIV_1579001301701');
         lpDiv.querySelector('[data-lp-event=close]').onclick = function () {
             lpDiv.hidden = true;
@@ -34,6 +34,23 @@
         does nothing</button>
 
     <div id="LP_DIV_1579001301701" style="position: absolute; bottom:0px; right: 0px; font-weight: bolder;"></div>
+
+    <div class="c-contact-us__item" data-lp-event="click" style="cursor:pointer">
+        <div class="c-contact-us__link">
+            <div class="contact-image"
+                style="background-image:url(https://www.thetimes.co.uk/subscribe/s3/storefront-uk-prod/uploads/2019/01/lpchat.png);">
+            </div>
+            <h4 class="c-contact-us__heading">Live Chat</h4>
+            <p class="c-contact-us__caption">Start Chat</p>
+        </div>
+    </div>
+
+    <div class="chat-container">
+        <button class="chat-close" data-lp-event="close">close</button>
+        <span class="contact-title">Need help finding the right subscription</span>
+        <span class="contact-subtitle">Talk to us about becoming a subscriber</span>
+        <button data-lp-event="click">CHAT NOW</button>
+    </div>
 </body>
 
 
