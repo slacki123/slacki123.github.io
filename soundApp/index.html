@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -18,6 +19,7 @@
 
     function playAudio() {
         myAudio.play();
+        fadeVolume(myAudio, 'fadeIn', 300);
     }
 
     function stopAudio() {
@@ -30,6 +32,23 @@
         // await new Promise(resolve => setTimeout(resolve, randomWait * 1000));
         myAudio.setAttribute('src', myAudioSounds.random());
         playAudio();
+    }
+
+    async function fadeVolume(element, fadeInOrOut, fadeDuration) {
+        let incrementalValue = 0.05;
+        if(fadeInOrOut === 'fadeIn') {
+            element.volume = 0;
+        } else if (fadeInOrOut === 'fadeOut') {
+            element.volume = 1;
+            incrementalValue = -incrementalValue;
+        } else {
+            throw new Error("Please choose either fade in or fade out, the following is not valid: " + fadeInOrOut);
+        }
+        for(var i = 0; i < 1/Math.abs(incrementalValue); i++){
+            await new Promise(resolve => setTimeout(resolve, fadeDuration));
+            element.volume = parseFloat(element.volume + incrementalValue).toPrecision(15)
+            console.log('volume', element.volume);
+        }
     }
 
 
