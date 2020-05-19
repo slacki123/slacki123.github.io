@@ -1,0 +1,40 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <audio id='myAudio'></audio>
+    <button id='soundButton' onclick="playAudio()" type="button">Play Sounds</button>
+    <button id='stopSoundButton' onclick="stopAudio()" type="button">Stop sounds</button>
+</body>
+<script>
+    Array.prototype.random = function () {
+        return this[Math.floor((Math.random() * this.length))];
+    }
+    const myAudio = document.getElementById('myAudio');
+    const myAudioSounds = ['salamisound-1454157-birds-in-the-forest-with-a.mp3'];
+    myAudio.setAttribute('src', myAudioSounds.random());
+
+    function playAudio() {
+        myAudio.play();
+    }
+
+    function stopAudio() {
+        myAudio.pause();
+        myAudio.currentTime = 0;
+    }
+
+    myAudio.onended = async function () {
+        const randomWait = Math.random() * 100;
+        await new Promise(resolve => setTimeout(resolve, randomWait * 1000));
+        myAudio.setAttribute('src', myAudioSounds.random());
+        playAudio();
+    }
+
+
+
+
+</script>
+
+<html>
