@@ -26,8 +26,8 @@
     }
 
     myAudio.onended = async function () {
-        const randomWait = Math.random() * 100;
-        await new Promise(resolve => setTimeout(resolve, randomWait * 1000));
+        // const randomWait = Math.random() * 100;
+        // await new Promise(resolve => setTimeout(resolve, randomWait * 1000));
         myAudio.setAttribute('src', myAudioSounds.random());
         playAudio();
     }
