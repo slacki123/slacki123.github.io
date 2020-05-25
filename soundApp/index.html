@@ -37,51 +37,82 @@
 
     let audioEnded = false;
     myAudio.onended = function () {
+        audioEnded = true; // just so the fade only works after at least one audio ended
         console.log('audio ended');
         const randomSound = myAudioSounds[Math.floor((Math.random() * myAudioSounds.length))];
         myAudio.setAttribute('src', randomSound);
         myAudio.play();
         console.log('Playing: ', randomSound);
         text.innerHTML = 'Playing: ' + randomSound;
-
-        audioEnded = true; // just so the fade only works after at least one audio ended
-
     }
 
     myAudio.onloadeddata = async function () {
         console.log('data loaded');
-        console.log('audio ended', audioEnded);
+        console.log('Not first audio', audioEnded);
         if (audioEnded === true) {
-            const fadeDuration = 400;
-            const waitTillFade = myAudio.duration - fadeDuration;
+            const fadeDuration = 3000;
+            const waitTillFade = myAudio.duration*1000 - fadeDuration;
             await sleep(waitTillFade);
             fadeBetweenSounds(myAudio, fadeDuration);
         }
-
     }
 
     async function fadeBetweenSounds(element, fadeDuration) {
-        let incrementalValue = 0.05;
-        let numOfIterations = element.volume / incrementalValue;
-        const fixedNumOfIterations = (1 / incrementalValue);
-        element.volum = 1;
+        const numberOfIterations = 20;
         console.log('element volume', element.volume);
-        console.log('num of iterations: ', numOfIterations);
-        /// decrease volume
+        await decreaseVolume(element, numberOfIterations, fadeDuration);
+        await increaseVolume(element, numberOfIterations, fadeDuration);
+
+    }
+
+    async function decreaseVolume(element, numberOfIterations, fadeDuration) {
+        if(element.volume != 1) {
+            console.warn('Volume is not equal to 1');
+            element.volume = 1;
+        }
         console.log('Decreasing volume');
-        for (let i = numOfIterations; i > 0; i--) {
-            await sleep(fadeDuration / fixedNumOfIterations);
-            element.volume = parseFloat(element.volume - incrementalValue).toPrecision(15);
+        const fixedNumOfIterations = numberOfIterations;
+        const incrementalValue = 1/fixedNumOfIterations;
+        const numOfIterationsDec = element.volume / incrementalValue;
+        let sleepTime = fadeDuration / fixedNumOfIterations;
+        for (let i = numOfIterationsDec; i > 0; i--) {
+            await sleep(sleepTime);
+            //element.volume = parseFloat(element.volume - incrementalValue).toPrecision(2);
+            element.volume = modifyVolume('squareRoot', i, numOfIterationsDec);
             console.log('volume', element.volume);
         }
-        /// increase volume
+    }
+
+    async function increaseVolume(element, numberOfIterations, fadeDuration) {
+        if(element.volume != 0) {
+            console.warn('Volume is not equal to 0, instead: ', element.volume);
+            element.volume = 0;
+        }
         console.log('Increasing volume');
-        numOfIterations = fixedNumOfIterations - (element.volume / incrementalValue);
-        console.log('num of iterations should be 0:', numOfIterations);
-        for (let i = 0; i < numOfIterations; i++) {
-            await sleep(fadeDuration / fixedNumOfIterations);
-            element.volume = parseFloat(element.volume + incrementalValue).toPrecision(15);
+        const fixedNumOfIterations = numberOfIterations;
+        const incrementalValue = 1/fixedNumOfIterations;
+        const numOfIterationsInc = fixedNumOfIterations - (element.volume / incrementalValue);
+        console.log('num of iterations should be 20:', numOfIterationsInc);
+        let sleepTime = fadeDuration / fixedNumOfIterations;
+        for (let i = 0; i < numOfIterationsInc; i++) {
+            await sleep(sleepTime);
+            // element.volume = parseFloat(element.volume + incrementalValue).toPrecision(2);
+            element.volume = modifyVolume('squareRoot', i, numOfIterationsInc);
             console.log('volume', element.volume);
+        }
+    }
+
+    function modifyVolume(modifier, currentIteration, totalIterations) {
+        // calculate limits from 0 to 1, where totalIterations is a parameter
+        if (modifier === 'linear'){
+            const incrementalValue = 1/totalIterations; // when linear
+            return parseFloat(currentIteration*incrementalValue).toPrecision(2);
+        } else if (modifier === 'sinusoidal'){
+            const incrementalValue = 0.5*Math.PI/totalIterations;
+            return Math.sin(incrementalValue*currentIteration).toFixed(2);
+        } else if(modifier === 'squareRoot'){
+            const incrementalValue = 1/totalIterations;
+            return Math.sqrt(incrementalValue*currentIteration).toFixed(2);
         }
     }
 
