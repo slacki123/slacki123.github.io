@@ -5,46 +5,67 @@
 </head>
 
 <body>
-    <audio id='myAudio'></audio>
+    <audio id='myAudio' src='lets begin.m4a'></audio>
     <button id='soundButton' onclick="playAudio()" type="button">Play Sounds</button>
     <button id='stopSoundButton' onclick="stopAudio()" type="button">Stop sounds</button>
+    <p id='text'></p>
 </body>
 <script>
-    Array.prototype.random = function () {
-        return this[Math.floor((Math.random() * this.length))];
-    }
+    const text = document.getElementById('text');
     const myAudio = document.getElementById('myAudio');
-    const myAudioSounds = ['salamisound-1454157-birds-in-the-forest-with-a.mp3'];
-    myAudio.setAttribute('src', myAudioSounds.random());
-
-    function playAudio() {
+    const myAudioSounds = [
+        'Birds.m4a',
+        'Birds 2.m4a',
+        'Birds one cough and fly.m4a',
+        'Birds talk at end.m4a',
+        'Birds with airplane.m4a',
+        'birds with kitchen sounds.m4a',
+        'Birds with neighbours talking.m4a',
+        'Birds with weird pigeon noise.m4a'
+    ];
+    async function playAudio() {
         myAudio.play();
-        fadeVolume(myAudio, 'fadeIn', 300);
+        const source = myAudio.getAttribute('src');
+        text.innerHTML = 'Playing: ' + source;
     }
 
     function stopAudio() {
         myAudio.pause();
         myAudio.currentTime = 0;
+        text.innerHTML = 'Audio Ended';
     }
 
-    myAudio.onended = async function () {
-        // const randomWait = Math.random() * 100;
-        // await new Promise(resolve => setTimeout(resolve, randomWait * 1000));
-        myAudio.setAttribute('src', myAudioSounds.random());
-        playAudio();
+    myAudio.onended = function () {
+        console.log('audio ended');
+        const randomSound = myAudioSounds[Math.floor((Math.random() * myAudioSounds.length))];
+        myAudio.setAttribute('src', randomSound);
+        myAudio.play();
+        console.log('Playing: ', randomSound);
+        text.innerHTML = 'Playing: ' + randomSound;
+
     }
 
     async function fadeVolume(element, fadeInOrOut, fadeDuration) {
         let incrementalValue = 0.05;
-        if(fadeInOrOut === 'fadeIn') {
+        const numOfIterations = 1 / incrementalValue;
+        console.log('element duration', element.duration);
+        if (fadeInOrOut === 'fadeIn') {
             element.volume = 0;
         } else if (fadeInOrOut === 'fadeOut') {
             element.volume = 1;
             incrementalValue = -incrementalValue;
-        } else {
+        }
+        //  else if (fadeInOrOut === 'fadeInAndOut') {
+        //     const startFadeAfter = element.duration * 1000 - fadeDuration *( numOfIterations - 2 );
+        //     fadeVolume(element, 'fadeIn', fadeDuration);
+        //     await new Promise(resolve => setTimeout(resolve, startFadeAfter));
+        //     fadeVolume(element, 'fadeOut', fadeDuration);
+        //     return;
+        // }
+        else {
             throw new Error("Please choose either fade in or fade out, the following is not valid: " + fadeInOrOut);
         }
-        for(var i = 0; i < 1/Math.abs(incrementalValue); i++){
+        for (let i = 0; i < numOfIterations; i++) {
             await new Promise(resolve => setTimeout(resolve, fadeDuration));
             element.volume = parseFloat(element.volume + incrementalValue).toPrecision(15)
             console.log('volume', element.volume);
