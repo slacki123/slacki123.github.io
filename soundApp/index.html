@@ -8,9 +8,25 @@
     <audio id='myAudio' src='lets begin.m4a'></audio>
     <button id='soundButton' onclick="playAudio()" type="button">Play Sounds</button>
     <button id='stopSoundButton' onclick="stopAudio()" type="button">Stop sounds</button>
+
+    <label for="sounds">Sound fade:</label>
+    <select id="fadeDropdown" name="soundFade">
+        <option value=null>No fade</option>
+        <option value="linear">Linear fade</option>
+        <option value="squareRoot">Square root fade</option>
+        <option value="sinusoidal">Sinusoidal fade</option>
+    </select>
     <p id='text'></p>
 </body>
 <script>
+    // TODO: separate code into folders and file components
+    // TODO: Add an option to wait between sound recordings
+    // TODO: Add an option to play recordings in parallel
+    // TODO: Add an option to upload your own recordings
+    // TODO: Add an option to record your own recordings
+    // TODO: Consider rebuilding this in a framework such as angular
+    // TODO: Consider building a development environment as well as a production one
+    // TODO: (maybe in the future) - Make this a Freemium service, add payment system for premium features, advertise service with google ads
     const text = document.getElementById('text');
     const myAudio = document.getElementById('myAudio');
     const myAudioSounds = [
@@ -23,6 +39,7 @@
         'Birds with neighbours talking.m4a',
         'Birds with weird pigeon noise.m4a'
     ];
+
     async function playAudio() {
         myAudio.play();
         const source = myAudio.getAttribute('src');
@@ -49,7 +66,10 @@
     myAudio.onloadeddata = async function () {
         console.log('data loaded');
         console.log('Not first audio', audioEnded);
-        if (audioEnded === true) {
+        const fadeDropdown = document.getElementById('fadeDropdown');
+
+        if (audioEnded === true && fadeDropdown && fadeDropdown != null) {
+            console.log('fade dropdown value: ', fadeDropdown.value)
             const fadeDuration = 2000;
             fadeBetweenSounds(myAudio, fadeDuration);
         }
@@ -78,7 +98,8 @@
         for (let i = numOfIterationsDec; i > 0; i--) {
             await sleep(sleepTime);
             //element.volume = parseFloat(element.volume - incrementalValue).toPrecision(2);
-            element.volume = modifyVolume('squareRoot', i, numOfIterationsDec);
+            const fadeType = document.getElementById('fadeDropdown').value;
+            element.volume = modifyVolume(fadeType, i, numOfIterationsDec);
             console.log('volume', element.volume);
         }
     }
@@ -97,7 +118,8 @@
         for (let i = 0; i < numOfIterationsInc; i++) {
             await sleep(sleepTime);
             // element.volume = parseFloat(element.volume + incrementalValue).toPrecision(2);
-            element.volume = modifyVolume('squareRoot', i, numOfIterationsInc);
+            const fadeType = document.getElementById('fadeDropdown').value;
+            element.volume = modifyVolume(fadeType, i, numOfIterationsInc);
             console.log('volume', element.volume);
         }
         element.volume = 1;
@@ -114,6 +136,8 @@
         } else if (modifier === 'squareRoot') {
             const incrementalValue = 1 / totalIterations;
             return Math.sqrt(incrementalValue * currentIteration).toFixed(2);
+        } else {
+            return 1;
         }
     }
 
