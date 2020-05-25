@@ -35,6 +35,7 @@
         text.innerHTML = 'Audio Ended';
     }
 
+    let audioEnded = false;
     myAudio.onended = function () {
         console.log('audio ended');
         const randomSound = myAudioSounds[Math.floor((Math.random() * myAudioSounds.length))];
@@ -43,33 +44,49 @@
         console.log('Playing: ', randomSound);
         text.innerHTML = 'Playing: ' + randomSound;
 
+        audioEnded = true; // just so the fade only works after at least one audio ended
+
     }
 
-    async function fadeVolume(element, fadeInOrOut, fadeDuration) {
+    myAudio.onloadeddata = async function () {
+        console.log('data loaded');
+        console.log('audio ended', audioEnded);
+        if (audioEnded === true) {
+            const fadeDuration = 400;
+            const waitTillFade = myAudio.duration - fadeDuration;
+            await sleep(waitTillFade);
+            fadeBetweenSounds(myAudio, fadeDuration);
+        }
+
+    }
+
+    async function fadeBetweenSounds(element, fadeDuration) {
         let incrementalValue = 0.05;
-        const numOfIterations = 1 / incrementalValue;
-        console.log('element duration', element.duration);
-        if (fadeInOrOut === 'fadeIn') {
-            element.volume = 0;
-        } else if (fadeInOrOut === 'fadeOut') {
-            element.volume = 1;
-            incrementalValue = -incrementalValue;
-        }
-        //  else if (fadeInOrOut === 'fadeInAndOut') {
-        //     const startFadeAfter = element.duration * 1000 - fadeDuration *( numOfIterations - 2 );
-        //     fadeVolume(element, 'fadeIn', fadeDuration);
-        //     await new Promise(resolve => setTimeout(resolve, startFadeAfter));
-        //     fadeVolume(element, 'fadeOut', fadeDuration);
-        //     return;
-        // }
-        else {
-            throw new Error("Please choose either fade in or fade out, the following is not valid: " + fadeInOrOut);
-        }
-        for (let i = 0; i < numOfIterations; i++) {
-            await new Promise(resolve => setTimeout(resolve, fadeDuration));
-            element.volume = parseFloat(element.volume + incrementalValue).toPrecision(15)
+        let numOfIterations = element.volume / incrementalValue;
+        const fixedNumOfIterations = (1 / incrementalValue);
+        element.volum = 1;
+        console.log('element volume', element.volume);
+        console.log('num of iterations: ', numOfIterations);
+        /// decrease volume
+        console.log('Decreasing volume');
+        for (let i = numOfIterations; i > 0; i--) {
+            await sleep(fadeDuration / fixedNumOfIterations);
+            element.volume = parseFloat(element.volume - incrementalValue).toPrecision(15);
             console.log('volume', element.volume);
         }
+        /// increase volume
+        console.log('Increasing volume');
+        numOfIterations = fixedNumOfIterations - (element.volume / incrementalValue);
+        console.log('num of iterations should be 0:', numOfIterations);
+        for (let i = 0; i < numOfIterations; i++) {
+            await sleep(fadeDuration / fixedNumOfIterations);
+            element.volume = parseFloat(element.volume + incrementalValue).toPrecision(15);
+            console.log('volume', element.volume);
+        }
+    }
+
+    async function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
 
