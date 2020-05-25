@@ -21,7 +21,7 @@ async function decreaseVolume(element, numberOfIterations, fadeDuration) {
     for (let i = numOfIterationsDec; i > 0; i--) {
         await sleep(sleepTime);
         //element.volume = parseFloat(element.volume - incrementalValue).toPrecision(2);
-        const fadeType = localStorage.getItem('fadeDropdownValue') || document.getElementById('fadeDropdown').value;
+        const fadeType = document.getElementById('fadeDropdown').value;
         element.volume = modifyVolume(fadeType, i, numOfIterationsDec);
         console.log('volume', element.volume);
     }
@@ -41,7 +41,7 @@ async function increaseVolume(element, numberOfIterations, fadeDuration) {
     for (let i = 0; i < numOfIterationsInc; i++) {
         await sleep(sleepTime);
         // element.volume = parseFloat(element.volume + incrementalValue).toPrecision(2);
-        const fadeType = localStorage.getItem('fadeDropdownValue') || document.getElementById('fadeDropdown').value;
+        const fadeType = document.getElementById('fadeDropdown').value;
         element.volume = modifyVolume(fadeType, i, numOfIterationsInc);
         console.log('volume', element.volume);
     }

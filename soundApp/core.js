@@ -1,6 +1,7 @@
 const text = document.getElementById('text');
 const myAudio = document.getElementById('myAudio');
 const fadeTypeDropdown = document.getElementById('fadeDropdown');
+const fadeDurationInput = document.getElementById('fadeDurationInput');
 const myAudioSounds = [
     'birdSounds/Birds.m4a',
     'birdSounds/Birds 2.m4a',
@@ -25,11 +26,7 @@ function stopAudio() {
 }
 
 window.onload = function () {
-    const fadeTypeInStorage = localStorage.getItem('fadeDropdownValue');
-    console.log('Fade type in storage: ', fadeTypeInStorage);
-    if(fadeTypeInStorage) {
-        fadeTypeDropdown.value = fadeTypeInStorage;
-    }
+    getLocalStorageValues();
 }
 
 let audioEnded = false;
@@ -51,7 +48,21 @@ myAudio.onloadeddata = async function () {
     if (audioEnded === true && fadeDropdownValue && fadeDropdownValue != null) {
         localStorage.setItem('fadeDropdownValue', fadeDropdownValue);
         console.log('fade dropdown value: ', fadeDropdownValue)
-        const fadeDuration = 2000;
+        const fadeDuration = fadeDurationInput.value || 2000;
+        localStorage.setItem('fadeDuration', fadeDuration);
+
         fadeBetweenSounds(myAudio, fadeDuration);
+    }
+}
+
+function getLocalStorageValues() {
+    const fadeTypeInStorage = localStorage.getItem('fadeDropdownValue');
+    console.log('Fade type in storage: ', fadeTypeInStorage);
+    if(fadeTypeInStorage) {
+        fadeTypeDropdown.value = fadeTypeInStorage;
+    }
+    const fadeDurationInStorage = localStorage.getItem('fadeDuration')
+    if(fadeDurationInStorage){
+        fadeDurationInput.value = fadeDurationInStorage;
     }
 }

@@ -9,18 +9,22 @@
     <button id='soundButton' onclick="playAudio()" type="button">Play Sounds</button>
     <button id='stopSoundButton' onclick="stopAudio()" type="button">Stop sounds</button>
 
-    <label for="sounds">Sound fade:</label>
+    <label for="soundFade">Sound fade:</label>
     <select id="fadeDropdown" name="soundFade">
         <option value=null>No fade</option>
         <option value="linear">Linear fade</option>
         <option value="squareRoot">Square root fade</option>
         <option value="sinusoidal">Sinusoidal fade</option>
     </select>
+    <label for="fadeDurationInput">Fade Duration (milliseconds):</label>
+    <input type="number" id="fadeDurationInput" name="fadeDurationInput" min="0" max="10000">
+
+
     <p id='text'></p>
 </body>
 <script>
-    // TODO: separate code into folders and file components
     // TODO: Add an option to wait between sound recordings
+    // TODO: Add an option to 'Stop playing at' with a datepicker
     // TODO: Add an option to play recordings in parallel
     // TODO: Add an option to upload your own recordings
     // TODO: Add an option to record your own recordings
