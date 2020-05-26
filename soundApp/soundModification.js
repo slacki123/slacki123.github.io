@@ -38,7 +38,7 @@ async function increaseVolume(element, numberOfIterations, fadeDuration) {
     const numOfIterationsInc = fixedNumOfIterations - (element.volume / incrementalValue);
     console.log('num of iterations should be 20:', numOfIterationsInc);
     let sleepTime = fadeDuration / fixedNumOfIterations;
-    for (let i = 0; i < numOfIterationsInc; i++) {
+    for (let i = 0; i <= numOfIterationsInc; i++) {
         await sleep(sleepTime);
         // element.volume = parseFloat(element.volume + incrementalValue).toPrecision(2);
         const fadeType = document.getElementById('fadeDropdown').value;
