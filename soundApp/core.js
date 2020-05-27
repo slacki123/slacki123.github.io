@@ -11,7 +11,8 @@ const myAudioSounds = [
     'birdSounds/birds with kitchen sounds.m4a',
     'birdSounds/Birds with neighbours talking.m4a',
     'birdSounds/Birds with weird pigeon noise.m4a',
-    'birdSounds/Birds from inside.m4a'
+    'birdSounds/Birds from inside.m4a',
+    'birdSounds/Birds and a crow.m4a'
 ];
 
 async function playAudio() {
