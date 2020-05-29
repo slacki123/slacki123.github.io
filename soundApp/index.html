@@ -2,6 +2,8 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.10/jquery.timepicker.js"></script>
+    <link rel="stylesheet" href="timePickerCSS.css">
 </head>
 
 <body>
@@ -18,6 +20,54 @@
     </select>
     <label for="fadeDurationInput">Fade Duration (milliseconds):</label>
     <input type="number" id="fadeDurationInput" name="fadeDurationInput" min="0" max="10000">
+    <br>
+
+    <article>
+        <div class="timePicker">
+            <p>
+                <label>Stop playing at:</label>
+                <input onchange='setStopPlayingTime()' id="durationExample" type="time" class="time" />
+            </p>
+        </div>
+        <script>
+            $(function () {
+                $('#durationExample').timepicker({
+                    'minTime': new Date(),
+                    'showDuration': true,
+                    'step': 10,
+                    'timeFormat': 'H:i',
+                    'noneOption': [
+                        {
+                            'label': 'Never Stop',
+                            'className': 'neverStop',
+                            'value': 'Never Stop'
+                        }
+                    ]
+                });
+            });
+
+            let globalSetTimeout;
+            function setStopPlayingTime() {
+                console.log('global set timeout before', globalSetTimeout);
+                clearTimeout(globalSetTimeout);
+                console.log('global set timeout after', globalSetTimeout);
+                const stopPlayingAtTime = $('#durationExample').val();
+                console.log('Stop playing at: ' + stopPlayingAtTime);
+                if (stopPlayingAtTime === 'Never Stop') {
+                    return;
+                }
+                const hours = stopPlayingAtTime.split(':')[0];
+                const minutes = stopPlayingAtTime.split(':')[1];
+                const timeNow = new Date();
+                const stopAtMillis = new Date().setHours(hours, minutes);
+                const timeNowMillis = new Date().getTime();
+                const stopInMilliseconds = stopAtMillis - timeNowMillis;
+                globalSetTimeout = setTimeout(() => { stopAudio() }, stopInMilliseconds);
+                
+            }
+        </script>
+    </article>
+
 
 
     <p id='text'></p>
