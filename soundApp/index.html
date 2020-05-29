@@ -73,7 +73,6 @@
                 const nowTillStopDifferencePlusOne = new Date().setHours(hours + 24, minutes) - timeNowMillis;
                 const timeDifference = nowTillStopDifference < 0 ? nowTillStopDifferencePlusOne : nowTillStopDifference;
                 console.log('timeDifference', timeDifference);
-                console.log('the resulting date is', timeDifference);
                 const stopInMilliseconds =  timeDifference;
                 globalSetTimeout = setTimeout(() => { stopAudio() }, stopInMilliseconds);
                 console.log('The recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
