@@ -26,7 +26,7 @@
         <div class="timePicker">
             <p>
                 <label>Stop playing at:</label>
-                <input onchange='setStopPlayingTime()' id="durationExample" type="time" class="time" />
+                <input onclick='updateTimePickerDropdown()' onchange='setStopPlayingTime()' id="durationExample" type="time" class="time" />
             </p>
         </div>
         <script>
@@ -46,6 +46,10 @@
                 });
             });
 
+            function updateTimePickerDropdown() {
+                $('#durationExample').timepicker('option', 'minTime', new Date());
+            }
+
             let globalSetTimeout;
             function setStopPlayingTime() {
                 clearTimeout(globalSetTimeout);
@@ -62,7 +66,7 @@
                 const timeNowMillis = new Date().getTime();
                 const stopInMilliseconds = stopAtMillis - timeNowMillis;
                 globalSetTimeout = setTimeout(() => { stopAudio() }, stopInMilliseconds);
-                
+
             }
         </script>
     </article>
