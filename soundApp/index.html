@@ -40,7 +40,7 @@
                         {
                             'label': 'Never Stop',
                             'className': 'neverStop',
-                            'value': 'Never Stop'
+                            'value': ''
                         }
                     ]
                 });
@@ -48,12 +48,11 @@
 
             let globalSetTimeout;
             function setStopPlayingTime() {
-                console.log('global set timeout before', globalSetTimeout);
                 clearTimeout(globalSetTimeout);
-                console.log('global set timeout after', globalSetTimeout);
+                console.log('interval cleared');
                 const stopPlayingAtTime = $('#durationExample').val();
                 console.log('Stop playing at: ' + stopPlayingAtTime);
-                if (stopPlayingAtTime === 'Never Stop') {
+                if (stopPlayingAtTime == '') {
                     return;
                 }
                 const hours = stopPlayingAtTime.split(':')[0];
