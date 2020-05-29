@@ -9,25 +9,30 @@
 
 <body>
     <audio id='myAudio' src='lets begin.m4a'></audio>
-    <button id='soundButton' onclick="playAudio()" type="button">Play Sounds</button>
-    <button id='stopSoundButton' onclick="stopAudio()" type="button">Stop sounds</button>
+    <div>
+        <button class='btn btn-primary' id='soundButton' onclick="playAudio()" type="button">Play Sounds</button>
+        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio()" type="button">Stop sounds</button>
+    </div>
 
-    <label for="soundFade">Sound fade:</label>
-    <select id="fadeDropdown" name="soundFade">
-        <option value=null>No fade</option>
-        <option value="linear">Linear fade</option>
-        <option value="squareRoot">Square root fade</option>
-        <option value="sinusoidal">Sinusoidal fade</option>
-    </select>
-    <label for="fadeDurationInput">Fade Duration (milliseconds):</label>
-    <input type="number" id="fadeDurationInput" name="fadeDurationInput" min="0" max="10000">
-    <br>
+    <div name='soundFadeDiv'>
+        <label for="soundFade">Sound fade:</label>
+        <select id="fadeDropdown" name="soundFade">
+            <option value=null>No fade</option>
+            <option value="linear">Linear fade</option>
+            <option value="squareRoot">Square root fade</option>
+            <option value="sinusoidal">Sinusoidal fade</option>
+        </select>
+        <label for="fadeDurationInput">Fade Duration (milliseconds):</label>
+        <input type="number" id="fadeDurationInput" name="fadeDurationInput" min="0" max="10000">
+    </div>
 
-    <article>
+
+    <div>
         <div class="timePicker">
             <p>
                 <label>Stop playing at:</label>
-                <input onclick='updateTimePickerDropdown()' onchange='setStopPlayingTime()' id="durationExample" type="time" class="time" />
+                <input onclick='updateTimePickerDropdown()' onchange='setStopPlayingTime()' id="durationExample"
+                    type="time" class="time" />
             </p>
         </div>
         <script>
@@ -70,9 +75,7 @@
 
             }
         </script>
-    </article>
-
-
+    </div>
 
     <p id='text'></p>
 </body>

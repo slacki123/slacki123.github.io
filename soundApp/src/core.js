@@ -14,18 +14,7 @@ const myAudioSounds = [
     'birdSounds/Birds from inside.m4a',
     'birdSounds/Birds and a crow.m4a'
 ];
-
-async function playAudio() {
-    myAudio.play();
-    const source = myAudio.getAttribute('src');
-    text.innerHTML = 'Playing: ' + source;
-}
-
-function stopAudio() {
-    myAudio.pause();
-    myAudio.currentTime = 0;
-    text.innerHTML = 'Audio Ended';
-}
+setDefaultValues();
 
 window.onload = function () {
     getLocalStorageValues();
@@ -45,16 +34,24 @@ myAudio.onended = function () {
 myAudio.onloadeddata = async function () {
     console.log('data loaded');
     console.log('Not first audio', audioEnded);
-    const fadeDropdownValue = fadeTypeDropdown.value;
 
-    if (audioEnded === true && fadeDropdownValue && fadeDropdownValue != null) {
-        localStorage.setItem('fadeDropdownValue', fadeDropdownValue);
-        console.log('fade dropdown value: ', fadeDropdownValue)
+    if (audioEnded === true) {
         const fadeDuration = fadeDurationInput.value || 2000;
-        localStorage.setItem('fadeDuration', fadeDuration);
-
         fadeBetweenSounds(myAudio, fadeDuration);
     }
+}
+
+fadeDurationInput.onchange = function() {
+    localStorage.setItem('fadeDuration', fadeDurationInput.value);
+}
+
+fadeTypeDropdown.onchange = function () {
+    localStorage.setItem('fadeDropdownValue', fadeTypeDropdown.value);
+}
+
+function setDefaultValues() {
+    fadeTypeDropdown.value = 'squareRoot';
+    fadeDurationInput.value = 2000;
 }
 
 function getLocalStorageValues() {
@@ -67,4 +64,16 @@ function getLocalStorageValues() {
     if(fadeDurationInStorage){
         fadeDurationInput.value = fadeDurationInStorage;
     }
+}
+
+async function playAudio() {
+    myAudio.play();
+    const source = myAudio.getAttribute('src');
+    text.innerHTML = 'Playing: ' + source;
+}
+
+function stopAudio() {
+    myAudio.pause();
+    myAudio.currentTime = 0;
+    text.innerHTML = 'Audio Ended';
 }
