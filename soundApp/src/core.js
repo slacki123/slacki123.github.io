@@ -12,7 +12,9 @@ const myAudioSounds = [
     'birdSounds/Birds with weird pigeon noise.m4a',
     'birdSounds/Birds from inside.m4a',
     'birdSounds/Birds and a crow.m4a',
-    'birdSounds/Birds from inside 2.m4a'
+    'birdSounds/Birds from inside 2.m4a',
+    'birdSounds/Birds airplane 2.m4a',
+    'birdSounds/Birds with clearing throat.m4a'
 ];
 setDefaultValues();
 
