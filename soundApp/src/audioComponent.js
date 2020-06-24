@@ -62,7 +62,8 @@ class AudioComponent {
 
             const duration = this.myAudio.duration * 1000;
             const fadeDuration = 2000;
-            if (this.audioEnded === true && duration > fadeDuration) {
+            if (this.audioEnded === true && duration > fadeDuration) { 
+                // TODO: Be careful with this one in case the audio folder has a mix of short and long sounds
                 fadeBetweenSounds(this.myAudio, fadeDuration);
             }
         }
