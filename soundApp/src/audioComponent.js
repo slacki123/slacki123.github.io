@@ -13,7 +13,7 @@ class AudioComponent {
         this.soundTracks = soundTracks || ['bla'];
         this.div = this.createDivTemplate(divName);
         const body = document.getElementsByTagName('body')[0];
-        body.insertAdjacentHTML('beforeend', this.div);
+        body.insertAdjacentHTML('afterbegin', this.div);
         this.myAudio = document.getElementById(divName+'Audio');
         this.text = document.getElementById(divName+'Text');
         this.initAudioEvents(this.myAudio, this.soundTracks, this.text);
