@@ -29,18 +29,6 @@ class AudioComponent {
         <button class='btn btn-primary' id='${divName}soundButton' type='button'>Play ${divName} Sounds</button>
         <button class='btn btn-primary' id='${divName}stopSoundButton' type='button'>Stop ${divName} sounds</button>
     
-        <div name='soundFadeDiv'>
-            <label for='soundFade'>Sound fade:</label>
-            <select id='fadeDropdown' name='soundFade'>
-                <option value=null>No fade</option>
-                <option value='linear'>Linear fade</option>
-                <option value='squareRoot'>Square root fade</option>
-                <option value='sinusoidal'>Sinusoidal fade</option>
-            </select>
-            <label for='fadeDurationInput'>Fade Duration (milliseconds):</label>
-            <input type='number' id='fadeDurationInput' name='fadeDurationInput' min='0' max='10000'>
-        </div>
-    
         <div class='timePicker'>
             <p>
                 <label>Stop playing at:</label>
