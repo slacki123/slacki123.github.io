@@ -1,25 +1,25 @@
 const birdSounds = [
-    'birdSounds/Birds 2.m4a',
-    'birdSounds/Birds one cough and fly.m4a',
-    'birdSounds/Birds talk at end.m4a',
-    'birdSounds/Birds with airplane.m4a',
-    'birdSounds/birds with kitchen sounds.m4a',
-    'birdSounds/Birds with neighbours talking.m4a',
-    'birdSounds/Birds with weird pigeon noise.m4a',
-    'birdSounds/Birds from inside.m4a',
-    'birdSounds/Birds and a crow.m4a',
-    'birdSounds/Birds from inside 2.m4a',
-    'birdSounds/Birds airplane 2.m4a',
-    'birdSounds/Birds with clearing throat.m4a'
+    'audio/birdSounds/Birds 2.m4a',
+    'audio/birdSounds/Birds one cough and fly.m4a',
+    'audio/birdSounds/Birds talk at end.m4a',
+    'audio/birdSounds/Birds with airplane.m4a',
+    'audio/birdSounds/birds with kitchen sounds.m4a',
+    'audio/birdSounds/Birds with neighbours talking.m4a',
+    'audio/birdSounds/Birds with weird pigeon noise.m4a',
+    'audio/birdSounds/Birds from inside.m4a',
+    'audio/birdSounds/Birds and a crow.m4a',
+    'audio/birdSounds/Birds from inside 2.m4a',
+    'audio/birdSounds/Birds airplane 2.m4a',
+    'audio/birdSounds/Birds with clearing throat.m4a'
 ];
 
-const voiceSounds = [
-    'voiceSounds/test.mp3'
+const bumpSounds = [
+    'audio/bumpSounds/test.mp3'
 ]
 
 const audioComponents = [];
 audioComponents.push(new AudioComponent('birds', birdSounds));
-audioComponents.push(new AudioComponent('voice', voiceSounds));
+audioComponents.push(new AudioComponent('bump', bump));
 
 
 
