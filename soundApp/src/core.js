@@ -17,6 +17,6 @@ const voiceSounds = [
     'voiceSounds/test.mp3'
 ]
 
-new AudioComponent('birds', birdSounds);
-new AudioComponent('voice', voiceSounds);
-
+const audioComponents = [];
+audioComponents.push(new AudioComponent('birds', birdSounds));
+audioComponents.push(new AudioComponent('voice', voiceSounds));

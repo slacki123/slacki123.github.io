@@ -91,7 +91,7 @@ class AudioComponent {
         let timepickerObject = new Timepicker(this.divName + 'Duration')
         timepicker.onclick = () => timepickerObject.updateTimePickerDropdown();
         
-        timepicker.onchange = () => {
+        timepicker.oninput = () => {
             timepickerObject.setStopPlayingTime(this);
             timepickerObject = new Timepicker(this.divName + 'Duration');
         }
