@@ -43,7 +43,7 @@ class Timepicker {
         console.log('timeDifference', timeDifference);
         const stopInMilliseconds =  timeDifference;
         this.globalSetTimeout = setTimeout(() => { audioComponent.stopAudio() }, stopInMilliseconds);
-        console.log('The ' + component.audioComponent.id+ ' recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
+        console.log('The ' + audioComponent.myAudio.id+ ' recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
     
     }
 

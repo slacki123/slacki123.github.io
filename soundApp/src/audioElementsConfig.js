@@ -1,4 +1,3 @@
-const birdsAudio = document.getElementById('birdsAudio');
 const birdSounds = [
     'birdSounds/Birds 2.m4a',
     'birdSounds/Birds one cough and fly.m4a',
@@ -13,10 +12,7 @@ const birdSounds = [
     'birdSounds/Birds airplane 2.m4a',
     'birdSounds/Birds with clearing throat.m4a'
 ];
-const birdsText = document.getElementById('birdsText');
 
-const voiceAudio = document.getElementById('voiceAudio');
 const voiceSounds = [
     'voiceSounds/test.mp3'
 ]
-const voiceText = document.getElementById('voiceText');
