@@ -48,23 +48,3 @@ class Timepicker {
     }
 
 }
-
-// const birdsTimepicker = document.getElementById('birdsDuration');
-// let birdsTimepickerObject = new Timepicker('birdsDuration')
-// birdsTimepicker.onclick = function() {
-//     birdsTimepickerObject.updateTimePickerDropdown();
-// }
-// birdsTimepicker.onchange = function() {
-//     birdsTimepickerObject.setStopPlayingTime(birdsAudio, birdsText);
-//     birdsTimepickerObject = new Timepicker('birdsDuration');
-// }
-
-// const voiceTimepicker = document.getElementById('voiceDuration');
-// let voiceTimepickerObject = new Timepicker('voiceDuration')
-// voiceTimepicker.onclick = function() {
-//     voiceTimepickerObject.updateTimePickerDropdown();
-// }
-// voiceTimepicker.onchange = function() {
-//     voiceTimepickerObject.setStopPlayingTime(voiceAudio, voiceText);
-//     voiceTimepickerObject = new Timepicker('voiceDuration')
-// }
