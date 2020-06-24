@@ -15,7 +15,7 @@
     <h1>Master Controls</h1>
     <div class="slidecontainer">
         Master Volume <br>
-        <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+        <input type="range" min="1" max="100" value="100" class="slider" id="masterVolume">
     </div>
     <br>
     <button class='btn btn-primary' id='masterStopSounds'>Stop Everything</button>
@@ -31,13 +31,14 @@
 <script src='src/util/sleep.js'></script>
 <script src='src/soundModification.js'></script>
 <script>
-    // TODO: Add a master volume option
     // TODO: Add an option to wait between sound recordings
     // TODO: Add an option to upload your own recordings
     // TODO: Add an option to record your own recordings
     // TODO: Consider rebuilding this in a framework such as angular
     // TODO: Consider building a development environment as well as a production one
     // TODO: (maybe in the future) - Make this a Freemium service, add payment system for premium features, advertise service with google ads
+    // TODO: add individual sound volumes (individual max must always be lower than master)
+    // TODO: Dynamically display the number of recordings and each recording for each audio component
 
 </script>
 

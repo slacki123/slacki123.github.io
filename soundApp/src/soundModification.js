@@ -1,3 +1,5 @@
+const masterVolume = document.getElementById('masterVolume');
+
 async function fadeBetweenSounds(element, fadeDuration) {
     const waitTillFade = element.duration * 1000 - fadeDuration;
     await sleep(waitTillFade);
@@ -9,13 +11,13 @@ async function fadeBetweenSounds(element, fadeDuration) {
 }
 
 async function decreaseVolume(element, numberOfIterations, fadeDuration) {
-    if (element.volume != 1) {
-        console.warn('Volume is not equal to 1');
-        element.volume = 1;
+    if (element.volume != parseInt(masterVolume.value)/100) {
+        console.warn('Volume is not equal to master volume');
+        element.volume = parseInt(masterVolume.value)/100;
     }
     console.log('Decreasing volume');
     const fixedNumOfIterations = numberOfIterations;
-    const incrementalValue = 1 / fixedNumOfIterations;
+    const incrementalValue = parseInt(masterVolume.value)/100 / fixedNumOfIterations;
     const numOfIterationsDec = element.volume / incrementalValue;
     let sleepTime = fadeDuration / fixedNumOfIterations;
     for (let i = numOfIterationsDec; i > 0; i--) {
@@ -35,7 +37,7 @@ async function increaseVolume(element, numberOfIterations, fadeDuration) {
     }
     console.log('Increasing volume');
     const fixedNumOfIterations = numberOfIterations;
-    const incrementalValue = 1 / fixedNumOfIterations;
+    const incrementalValue = parseInt(masterVolume.value)/100 / fixedNumOfIterations;
     const numOfIterationsInc = fixedNumOfIterations - (element.volume / incrementalValue);
     console.log('num of iterations should be 20:', numOfIterationsInc);
     let sleepTime = fadeDuration / fixedNumOfIterations;
@@ -47,21 +49,21 @@ async function increaseVolume(element, numberOfIterations, fadeDuration) {
         element.volume = modifyVolume(fadeType, i, numOfIterationsInc);
         console.log('volume', element.volume);
     }
-    element.volume = 1;
+    element.volume = parseInt(masterVolume.value)/100;
 }
 
 function modifyVolume(modifier, currentIteration, totalIterations) {
-    // calculate limits from 0 to 1, where totalIterations is a parameter
+    // calculate limits from 0 to max master volume, where totalIterations is a parameter
     if (modifier === 'linear') {
-        const incrementalValue = 1 / totalIterations; // when linear
+        const incrementalValue = parseInt(masterVolume.value)/100 / totalIterations; // when linear
         return parseFloat(currentIteration * incrementalValue).toPrecision(2);
     } else if (modifier === 'sinusoidal') {
-        const incrementalValue = 0.5 * Math.PI / totalIterations;
+        const incrementalValue = parseInt(masterVolume.value)/100 * 0.5 * Math.PI / totalIterations;
         return Math.sin(incrementalValue * currentIteration).toFixed(2);
     } else if (modifier === 'squareRoot') {
-        const incrementalValue = 1 / totalIterations;
+        const incrementalValue = parseInt(masterVolume.value)/100 / totalIterations;
         return Math.sqrt(incrementalValue * currentIteration).toFixed(2);
     } else {
-        return 1;
+        return parseInt(masterVolume.value)/100;
     }
 }
