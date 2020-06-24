@@ -29,7 +29,7 @@ class AudioComponent {
         <button class='btn btn-primary' id='${divName}soundButton' type='button'>Play ${divName} Sounds</button>
         <button class='btn btn-primary' id='${divName}stopSoundButton' type='button'>Stop ${divName} sounds</button>
     
-        <div class='timePicker'>
+        <div class='timePicker' style='padding-top:1%'>
             <p>
                 <label>Stop playing at:</label>
     
