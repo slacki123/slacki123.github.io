@@ -71,10 +71,11 @@ class AudioComponent {
         this.myAudio.onloadeddata = async () => {
             console.log('data loaded');
             console.log('Not first audio', this.audioEnded);
-        
-            if (this.audioEnded === true) {
-                const fadeDuration = fadeDurationInput.value || 2000;
-                // fadeBetweenSounds(this.myAudio, fadeDuration);
+
+            const duration = this.myAudio.duration * 1000;
+            const fadeDuration = 2000;
+            if (this.audioEnded === true && duration > fadeDuration) {
+                fadeBetweenSounds(this.myAudio, fadeDuration);
             }
         }
     }
