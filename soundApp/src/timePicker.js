@@ -25,7 +25,7 @@ class Timepicker {
         $('#' + this.timePickerElement).timepicker('option', 'minTime', new Date());
     }
 
-    setStopPlayingTime(myAudio, textElement) {
+    setStopPlayingTime(audioComponent) {
         clearTimeout(this.globalSetTimeout);
         console.log('interval cleared');
         const stopPlayingAtTime = $('#' + this.timePickerElement).val();
@@ -42,29 +42,29 @@ class Timepicker {
         const timeDifference = nowTillStopDifference < 0 ? nowTillStopDifferencePlusOne : nowTillStopDifference;
         console.log('timeDifference', timeDifference);
         const stopInMilliseconds =  timeDifference;
-        this.globalSetTimeout = setTimeout(() => { stopAudio(myAudio, textElement) }, stopInMilliseconds);
-        console.log('The ' + myAudio.id+ ' recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
+        this.globalSetTimeout = setTimeout(() => { audioComponent.stopAudio() }, stopInMilliseconds);
+        console.log('The ' + component.audioComponent.id+ ' recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
     
     }
 
 }
 
-const birdsTimepicker = document.getElementById('birdsDuration');
-let birdsTimepickerObject = new Timepicker('birdsDuration')
-birdsTimepicker.onclick = function() {
-    birdsTimepickerObject.updateTimePickerDropdown();
-}
-birdsTimepicker.onchange = function() {
-    birdsTimepickerObject.setStopPlayingTime(birdsAudio, birdsText);
-    birdsTimepickerObject = new Timepicker('birdsDuration');
-}
+// const birdsTimepicker = document.getElementById('birdsDuration');
+// let birdsTimepickerObject = new Timepicker('birdsDuration')
+// birdsTimepicker.onclick = function() {
+//     birdsTimepickerObject.updateTimePickerDropdown();
+// }
+// birdsTimepicker.onchange = function() {
+//     birdsTimepickerObject.setStopPlayingTime(birdsAudio, birdsText);
+//     birdsTimepickerObject = new Timepicker('birdsDuration');
+// }
 
-const voiceTimepicker = document.getElementById('voiceDuration');
-let voiceTimepickerObject = new Timepicker('voiceDuration')
-voiceTimepicker.onclick = function() {
-    voiceTimepickerObject.updateTimePickerDropdown();
-}
-voiceTimepicker.onchange = function() {
-    voiceTimepickerObject.setStopPlayingTime(voiceAudio, voiceText);
-    voiceTimepickerObject = new Timepicker('voiceDuration')
-}
+// const voiceTimepicker = document.getElementById('voiceDuration');
+// let voiceTimepickerObject = new Timepicker('voiceDuration')
+// voiceTimepicker.onclick = function() {
+//     voiceTimepickerObject.updateTimePickerDropdown();
+// }
+// voiceTimepicker.onchange = function() {
+//     voiceTimepickerObject.setStopPlayingTime(voiceAudio, voiceText);
+//     voiceTimepickerObject = new Timepicker('voiceDuration')
+// }
