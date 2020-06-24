@@ -1,5 +1,5 @@
 const text = document.getElementById('text');
-const myAudio = document.getElementById('myAudio');
+const birdsAudio = document.getElementById('myAudio');
 const fadeTypeDropdown = document.getElementById('fadeDropdown');
 const fadeDurationInput = document.getElementById('fadeDurationInput');
 const myAudioSounds = [
@@ -23,25 +23,7 @@ window.onload = function () {
 }
 
 let audioEnded = false;
-myAudio.onended = function () {
-    audioEnded = true; // just so the fade only works after at least one audio ended
-    console.log('audio ended');
-    const randomSound = myAudioSounds[Math.floor((Math.random() * myAudioSounds.length))];
-    myAudio.setAttribute('src', randomSound);
-    myAudio.play();
-    console.log('Playing: ', randomSound);
-    text.innerHTML = 'Playing: ' + randomSound;
-}
-
-myAudio.onloadeddata = async function () {
-    console.log('data loaded');
-    console.log('Not first audio', audioEnded);
-
-    if (audioEnded === true) {
-        const fadeDuration = fadeDurationInput.value || 2000;
-        fadeBetweenSounds(myAudio, fadeDuration);
-    }
-}
+initAudioEvents(birdsAudio);
 
 fadeDurationInput.onchange = function() {
     localStorage.setItem('fadeDuration', fadeDurationInput.value);
@@ -78,4 +60,26 @@ function stopAudio() {
     myAudio.pause();
     myAudio.currentTime = 0;
     text.innerHTML = 'Audio Ended';
+}
+
+function initAudioEvents(myAudio) {
+    myAudio.onended = function () {
+        audioEnded = true; // just so the fade only works after at least one audio ended
+        console.log('audio ended');
+        const randomSound = myAudioSounds[Math.floor((Math.random() * myAudioSounds.length))];
+        myAudio.setAttribute('src', randomSound);
+        myAudio.play();
+        console.log('Playing: ', randomSound);
+        text.innerHTML = 'Playing: ' + randomSound;
+    }
+    
+    myAudio.onloadeddata = async function () {
+        console.log('data loaded');
+        console.log('Not first audio', audioEnded);
+    
+        if (audioEnded === true) {
+            const fadeDuration = fadeDurationInput.value || 2000;
+            fadeBetweenSounds(myAudio, fadeDuration);
+        }
+    }
 }

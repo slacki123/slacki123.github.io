@@ -35,57 +35,19 @@
                     type="time" class="time" />
             </p>
         </div>
-        <script>
-            $(function () {
-                $('#durationExample').timepicker({
-                    'minTime': new Date(),
-                    'showDuration': true,
-                    'step': 10,
-                    'timeFormat': 'H:i',
-                    'noneOption': [
-                        {
-                            'label': 'Never Stop',
-                            'className': 'neverStop',
-                            'value': ''
-                        }
-                    ]
-                });
-            });
 
-            function updateTimePickerDropdown() {
-                $('#durationExample').timepicker('option', 'minTime', new Date());
-            }
-
-            let globalSetTimeout;
-            function setStopPlayingTime() {
-                clearTimeout(globalSetTimeout);
-                console.log('interval cleared');
-                const stopPlayingAtTime = $('#durationExample').val();
-                console.log('Stop playing at: ' + stopPlayingAtTime);
-                if (stopPlayingAtTime == '') {
-                    return;
-                }
-                const hours = parseInt(stopPlayingAtTime.split(':')[0]);
-                const minutes = parseInt(stopPlayingAtTime.split(':')[1]);
-                const timeNowMillis = new Date().getTime();
-                const stopAtMillis = new Date().setHours(hours, minutes);
-                const nowTillStopDifference = stopAtMillis - timeNowMillis;
-                const nowTillStopDifferencePlusOne = new Date().setHours(hours + 24, minutes) - timeNowMillis;
-                const timeDifference = nowTillStopDifference < 0 ? nowTillStopDifferencePlusOne : nowTillStopDifference;
-                console.log('timeDifference', timeDifference);
-                const stopInMilliseconds =  timeDifference;
-                globalSetTimeout = setTimeout(() => { stopAudio() }, stopInMilliseconds);
-                console.log('The recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
-
-            }
-        </script>
     </div>
 
     <p id='text'></p>
 </body>
+<script src='src/core.js'></script>
+<script src='src/timePicker.js'></script>
+<script src='src/util/sleep.js'></script>
+<script src='src/soundModification.js'></script>
+
 <script>
+    // TODO: Add a master volume option
     // TODO: Add an option to wait between sound recordings
-    // TODO: Add an option to 'Stop playing at' with a datepicker
     // TODO: Add an option to play recordings in parallel
     // TODO: Add an option to upload your own recordings
     // TODO: Add an option to record your own recordings
@@ -95,8 +57,6 @@
 
 </script>
 
-<script src='src/util/sleep.js'></script>
-<script src='src/soundModification.js'></script>
-<script src='src/core.js'></script>
+
 
 <html>
