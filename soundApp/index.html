@@ -10,46 +10,68 @@
 </head>
 
 <body>
-    <audio id='birdsAudio' src='lets begin.m4a'></audio>
-    <audio id='voiceAudio' src='lets begin.m4a'></audio>
+    
+    
     <div id='birdsDiv'>
-        <button class='btn btn-primary' id='soundButton' onclick="playAudio(birdsAudio)" type="button">Play Bird Sounds</button>
-        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio(birdsAudio)" type="button">Stop Bird sounds</button>
-    </div>
-    <BR>
-    <div id='voiceDiv'>
-        <button class='btn btn-primary' id='soundButton' onclick="playAudio(voiceAudio)" type="button">Play Voice Sounds</button>
-        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio(voiceAudio)" type="button">Stop Voice sounds</button>
-    </div>
+        <audio id='birdsAudio' src='lets begin.m4a'></audio>
+        <button class='btn btn-primary' id='soundButton' onclick="playAudio(birdsAudio, birdsText)" type="button">Play Bird Sounds</button>
+        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio(birdsAudio, birdsText)" type="button">Stop Bird sounds</button>
 
-    <div name='soundFadeDiv'>
-        <label for="soundFade">Sound fade:</label>
-        <select id="fadeDropdown" name="soundFade">
-            <option value=null>No fade</option>
-            <option value="linear">Linear fade</option>
-            <option value="squareRoot">Square root fade</option>
-            <option value="sinusoidal">Sinusoidal fade</option>
-        </select>
-        <label for="fadeDurationInput">Fade Duration (milliseconds):</label>
-        <input type="number" id="fadeDurationInput" name="fadeDurationInput" min="0" max="10000">
-    </div>
+        <div name='soundFadeDiv'>
+            <label for="soundFade">Sound fade:</label>
+            <select id="fadeDropdown" name="soundFade">
+                <option value=null>No fade</option>
+                <option value="linear">Linear fade</option>
+                <option value="squareRoot">Square root fade</option>
+                <option value="sinusoidal">Sinusoidal fade</option>
+            </select>
+            <label for="fadeDurationInput">Fade Duration (milliseconds):</label>
+            <input type="number" id="fadeDurationInput" name="fadeDurationInput" min="0" max="10000">
+        </div>
 
-
-    <div>
         <div class="timePicker">
             <p>
                 <label>Stop playing at:</label>
-                <input onclick='updateTimePickerDropdown()' onchange='setStopPlayingTime(birdsAudio)' id="durationExample"
-                    type="time" class="time" />
+
+                <input  id="birdsDuration" type="time" class="time" />
             </p>
         </div>
+        
+        <p id='birdsText'></p>
 
     </div>
+    <BR>
+    <div id='voiceDiv'>
+        <audio id='voiceAudio' src='lets begin.m4a'></audio>
+        <button class='btn btn-primary' id='soundButton' onclick="playAudio(voiceAudio, voiceText)" type="button">Play Voice Sounds</button>
+        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio(voiceAudio, voiceText)" type="button">Stop Voice sounds</button>
+        <div name='soundFadeDiv'>
+            <label for="soundFade">Sound fade:</label>
+            <select id="fadeDropdownVoice" name="soundFade">
+                <option value=null>No fade</option>
+                <option value="linear">Linear fade</option>
+                <option value="squareRoot">Square root fade</option>
+                <option value="sinusoidal">Sinusoidal fade</option>
+            </select>
+            <label for="fadeDurationInput">Fade Duration (milliseconds):</label>
+            <input type="number" id="fadeDurationInputVoice" name="fadeDurationInput" min="0" max="10000">
+        </div>
+        <div class="timePicker">
+            <p>
+                <label>Stop playing at:</label>
+                <input  id="voiceDuration" type="time" class="time" />
+        </div>
+        <p id='voiceText'></p>
+    
+    </div>
 
-    <p id='text'></p>
 </body>
+<script src='src/audioElementsConfig.js'></script>
 <script src='src/core.js'></script>
-<script src='src/timePicker.js'></script>
+<script src='src/fadeDropdowns.js'></script>
+<script src='src/timePicker.js'>
+
+</script>
 <script src='src/util/sleep.js'></script>
 <script src='src/soundModification.js'></script>
 <script>
