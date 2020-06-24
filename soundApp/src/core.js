@@ -1,8 +1,9 @@
 const text = document.getElementById('text');
-const birdsAudio = document.getElementById('myAudio');
 const fadeTypeDropdown = document.getElementById('fadeDropdown');
 const fadeDurationInput = document.getElementById('fadeDurationInput');
-const myAudioSounds = [
+
+const birdsAudio = document.getElementById('birdsAudio');
+const birdSounds = [
     'birdSounds/Birds 2.m4a',
     'birdSounds/Birds one cough and fly.m4a',
     'birdSounds/Birds talk at end.m4a',
@@ -16,14 +17,23 @@ const myAudioSounds = [
     'birdSounds/Birds airplane 2.m4a',
     'birdSounds/Birds with clearing throat.m4a'
 ];
+
+const voiceAudio = document.getElementById('voiceAudio');
+const voiceSounds = [
+    'voiceSounds/test.mp3'
+]
+
+
 setDefaultValues();
 
 window.onload = function () {
     getLocalStorageValues();
 }
 
+// should iterate over all audios here
 let audioEnded = false;
-initAudioEvents(birdsAudio);
+initAudioEvents(birdsAudio, birdSounds);
+initAudioEvents(voiceAudio, voiceSounds);
 
 fadeDurationInput.onchange = function() {
     localStorage.setItem('fadeDuration', fadeDurationInput.value);
@@ -50,23 +60,23 @@ function getLocalStorageValues() {
     }
 }
 
-async function playAudio() {
+async function playAudio(myAudio) {
     myAudio.play();
     const source = myAudio.getAttribute('src');
     text.innerHTML = 'Playing: ' + source;
 }
 
-function stopAudio() {
+function stopAudio(myAudio) {
     myAudio.pause();
     myAudio.currentTime = 0;
     text.innerHTML = 'Audio Ended';
 }
 
-function initAudioEvents(myAudio) {
+function initAudioEvents(myAudio, soundTracks) {
     myAudio.onended = function () {
         audioEnded = true; // just so the fade only works after at least one audio ended
         console.log('audio ended');
-        const randomSound = myAudioSounds[Math.floor((Math.random() * myAudioSounds.length))];
+        const randomSound = soundTracks[Math.floor((Math.random() * soundTracks.length))];
         myAudio.setAttribute('src', randomSound);
         myAudio.play();
         console.log('Playing: ', randomSound);

@@ -19,7 +19,7 @@ function updateTimePickerDropdown() {
 }
 
 let globalSetTimeout;
-function setStopPlayingTime() {
+function setStopPlayingTime(myAudio) {
     clearTimeout(globalSetTimeout);
     console.log('interval cleared');
     const stopPlayingAtTime = $('#durationExample').val();
@@ -36,7 +36,7 @@ function setStopPlayingTime() {
     const timeDifference = nowTillStopDifference < 0 ? nowTillStopDifferencePlusOne : nowTillStopDifference;
     console.log('timeDifference', timeDifference);
     const stopInMilliseconds =  timeDifference;
-    globalSetTimeout = setTimeout(() => { stopAudio() }, stopInMilliseconds);
+    globalSetTimeout = setTimeout(() => { stopAudio(myAudio) }, stopInMilliseconds);
     console.log('The recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
 
 }

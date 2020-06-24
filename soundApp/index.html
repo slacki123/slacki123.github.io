@@ -5,13 +5,21 @@
     <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.10/jquery.timepicker.js"></script>
     <link rel="stylesheet" href="css/timePickerCSS.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+
+
 </head>
 
 <body>
-    <audio id='myAudio' src='lets begin.m4a'></audio>
-    <div>
-        <button class='btn btn-primary' id='soundButton' onclick="playAudio()" type="button">Play Sounds</button>
-        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio()" type="button">Stop sounds</button>
+    <audio id='birdsAudio' src='lets begin.m4a'></audio>
+    <audio id='voiceAudio' src='lets begin.m4a'></audio>
+    <div id='birdsDiv'>
+        <button class='btn btn-primary' id='soundButton' onclick="playAudio(birdsAudio)" type="button">Play Bird Sounds</button>
+        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio(birdsAudio)" type="button">Stop Bird sounds</button>
+    </div>
+    <BR>
+    <div id='voiceDiv'>
+        <button class='btn btn-primary' id='soundButton' onclick="playAudio(voiceAudio)" type="button">Play Voice Sounds</button>
+        <button class='btn btn-primary' id='stopSoundButton' onclick="stopAudio(voiceAudio)" type="button">Stop Voice sounds</button>
     </div>
 
     <div name='soundFadeDiv'>
@@ -31,7 +39,7 @@
         <div class="timePicker">
             <p>
                 <label>Stop playing at:</label>
-                <input onclick='updateTimePickerDropdown()' onchange='setStopPlayingTime()' id="durationExample"
+                <input onclick='updateTimePickerDropdown()' onchange='setStopPlayingTime(birdsAudio)' id="durationExample"
                     type="time" class="time" />
             </p>
         </div>
@@ -44,7 +52,6 @@
 <script src='src/timePicker.js'></script>
 <script src='src/util/sleep.js'></script>
 <script src='src/soundModification.js'></script>
-
 <script>
     // TODO: Add a master volume option
     // TODO: Add an option to wait between sound recordings
