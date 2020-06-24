@@ -24,13 +24,16 @@ audioComponents.push(new AudioComponent('bump', bumpSounds));
 
 
 const slider = document.getElementById("myRange");
-const output = document.getElementById("sliderValue");
-output.innerHTML = slider.value; // Display the default slider value
-
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-    output.innerHTML = this.value;
     for(let i = 0; i < audioComponents.length; i++){ 
         audioComponents[i].myAudio.volume = parseInt(this.value)/100;
+    }
+}
+
+const stopEverythingButton = document.getElementById("masterStopSounds");
+stopEverythingButton.onclick = () => {
+    for(let i = 0; i < audioComponents.length; i++){ 
+        audioComponents[i].stopAudio();
     }
 }
