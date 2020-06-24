@@ -74,7 +74,7 @@ class AudioComponent {
         
             if (this.audioEnded === true) {
                 const fadeDuration = fadeDurationInput.value || 2000;
-                fadeBetweenSounds(this.myAudio, fadeDuration);
+                // fadeBetweenSounds(this.myAudio, fadeDuration);
             }
         }
     }
