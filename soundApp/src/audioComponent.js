@@ -13,6 +13,8 @@ class AudioComponent {
     maxVolumeFactorMaster = localStorage.getItem('masterVolume')/100 || 1;
     timepicker;
     timepickerObject;
+    delayTickBox;
+    delaySettings;
 
 
     constructor (divName, soundTracks) {
@@ -27,7 +29,9 @@ class AudioComponent {
         this.initButtons();
         this.initTimepicker();
         this.initVolumeSlider();
+        this.initDelayTickbox();
         this.soundFade = new SoundFade(this);
+        this.delaySettings = new DelaySettings(this);
         // TODO: if I want to have local volumes as local storage:
         // this.maxVolumeFactorLocal = localStorage.getItem(divName + 'LocalVolume');
     }
@@ -43,6 +47,15 @@ class AudioComponent {
         <div class="slidecontainer ${divName}Slider">
             ${divName} Volume <br>
         <input type="range" min="1" max="100" value="100" class="slider" id="${divName}Volume">
+        </div>
+
+        <div class='${divName}DelaySwitch'>
+            <label class="delay-switch">
+                Add delay between sounds <input id='${divName}DelaySwitch' type="checkbox"> 
+                <span class="delay-slider round"></span>
+            </label>
+            <div id='${divName}DelaySwitchSettings'> 
+            </div>
         </div>
     
         <div class='timePicker' style='padding-top:1%'>
@@ -65,6 +78,7 @@ class AudioComponent {
         this.myAudio.onended = () => {
             this.soundFade.reset();
             console.log('audio ended for: ', this.divName);
+            // TODO: The below should really be in the 'playAudio()' method
             const randomSound = this.soundTracks[Math.floor((Math.random() * this.soundTracks.length))];
             this.myAudio.setAttribute('src', randomSound);
             // TODO: Add a delay here, either random or not random. Options should be in the component
@@ -104,6 +118,18 @@ class AudioComponent {
             if(this.maxVolumeFactorLocal*this.maxVolumeFactorMaster % 2 === 0){
                 console.log(`${this.divName}: adjusted volume:`, this.myAudio.volume);
             }            
+        }
+    }
+
+    initDelayTickbox() {
+        this.delayTickBox = document.getElementById(this.divName+'DelaySwitch');
+        this.delayTickBox.onclick = () => {
+            if(this.delayTickBox.checked == false) { // counterintuitive, but when you first click before it ticks, it's actually false
+                this.delaySettings.hide();
+            console.log('checked true')
+            } else {
+                this.delaySettings.show();
+            }
         }
     }
 
