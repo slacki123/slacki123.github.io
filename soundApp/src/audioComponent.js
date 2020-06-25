@@ -81,14 +81,6 @@ class AudioComponent {
             await this.delaySettings.setDelay();
             if(this.audioStopped == true) return;
             this.playAudio();
-            
-            
-        }
-
-        this.myAudio.onpause = () => {
-            this.soundFade.reset();
-            console.log('audio restarted for: ', this.divName);
-            this.delaySettings.resetDelay();
         }
         
         this.myAudio.onplay = async () => {
@@ -160,6 +152,9 @@ class AudioComponent {
         this.myAudio.currentTime = 0;
         this.text.innerHTML = 'Audio Ended';
         this.audioStopped = true;
+        this.soundFade.reset();
+        console.log('audio restarted for: ', this.divName);
+        this.delaySettings.resetDelay();
     }
 
 }
