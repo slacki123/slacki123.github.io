@@ -6,6 +6,7 @@ class DelaySettings {
     delayTimeout;
     maxDelay;
     maxDelayInput;
+    randomChecked;
 
     constructor(component) {
         this.divName = component.divName;
@@ -45,21 +46,22 @@ class DelaySettings {
             this.maxDelay = this.maxDelayInput.value;
         }
         this.randomDelaySwitch.onclick = () => {
-            if(this.randomDelaySwitch.checked == false) { // counterintuitive, but when you first click before it ticks, it's actually false
-                // display random
-              console.log('checked true')
+            this.maxDelay = this.maxDelayInput.value;
+            if(this.randomDelaySwitch.checked == true) {
+                this.randomChecked = true;
+                //TODO: Potentially add another component to specify 'minimum' delay time
             } else {
-              console.log('hide random');
+                this.randomChecked = false;
             }
         }
     }
 
     async setDelay(){
-        //if(this.component.checked == true){
-            console.log('delay triggered');
-            await this.delay(this.maxDelay*1000);
-            console.log('delay ended')
-        //}
+        if(this.randomChecked == true) {
+            this.maxDelay = (Math.random()*this.maxDelayInput.value);
+            console.log(`Random delayed enabled for ${this.divName}, maxDelay is ${this.maxDelay} sec`);
+        }
+        await this.delay(this.maxDelay*1000);
     }
 
     resetDelay() {
