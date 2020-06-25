@@ -28,6 +28,8 @@ class AudioComponent {
         this.initTimepicker();
         this.initVolumeSlider();
         this.soundFade = new SoundFade(this);
+        // TODO: if I want to have local volumes as local storage:
+        // this.maxVolumeFactorLocal = localStorage.getItem(divName + 'LocalVolume');
     }
 
     createDivTemplate(divName) {
