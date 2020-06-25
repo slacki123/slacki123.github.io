@@ -3,7 +3,7 @@ class Timepicker {
 
     constructor(timePickerElement) {
         this.timePickerElement = timePickerElement;
-        $(() => { //changing this from function() to () => changes the CSS layout
+        $(function() { //changing this from function() to () => changes the CSS layout
             $('#' + this.timePickerElement).timepicker({
                 'minTime': new Date(),
                 'showDuration': true,

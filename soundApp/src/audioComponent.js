@@ -12,6 +12,8 @@ class AudioComponent {
     delayOnEnded;
     maxVolumeFactorLocal = 1;
     maxVolumeFactorMaster = 1;
+    timepicker;
+    timepickerObject;
 
 
     constructor (divName, soundTracks) {
@@ -105,13 +107,14 @@ class AudioComponent {
     }
 
     initTimepicker() {
-        const timepicker = document.getElementById(this.divName + 'Duration');
-        let timepickerObject = new Timepicker(this.divName + 'Duration')
-        timepicker.onclick = () => timepickerObject.updateTimePickerDropdown();
-        
-        timepicker.oninput = () => {
-            timepickerObject.setStopPlayingTime(this);
-            timepickerObject = new Timepicker(this.divName + 'Duration');
+        this.timepicker = document.getElementById(this.divName + 'Duration');
+        this.timepickerObject = new Timepicker(this.divName + 'Duration')
+        this.timepicker.onclick = () => this.timepickerObject.updateTimePickerDropdown();
+        console.log('timePIckerr inited for ' + this.divName);
+        this.timepicker.oninput = () => {
+            console.log('set for ' + this.divName);
+            this.timepickerObject.setStopPlayingTime(this);
+            this.timepickerObject = new Timepicker(this.divName + 'Duration');
         }
     }
 
