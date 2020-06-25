@@ -8,10 +8,9 @@ class AudioComponent {
     soundTracks; // Array
     soundFade;
     volumeSlider; // component
-    masterVolumeRef = document.getElementById('masterVolume');
     delayOnEnded;
     maxVolumeFactorLocal = 1;
-    maxVolumeFactorMaster = 1;
+    maxVolumeFactorMaster = localStorage.getItem('masterVolume')/100 || 1;
     timepicker;
     timepickerObject;
 
