@@ -34,6 +34,8 @@ class DelaySettings {
 
     hide() {
         this.targetDiv.innerHTML = "";
+        this.maxDelay = 0;
+        this.resetDelay();
     }
 
     initDelayValues() {
