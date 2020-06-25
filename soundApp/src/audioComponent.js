@@ -31,7 +31,6 @@ class AudioComponent {
         this.initVolumeSlider();
         this.initDelayTickbox();
         this.soundFade = new SoundFade(this);
-        this.delaySettings = new DelaySettings(this);
         // TODO: if I want to have local volumes as local storage:
         // this.maxVolumeFactorLocal = localStorage.getItem(divName + 'LocalVolume');
     }
@@ -115,6 +114,7 @@ class AudioComponent {
 
     initDelayTickbox() {
         this.delayTickBox = document.getElementById(this.divName+'DelaySwitch');
+        this.delaySettings = new DelaySettings(this);
         this.delayTickBox.onclick = () => {
             if(this.delayTickBox.checked == false) { // counterintuitive, but when you first click before it ticks, it's actually false
                 this.delaySettings.hide();
@@ -139,6 +139,7 @@ class AudioComponent {
 
     async playAudio() {
         const randomSound = this.soundTracks[Math.floor((Math.random() * this.soundTracks.length))];
+        this.timepickerObject.setStopPlayingTime(this);
         this.myAudio.setAttribute('src', randomSound);
         this.myAudio.play();
         console.log(this.divName + ': Playing new sound:', randomSound);

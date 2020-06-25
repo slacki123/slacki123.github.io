@@ -61,6 +61,7 @@ class DelaySettings {
             this.maxDelay = (Math.random()*this.maxDelayInput.value);
             console.log(`Random delayed enabled for ${this.divName}, maxDelay is ${this.maxDelay} sec`);
         }
+        console.log(`Delay for ${this.divName}, maxDelay is ${this.maxDelay} sec`);
         await this.delay(this.maxDelay*1000);
     }
 
