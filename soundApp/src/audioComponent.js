@@ -90,9 +90,8 @@ class AudioComponent {
 
     initVolumeSlider() {
         this.volumeSlider = document.getElementById(this.divName+'Volume');
-        const masterVolume = this.masterVolumeRef.value;
         this.volumeSlider.oninput = () => {
-            this.volumeSlider.setAttribute('max', masterVolume);
+            this.volumeSlider.setAttribute('max', this.masterVolumeRef.value);
             this.myAudio.volume = this.volumeSlider.value/100;
         }
     }

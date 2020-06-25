@@ -5,8 +5,7 @@ class SoundFade {
     isEnded = false;
     increment = 0;
     fadeDuration = 2000;
-    componentVolume = document.getElementById('componentVolume');
-    componentVolume; //TODO: Need to implement first
+    componentVolume;
     audio;
     numberOfIterations = 20;
 
@@ -20,23 +19,23 @@ class SoundFade {
     
         if(duration < this.fadeDuration*2) {
             this.fadeDuration = duration/4;  
-            return; // don't do fades for short clips
+            // return; // don't do fades for short clips
         }
-        const waitTillFade = duration - this.fadeDuration*2;
+        
         console.log('audio Duration', duration);
-        console.log('wait till fade', waitTillFade)
-        console.log('audio volume', audio.volume);
         let t0 = performance.now();
         await this.increaseVolume(audio, this.fadeDuration);
         let t1 = performance.now()
-        console.log('time taken for increase', t1 - t0);
-        console.log(this.fadeDuration);
-        console.log('waiting for fade');
-        
-        await this.waitTillFade(waitTillFade);
-        console.log('sleep done');
-        
+        const actualIncreaseDuration = t1 - t0;
+        console.log('actual time taken for increase', actualIncreaseDuration);
+        const waitTillFade = duration - this.fadeDuration - actualIncreaseDuration;
+        console.log('wait till fade', waitTillFade)
+        await this.waitTillFade(waitTillFade);        
+        let d1 = performance.now();
         await this.decreaseVolume(audio, this.fadeDuration);
+        let d2 = performance.now();
+        console.log('actual time taken for decrease', d2 - d1);
+        console.log('hardcoded fade was', this.fadeDuration);
     
 
     }
