@@ -82,6 +82,7 @@ class AudioComponent {
             this.playAudio();
         }
         
+        // TODO: Does the below need to exist, and can it just be in the playAudio method?
         this.myAudio.onplay = async () => {
             this.myAudio.onloadeddata = () => {
                 this.soundFade.reset();
