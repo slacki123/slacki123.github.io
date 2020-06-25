@@ -28,11 +28,11 @@ const slider = document.getElementById("masterVolume");
 slider.value = localStorage.getItem('masterVolume') || slider.value;
 slider.oninput = function() {
     for(let i = 0; i < audioComponents.length; i++){ 
-        audioComponents[i].myAudio.volume = parseInt(this.value)/100;
-        if(this.value > 1){
-            audioComponents[i].volumeSlider.setAttribute('max', this.value);
-            audioComponents[i].volumeSlider.setAttribute('value', this.value);
-        }
+        const maxVolumeFactorLocal = audioComponents[i].maxVolumeFactorLocal;
+        const maxVolumeFactorMaster = this.value/100;
+        audioComponents[i].maxVolumeFactorMaster = maxVolumeFactorMaster;
+        audioComponents[i].myAudio.volume = maxVolumeFactorMaster*maxVolumeFactorLocal; 
+        
     }
     localStorage.setItem('masterVolume', this.value);
 }

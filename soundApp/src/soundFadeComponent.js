@@ -8,10 +8,12 @@ class SoundFade {
     componentVolume;
     audio;
     numberOfIterations = 20;
+    maxVolume = 1;
 
     constructor(audio) {
         this.audio = audio;
         this.componentVolume = audio.volumeSlider;
+        this.maxVolume = audio.maxVolumeFactorMaster*audio.maxVolumeFactorLocal;
     }
 
     async fadeBetweenSounds(audio) {
@@ -59,13 +61,13 @@ class SoundFade {
     }
 
     async decreaseVolume(element, fadeDuration) {
-        if (element.volume != this.componentVolume.value/100) {
+        if (element.volume != this.maxVolume) {
             console.warn('Volume is not equal to master volume');
-            element.volume = this.componentVolume.value/100;
+            element.volume = this.maxVolume;
         }
         console.log('Decreasing volume');
         const fixedNumOfIterations = this.numberOfIterations;
-        const incrementalValue = this.componentVolume.value/100 / fixedNumOfIterations;
+        const incrementalValue = this.maxVolume / fixedNumOfIterations;
         const numOfIterationsDec = element.volume / incrementalValue;
         let sleepTime = fadeDuration / fixedNumOfIterations;
         for (let i = numOfIterationsDec; i > 0; i--) {
@@ -85,7 +87,7 @@ class SoundFade {
         }
         console.log('Increasing volume');
         const fixedNumOfIterations = this.numberOfIterations;
-        const incrementalValue = this.componentVolume.value/100 / fixedNumOfIterations;
+        const incrementalValue = this.maxVolume / fixedNumOfIterations;
         const numOfIterationsInc = fixedNumOfIterations - (element.volume / incrementalValue);
         console.log('num of iterations should be 20:', numOfIterationsInc);
         let sleepTime = fadeDuration / fixedNumOfIterations;
@@ -97,22 +99,22 @@ class SoundFade {
             element.volume = this.modifyVolume(fadeType, i, numOfIterationsInc);
             console.log('volume', element.volume);
         }
-        element.volume = this.componentVolume.value/100;
+        element.volume = this.maxVolume;
     }
 
     modifyVolume(modifier, currentIteration, totalIterations) {
         // calculate limits from 0 to max master volume, where totalIterations is a parameter
         if (modifier === 'linear') {
-            const incrementalValue = this.componentVolume.value/100 / totalIterations; // when linear
+            const incrementalValue = this.maxVolume / totalIterations; // when linear
             return parseFloat(currentIteration * incrementalValue).toPrecision(2);
         } else if (modifier === 'sinusoidal') {
-            const incrementalValue = this.componentVolume.value/100 * 0.5 * Math.PI / totalIterations;
+            const incrementalValue = this.maxVolume * 0.5 * Math.PI / totalIterations;
             return Math.sin(incrementalValue * currentIteration).toFixed(2);
         } else if (modifier === 'squareRoot') {
-            const incrementalValue = this.componentVolume.value/100 / totalIterations;
+            const incrementalValue = this.maxVolume / totalIterations;
             return Math.sqrt(incrementalValue * currentIteration).toFixed(2);
         } else {
-            return this.componentVolume.value/100;
+            return this.maxVolume;
         }
     }
 
@@ -120,7 +122,8 @@ class SoundFade {
     reset() {
         this.resetSetTimeout();
         this.isEnded = true;
-        this.audio.myAudio.volume = this.componentVolume.value/100; //TODO: this should not be master volume, but the volume of the current component
+        console.log(this.maxVolume);
+        this.audio.myAudio.volume = this.maxVolume; //TODO: this should not be master volume, but the volume of the current component
         console.log('audio volume changed', this.audio.myAudio.volume)
     }
 

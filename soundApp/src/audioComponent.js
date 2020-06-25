@@ -9,6 +9,9 @@ class AudioComponent {
     soundFade;
     volumeSlider; // component
     masterVolumeRef = document.getElementById('masterVolume');
+    delayOnEnded;
+    maxVolumeFactorLocal = 1;
+    maxVolumeFactorMaster = 1;
 
 
     constructor (divName, soundTracks) {
@@ -61,6 +64,8 @@ class AudioComponent {
             console.log('audio ended for: ', this.divName);
             const randomSound = this.soundTracks[Math.floor((Math.random() * this.soundTracks.length))];
             this.myAudio.setAttribute('src', randomSound);
+            // TODO: Add a delay here, either random or not random. Options should be in the component
+
             this.myAudio.play();
             console.log(this.divName + ': Playing new sound:', randomSound);
             this.text.innerHTML = 'Playing: ' + randomSound;
@@ -91,8 +96,9 @@ class AudioComponent {
     initVolumeSlider() {
         this.volumeSlider = document.getElementById(this.divName+'Volume');
         this.volumeSlider.oninput = () => {
-            this.volumeSlider.setAttribute('max', this.masterVolumeRef.value);
-            this.myAudio.volume = this.volumeSlider.value/100;
+            this.maxVolumeFactorLocal = this.volumeSlider.value/100;
+            this.myAudio.volume = this.maxVolumeFactorLocal*this.maxVolumeFactorMaster;
+            console.log('adjusted volume:', this.myAudio.volume);
         }
     }
 
