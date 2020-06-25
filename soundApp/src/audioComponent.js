@@ -5,7 +5,10 @@ class AudioComponent {
     audioEnded = false;
     playButton;
     stopButton;
-    soundTracks;
+    soundTracks; // Array
+    soundFade;
+    volumeSlider; // component
+    masterVolumeRef = document.getElementById('masterVolume');
 
 
     constructor (divName, soundTracks) {
@@ -16,9 +19,11 @@ class AudioComponent {
         body.insertAdjacentHTML('afterbegin', this.div);
         this.myAudio = document.getElementById(divName+'Audio');
         this.text = document.getElementById(divName+'Text');
-        this.initAudioEvents(this.myAudio, this.soundTracks, this.text);
+        this.initAudioEvents();
         this.initButtons();
         this.initTimepicker();
+        this.initVolumeSlider();
+        this.soundFade = new SoundFade(this);
     }
 
     createDivTemplate(divName) {
@@ -28,6 +33,11 @@ class AudioComponent {
         <audio id='${divName}Audio' src='lets begin.m4a'></audio>
         <button class='btn btn-primary' id='${divName}soundButton' type='button'>Play ${divName} Sounds</button>
         <button class='btn btn-primary' id='${divName}stopSoundButton' type='button'>Stop ${divName} sounds</button>
+        
+        <div class="slidecontainer ${divName}Slider">
+            ${divName} Volume <br>
+        <input type="range" min="1" max="100" value="100" class="slider" id="${divName}Volume">
+        </div>
     
         <div class='timePicker' style='padding-top:1%'>
             <p>
@@ -47,24 +57,26 @@ class AudioComponent {
 
     initAudioEvents() {
         this.myAudio.onended = () => {
-            this.audioEnded = true; // just so the fade only works after at least one audio ended
-            console.log('audio ended');
+            this.soundFade.reset();
+            console.log('audio ended for: ', this.divName);
             const randomSound = this.soundTracks[Math.floor((Math.random() * this.soundTracks.length))];
             this.myAudio.setAttribute('src', randomSound);
             this.myAudio.play();
-            console.log('Playing: ', randomSound);
+            console.log(this.divName + ': Playing new sound:', randomSound);
             this.text.innerHTML = 'Playing: ' + randomSound;
         }
-        
-        this.myAudio.onloadeddata = async () => {
-            console.log('data loaded');
-            console.log('Not first audio', this.audioEnded);
 
-            const duration = this.myAudio.duration * 1000;
-            const fadeDuration = 2000;
-            if (this.audioEnded === true && duration > fadeDuration) { 
-                // TODO: Be careful with this one in case the audio folder has a mix of short and long sounds
-                fadeBetweenSounds(this.myAudio, fadeDuration);
+        this.myAudio.onpause = () => {
+            this.soundFade.reset();
+            console.log('audio restarted for: ', this.divName);
+        }
+        
+        this.myAudio.onplay = async () => {
+            this.myAudio.onloadeddata = () => {
+                this.soundFade.reset();
+                this.soundFade = new SoundFade(this);
+                console.log('data loaded for:', this.divName);
+                this.soundFade.fadeBetweenSounds(this.myAudio);
             }
         }
     }
@@ -74,6 +86,15 @@ class AudioComponent {
         this.stopButton = document.getElementById(this.divName+'stopSoundButton');
         this.playButton.onclick = () => this.playAudio();
         this.stopButton.onclick = () => this.stopAudio();
+    }
+
+    initVolumeSlider() {
+        this.volumeSlider = document.getElementById(this.divName+'Volume');
+        const masterVolume = this.masterVolumeRef.value;
+        this.volumeSlider.oninput = () => {
+            this.volumeSlider.setAttribute('max', masterVolume);
+            this.myAudio.volume = this.volumeSlider.value/100;
+        }
     }
 
     initTimepicker() {
@@ -87,7 +108,7 @@ class AudioComponent {
         }
     }
 
-    playAudio() {
+    async playAudio() {
         this.myAudio.play();
         const source = this.myAudio.getAttribute('src');
         this.text.innerHTML = 'Playing: ' + source;
