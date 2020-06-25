@@ -75,13 +75,15 @@ class AudioComponent {
     }
 
     initAudioEvents() {
-        this.myAudio.onended = () => {
+        this.myAudio.onended = async () => {
             this.soundFade.reset();
             console.log('audio ended for: ', this.divName);
             // TODO: The below should really be in the 'playAudio()' method
             const randomSound = this.soundTracks[Math.floor((Math.random() * this.soundTracks.length))];
             this.myAudio.setAttribute('src', randomSound);
-            // TODO: Add a delay here, either random or not random. Options should be in the component
+            // TODO: Add a delay here, either random or not random. Options should be in the 
+            await this.delaySettings.setDelay();
+            //
 
             this.myAudio.play();
             console.log(this.divName + ': Playing new sound:', randomSound);
@@ -91,6 +93,7 @@ class AudioComponent {
         this.myAudio.onpause = () => {
             this.soundFade.reset();
             console.log('audio restarted for: ', this.divName);
+            this.delaySettings.resetDelay();
         }
         
         this.myAudio.onplay = async () => {
