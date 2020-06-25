@@ -3,7 +3,7 @@ class DelaySettings {
     div;
     targetDiv;
     randomDelaySwitch;
-    sleepTimeout;
+    delayTimeout;
     maxDelay;
     maxDelayInput;
 
@@ -55,18 +55,18 @@ class DelaySettings {
     async setDelay(){
         //if(this.component.checked == true){
             console.log('delay triggered');
-            await this.sleep(this.maxDelay*1000);
+            await this.delay(this.maxDelay*1000);
             console.log('delay ended')
         //}
     }
 
     resetDelay() {
-        clearTimeout(this.sleepTimeout);
+        clearTimeout(this.delayTimeout);
     }
 
-    async sleep(ms) {
+    async delay(ms) {
         return new Promise(resolve => {
-           this.sleepTimeout = setTimeout(resolve, ms);
+           this.delayTimeout = setTimeout(resolve, ms);
         });
     }
 
