@@ -16,7 +16,7 @@ class DelaySettings {
         const delaySettingsTemplate = 
         `
         <label class="randomTimeInput">
-            Time delay (seconds):<input type='number' min='0' value='0' id='${divName}MaxDelayTime' class="delayTimeInput">
+            Max Delay (seconds):<input type='number' min='0' value='0' id='${divName}MaxDelayTime' class="delayTimeInput">
             <span>Random Delay</span> <input id='${divName}RandomDelaySwitch' type="checkbox"> 
             <span class="delay-slider round"></span>
         </label>
