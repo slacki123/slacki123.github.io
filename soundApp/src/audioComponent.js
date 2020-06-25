@@ -98,7 +98,9 @@ class AudioComponent {
         this.volumeSlider.oninput = () => {
             this.maxVolumeFactorLocal = this.volumeSlider.value/100;
             this.myAudio.volume = this.maxVolumeFactorLocal*this.maxVolumeFactorMaster;
-            console.log('adjusted volume:', this.myAudio.volume);
+            if(this.maxVolumeFactorLocal*this.maxVolumeFactorMaster % 2 === 0){
+                console.log(`${this.divName}: adjusted volume:`, this.myAudio.volume);
+            }            
         }
     }
 

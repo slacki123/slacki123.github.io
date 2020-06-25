@@ -32,6 +32,10 @@ slider.oninput = function() {
         const maxVolumeFactorMaster = this.value/100;
         audioComponents[i].maxVolumeFactorMaster = maxVolumeFactorMaster;
         audioComponents[i].myAudio.volume = maxVolumeFactorMaster*maxVolumeFactorLocal; 
+        if(maxVolumeFactorMaster*maxVolumeFactorLocal % 2 === 0){
+            console.log(`${audioComponents[i].divName}: adjusted volume:`, audioComponents[i].myAudio.volume);
+        }
+       
         
     }
     localStorage.setItem('masterVolume', this.value);
