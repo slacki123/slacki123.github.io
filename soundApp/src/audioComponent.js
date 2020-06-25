@@ -2,7 +2,7 @@ class AudioComponent {
     div;
     myAudio;
     text;
-    audioEnded = false;
+    audioStopped = false;
     playButton;
     stopButton;
     soundTracks; // Array
@@ -79,7 +79,10 @@ class AudioComponent {
             this.soundFade.reset();
             console.log('audio ended for: ', this.divName);
             await this.delaySettings.setDelay();
+            if(this.audioStopped == true) return;
             this.playAudio();
+            
+            
         }
 
         this.myAudio.onpause = () => {
@@ -102,7 +105,9 @@ class AudioComponent {
         this.playButton = document.getElementById(this.divName+'soundButton');
         this.stopButton = document.getElementById(this.divName+'stopSoundButton');
         this.playButton.onclick = () => this.playAudio();
-        this.stopButton.onclick = () => this.stopAudio();
+        this.stopButton.onclick = () => {
+            this.stopAudio();
+        }
     }
 
     initVolumeSlider() {
@@ -147,12 +152,14 @@ class AudioComponent {
         console.log(this.divName + ': Playing new sound:', randomSound);
         const source = this.myAudio.getAttribute('src');
         this.text.innerHTML = 'Playing: ' + source;
+        this.audioStopped = false;
     }
 
     stopAudio() {
         this.myAudio.pause();
         this.myAudio.currentTime = 0;
         this.text.innerHTML = 'Audio Ended';
+        this.audioStopped = true;
     }
 
 }
