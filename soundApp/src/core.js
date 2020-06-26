@@ -20,7 +20,7 @@ const bumpSounds = [
 const audioComponents = [];
 audioComponents.push(new AudioComponent('birds', birdSounds));
 audioComponents.push(new AudioComponent('bump', bumpSounds));
-
+audioComponents.push(new AudioComponent('custom', urlArray));
 
 
 const slider = document.getElementById("masterVolume");

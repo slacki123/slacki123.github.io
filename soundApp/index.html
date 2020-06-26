@@ -22,9 +22,28 @@
     <br>
     <button class='btn btn-primary' id='masterStopSounds'>Stop Everything</button>
 
+    <input type='file' id='fileTest' multiple accept='audio/*'>
+
+
 
 
 </body>
+<script>
+    const urlArray = [];
+    const files = document.getElementById('fileTest');
+    files.onchange = (event) => {
+        const numberOfFiles = event.target.files.length;
+        for(let i = 0; i < numberOfFiles; i++) {
+            const file = event.target.files[i];
+            const source = URL.createObjectURL(file)
+            console.log('files', source);
+            urlArray.push(source);
+        }
+
+        localStorage.setItem('customURLArray', JSON.stringify(urlArray)); // so that we could retrieve it later ;)
+
+    }
+</script>
 <script src='src/util/sleep.js'></script>
 <script src='src/timePicker.js'></script>
 <script src='src/delaySettingsComponent.js'></script>
