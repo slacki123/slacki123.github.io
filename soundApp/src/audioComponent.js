@@ -128,7 +128,8 @@ class AudioComponent {
 
     initTimepicker() {
         this.timepicker = document.getElementById(this.divName + 'Duration');
-        this.timepickerObject = new Timepicker(this.divName + 'Duration')
+        this.timepickerObject = new Timepicker(this.divName + 'Duration');
+        this.timepickerObject.setStopPlayingTime(this);
         this.timepicker.onclick = () => this.timepickerObject.updateTimePickerDropdown();
         console.log('timePIckerr inited for ' + this.divName);
         this.timepicker.onchange = () => {
@@ -139,8 +140,12 @@ class AudioComponent {
     }
 
     async playAudio() {
-        const randomSound = this.soundTracks[Math.floor((Math.random() * this.soundTracks.length))];
         this.timepickerObject.setStopPlayingTime(this);
+        // if(this.timepickerObject.checkStopInTime() === 0) {
+        //     alert('The "Stop playing at" time is now. Change it or wait a minute');
+        //     return;
+        // }
+        const randomSound = this.soundTracks[Math.floor((Math.random() * this.soundTracks.length))];
         this.myAudio.setAttribute('src', randomSound);
         this.myAudio.play();
         console.log(this.divName + ': Playing new sound:', randomSound);

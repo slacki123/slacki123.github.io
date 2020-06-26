@@ -8,6 +8,8 @@ class DelaySettings {
     maxDelayInput;
     randomChecked;
 
+    resolveDelay = () => {};
+
     constructor(component) {
         this.divName = component.divName;
     }
@@ -67,11 +69,13 @@ class DelaySettings {
 
     resetDelay() {
         clearTimeout(this.delayTimeout);
+        this.resolveDelay();
     }
 
     async delay(ms) {
         return new Promise(resolve => {
            this.delayTimeout = setTimeout(resolve, ms);
+           this.resolveDelay = resolve; // testing this extra resolve. Mabye will fix premature stop playing time issue
         });
     }
 

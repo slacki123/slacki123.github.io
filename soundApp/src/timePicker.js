@@ -1,5 +1,6 @@
 class Timepicker {
     globalSetTimeout;
+    stopPlayingIn;
 
     constructor(timePickerElement) {
         this.timePickerElement = timePickerElement;
@@ -25,6 +26,10 @@ class Timepicker {
         $('#' + this.timePickerElement).timepicker('option', 'minTime', new Date());
     }
 
+    checkStopInTime() {
+        return this.stopPlayingIn;
+    }
+
     setStopPlayingTime(audioComponent) {
         clearTimeout(this.globalSetTimeout);
         console.log('interval cleared');
@@ -42,6 +47,7 @@ class Timepicker {
         const timeDifference = nowTillStopDifference < 0 ? nowTillStopDifferencePlusOne : nowTillStopDifference;
         console.log('timeDifference', timeDifference);
         const stopInMilliseconds =  timeDifference;
+        this.stopPlayingIn = stopInMilliseconds;
         this.globalSetTimeout = setTimeout(() => { audioComponent.stopAudio() }, stopInMilliseconds);
         console.log('The ' + audioComponent.myAudio.id+ ' recording will stop playing in this many hours: ', stopInMilliseconds/(1000*60*60));
     
