@@ -5,7 +5,7 @@ class CustomAudioComponent extends AudioComponent {
     divHTML;
 
     constructor(divName) {
-        const initialSoundTracks = [];
+        const initialSoundTracks = [] // In the future would want to extract from data base or local storage;
         super(divName, initialSoundTracks);
         this.divName = divName;
         this.generateAudioUploadTemplate(divName);
@@ -23,7 +23,7 @@ class CustomAudioComponent extends AudioComponent {
            <input type='file' id='${divName}AudioUpload' multiple accept='audio/*'>
         </div>
         `;
-        this.divHTML = document.getElementById(`${divName}Div`);
+        this.divHTML = document.getElementById(`${divName}Text`); //This is probably bad practice, because my html will always be inserted after this text tag
         this.divHTML.insertAdjacentHTML('afterend', fileUploadTemplate);
     }
 

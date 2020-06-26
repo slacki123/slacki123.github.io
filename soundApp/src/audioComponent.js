@@ -38,7 +38,7 @@ class AudioComponent {
     createDivTemplate(divName) {
         const divTemplate = 
         `  
-        <div id='${divName}Div'>
+        <div id='${divName}Div' class='audioComponent' style='border-style: solid; padding: 1%; margin-bottom: 10px'>
         <audio id='${divName}Audio' src='lets begin.m4a'></audio>
         <button class='btn btn-primary' id='${divName}soundButton' type='button'>Play ${divName} Sounds</button>
         <button class='btn btn-primary' id='${divName}stopSoundButton' type='button'>Stop ${divName} sounds</button>
