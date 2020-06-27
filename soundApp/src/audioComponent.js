@@ -1,23 +1,27 @@
 class AudioComponent {
-    div;
-    myAudio;
-    text;
-    audioStopped = false;
-    playButton;
-    stopButton;
-    soundTracks; // Array
-    soundFade;
-    volumeSlider; // component
-    delayOnEnded;
-    maxVolumeFactorLocal = 1;
-    maxVolumeFactorMaster = localStorage.getItem('masterVolume')/100 || 1;
-    timepicker;
-    timepickerObject;
-    delayTickBox;
-    delaySettings;
+    // div;
+    // myAudio;
+    // text;
+    // audioStopped = false;
+    // playButton;
+    // stopButton;
+    // soundTracks; // Array
+    // soundFade;
+    // volumeSlider; // component
+    // delayOnEnded;
+    // maxVolumeFactorLocal = 1;
+    // maxVolumeFactorMaster = localStorage.getItem('masterVolume')/100 || 1;
+    // timepicker;
+    // timepickerObject;
+    // delayTickBox;
+    // delaySettings;
 
 
     constructor (divName, soundTracks) {
+        this.audioStopped = false;
+        this.maxVolumeFactorLocal = 1;
+        this.maxVolumeFactorMaster = localStorage.getItem('masterVolume')/100 || 1;
+
         this.divName = divName;
         this.soundTracks = soundTracks || ['bla'];
         this.div = this.createDivTemplate(divName);

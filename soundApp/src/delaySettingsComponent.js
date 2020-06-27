@@ -1,12 +1,12 @@
 class DelaySettings {
-    divName;
-    div;
-    targetDiv;
-    randomDelaySwitch;
-    delayTimeout;
-    maxDelay;
-    maxDelayInput;
-    randomChecked;
+    // divName;
+    // div;
+    // targetDiv;
+    // randomDelaySwitch;
+    // delayTimeout;
+    // maxDelay;
+    // maxDelayInput;
+    // randomChecked;
 
     resolveDelay = () => {};
 

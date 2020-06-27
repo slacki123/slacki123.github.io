@@ -1,8 +1,8 @@
 class CustomAudioComponent extends AudioComponent {
-    fileUploadComponent;
-    audioUploadButton;
-    divName;
-    divHTML;
+    // fileUploadComponent;
+    // audioUploadButton;
+    // divName;
+    // divHTML;
 
     constructor(divName) {
         const initialSoundTracks = [] // In the future would want to extract from data base or local storage;

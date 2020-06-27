@@ -1,6 +1,6 @@
 class Timepicker {
-    globalSetTimeout;
-    stopPlayingIn;
+    // globalSetTimeout;
+    // stopPlayingIn;
 
     constructor(timePickerElement) {
         this.timePickerElement = timePickerElement;

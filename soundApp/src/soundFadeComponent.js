@@ -1,16 +1,19 @@
 class SoundFade {
-    increaseVolumeTimeout;
-    decreaseVolumeTimeout;
-    waitTillFadeTimeout;
-    isEnded = false;
-    increment = 0;
-    fadeDuration = 2000;
-    //componentVolume;
-    audio;
-    numberOfIterations = 20;
-    //maxVolume = 1;
+    // increaseVolumeTimeout;
+    // decreaseVolumeTimeout;
+    // waitTillFadeTimeout;
+    // isEnded = false;
+    // increment = 0;
+    // fadeDuration = 2000;
+    // audio;
+    // numberOfIterations = 20;
 
     constructor(audio) {
+        this.isEnded = false;
+        this.increment = 0;
+        this.fadeDuration = 2000;
+        this.numberOfIterations = 20;
+
         this.audio = audio;
         this.componentVolume = audio.volumeSlider;
         //this.getMaxVolume() = audio.maxVolumeFactorMaster*audio.maxVolumeFactorLocal;
