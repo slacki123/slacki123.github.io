@@ -17,6 +17,7 @@ const bumpSounds = [
     'audio/bumpSounds/test.mp3'
 ]
 
+let numOfCustomComponents = 0;
 const audioComponents = [];
 audioComponents.push(new CustomAudioComponent('custom'));
 audioComponents.push(new AudioComponent('birds', birdSounds));
@@ -46,4 +47,10 @@ stopEverythingButton.onclick = () => {
     for(let i = 0; i < audioComponents.length; i++){ 
         audioComponents[i].stopAudio();
     }
+}
+
+const addCustomButton = document.getElementById('newComponent');
+addCustomButton.onclick = () => {
+    numOfCustomComponents++;
+    audioComponents.push(new CustomAudioComponent('custom'+numOfCustomComponents));
 }

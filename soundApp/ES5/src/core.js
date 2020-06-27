@@ -1,5 +1,6 @@
 var birdSounds = ['audio/birdSounds/Birds 2.m4a', 'audio/birdSounds/Birds one cough and fly.m4a', 'audio/birdSounds/Birds talk at end.m4a', 'audio/birdSounds/Birds with airplane.m4a', 'audio/birdSounds/birds with kitchen sounds.m4a', 'audio/birdSounds/Birds with neighbours talking.m4a', 'audio/birdSounds/Birds with weird pigeon noise.m4a', 'audio/birdSounds/Birds from inside.m4a', 'audio/birdSounds/Birds and a crow.m4a', 'audio/birdSounds/Birds from inside 2.m4a', 'audio/birdSounds/Birds airplane 2.m4a', 'audio/birdSounds/Birds with clearing throat.m4a'];
 var bumpSounds = ['audio/bumpSounds/test.mp3'];
+var numOfCustomComponents = 0;
 var audioComponents = [];
 audioComponents.push(new CustomAudioComponent('custom'));
 audioComponents.push(new AudioComponent('birds', birdSounds));
@@ -30,3 +31,9 @@ stopEverythingButton.onclick = function () {
         audioComponents[i].stopAudio();
     }
 };
+
+var addCustomButton = document.getElementById('newComponent');
+addCustomButton.onclick = function ()  {
+    numOfCustomComponents++;
+    audioComponents.push(new CustomAudioComponent('custom'+numOfCustomComponents));
+}
