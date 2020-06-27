@@ -46,6 +46,7 @@ class AudioComponent {
         <audio id='${divName}Audio' src='lets begin.m4a'></audio>
         <button class='btn btn-primary' id='${divName}soundButton' type='button'>Play ${divName} Sounds</button>
         <button class='btn btn-primary' id='${divName}stopSoundButton' type='button'>Stop ${divName} sounds</button>
+        <button class='btn btn-remove' id='${divName}RemoveButton' style='background:red;color:white;'> Delete</button>
         
         <div class="slidecontainer ${divName}Slider">
             ${divName} Volume <br>
@@ -100,9 +101,16 @@ class AudioComponent {
     initButtons() {
         this.playButton = document.getElementById(this.divName+'soundButton');
         this.stopButton = document.getElementById(this.divName+'stopSoundButton');
+        this.removeThisButton = document.getElementById(this.divName+'RemoveButton');
         this.playButton.onclick = () => this.playAudio();
-        this.stopButton.onclick = () => {
-            this.stopAudio();
+        this.stopButton.onclick = () => this.stopAudio();
+        this.removeThisButton.onclick = () => {
+            const thisDiv = document.getElementById(this.divName+'Div');
+            thisDiv.parentNode.removeChild(thisDiv);
+            const index = audioComponents.indexOf(this);
+            audioComponents.splice(index, 1);
+            console.log(`Removed audio component for ${this.divName}, remaining components: `, audioComponents);
+
         }
     }
 
