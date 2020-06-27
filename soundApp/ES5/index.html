@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+    <meta content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.10/jquery.timepicker.js"></script>
+    <link rel="stylesheet" href="css/timePickerCSS.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/switchToggle.css">
+    <link rel='stylesheet' href='css/randomTimeInput.css'>
+
+
+</head>
+
+<body style='padding:1%'>
+
+    <br>
+    <h1>Master Controls</h1>
+    <div class="slidecontainer">
+        Master Volume <br>
+        <input type="range" min="1" max="100" value="100" class="slider" id="masterVolume">
+    </div>
+    <br>
+    <button class='btn btn-primary' id='masterStopSounds'>Stop Everything</button>
+
+
+
+
+
+
+</body>
+<script src='src/util/sleep.js'></script>
+<script src='src/timePicker.js'></script>
+<script src='src/delaySettingsComponent.js'></script>
+<script src='src/audioComponent.js'></script>
+<script src='src/customAudioComponent.js'></script>
+<script src='src/soundFadeComponent.js'></script>
+<script src='src/audioElementsConfig.js'></script>
+<script src='src/core.js'></script>
+<script>
+    // TODO: Add an option to record your own recordings
+    // TODO: Consider rebuilding this in a framework such as angular
+    // TODO: Consider building a development environment as well as a production one
+    // TODO: (maybe in the future) - Make this a Freemium service, add payment system for premium features, advertise service with google ads
+    // TODO: Dynamically display the number of recordings and each recording for each audio component
+    // TODO: Fix precision of volume sliders. Eg. 0 should be volume 0
+
+</script>
+
+</html>
