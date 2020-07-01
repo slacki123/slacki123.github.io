@@ -23,7 +23,7 @@ var SoundFade = /*#__PURE__*/function () {
     _proto.fadeBetweenSounds = async function fadeBetweenSounds(audio) {
       var duration = audio.duration * 1000;
   
-      if (duration < this.fadeDuration * 2) {
+      if (duration < this.fadeDuration * 3) { // originally was * 2
         this.fadeDuration = duration / 4;
         return; // don't do fades for short clips
       }
