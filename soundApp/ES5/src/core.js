@@ -2,8 +2,7 @@ var birdSounds = ['audio/birdSounds/Birds 2.m4a', 'audio/birdSounds/Birds one co
 var bumpSounds = ['audio/bumpSounds/thud1.mp3',
     'audio/bumpSounds/thud2.mp3',
     'audio/bumpSounds/thud3.mp3',
-    'audio/bumpSounds/thud4.mp3',
-    'audio/bumpSounds/thud5.mp3'];
+    'audio/bumpSounds/thud4.mp3'];
 var numOfCustomComponents = 0;
 var audioComponents = [];
 audioComponents.push(new CustomAudioComponent('custom'));
