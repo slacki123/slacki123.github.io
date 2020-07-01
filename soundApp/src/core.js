@@ -14,7 +14,7 @@ const birdSounds = [
 ];
 
 const bumpSounds = [
-    'audio/bumpSounds/test.mp3'
+    'audio/bumpSounds/Wall bump.m4a'
 ]
 
 let numOfCustomComponents = 0;
