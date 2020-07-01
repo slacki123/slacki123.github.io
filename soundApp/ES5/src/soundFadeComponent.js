@@ -25,7 +25,7 @@ var SoundFade = /*#__PURE__*/function () {
   
       if (duration < this.fadeDuration * 2) {
         this.fadeDuration = duration / 4;
-        return; // don't do fades for short clips
+        // return; // don't do fades for short clips
       }
   
       console.log('audio Duration', duration);
