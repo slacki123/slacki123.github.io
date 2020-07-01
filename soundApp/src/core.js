@@ -14,9 +14,13 @@ const birdSounds = [
 ];
 
 const bumpSounds = [
-    'audio/bumpSounds/Wall bump.m4a'
+    'audio/bumpSounds/thud1.mp3',
+    'audio/bumpSounds/thud2.mp3',
+    'audio/bumpSounds/thud3.mp3',
+    'audio/bumpSounds/thud4.mp3',
+    'audio/bumpSounds/thud5.mp3',
+    'audio/bumpSounds/thudCardboard.mp3'
 ]
-
 let numOfCustomComponents = 0;
 const audioComponents = [];
 audioComponents.push(new CustomAudioComponent('custom'));
