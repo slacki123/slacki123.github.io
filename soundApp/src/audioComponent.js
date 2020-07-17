@@ -33,6 +33,7 @@ class AudioComponent {
         this.initTimepicker();
         this.initVolumeSlider();
         this.initDelayTickbox();
+        this.viewPlayList();
         this.soundFade = new SoundFade(this);
         // TODO: if I want to have local volumes as local storage:
         // this.maxVolumeFactorLocal = localStorage.getItem(divName + 'LocalVolume');
@@ -63,7 +64,7 @@ class AudioComponent {
     createDivTemplate(divName) {
         const divTemplate = 
         `  
-        <audio id='${divName}Audio' src='lets begin.m4a'></audio>
+        <audio id='${divName}Audio' src=''></audio>
         <button class='btn btn-primary' id='${divName}soundButton' type='button'>Play ${divName} Sounds</button>
         <button class='btn btn-primary' id='${divName}stopSoundButton' type='button'>Stop ${divName} sounds</button>
         <button class='btn btn-remove' id='${divName}RemoveButton' style='background:red;color:white;'> Delete</button>
@@ -91,6 +92,7 @@ class AudioComponent {
         </div>
         
         <p id='${divName}Text'></p>
+        <p id='${divName}PlayList'></p>
        `
 
        return divTemplate;
@@ -178,6 +180,22 @@ class AudioComponent {
         }
     }
 
+    viewPlayList() {
+        this.playList = document.getElementById(this.divName+'PlayList');
+        this.playList.innerHTML = '<span style="color:white;font-weight:bolder">Play List: </span>';
+        let audioList = '';
+        for(let i = 0; i < this.soundTracks.length; i++){
+            const lastPartOfURL = this.soundTracks[i].split('/').length - 1;
+            const title = this.soundTracks[i].split('/')[lastPartOfURL];
+            if(i == 0) {
+                audioList = title;
+                continue;
+            }
+            audioList = audioList + ', ' + title;
+        }
+        this.playList.innerHTML = this.playList.innerHTML + ' ' + audioList;
+    }
+
     async playAudio() {
         this.timepickerObject.setStopPlayingTime(this);
         // if(this.timepickerObject.checkStopInTime() === 0) {
@@ -189,7 +207,9 @@ class AudioComponent {
         this.myAudio.play();
         console.log(this.divName + ': Playing new sound:', randomSound);
         const source = this.myAudio.getAttribute('src');
-        this.text.innerHTML = 'Playing: ' + source;
+        const lastPartOfURL = source.split('/').length - 1;
+        const title = source.split('/')[lastPartOfURL];
+        this.text.innerHTML = 'Playing: ' + title;
         this.audioStopped = false;
     }
 

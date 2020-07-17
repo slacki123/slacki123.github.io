@@ -32,6 +32,7 @@ var AudioComponent = /*#__PURE__*/function () {
     this.initTimepicker();
     this.initVolumeSlider();
     this.initDelayTickbox();
+    this.viewPlayList();
     this.soundFade = new SoundFade(this); // TODO: if I want to have local volumes as local storage:
     // this.maxVolumeFactorLocal = localStorage.getItem(divName + 'LocalVolume');
 
@@ -62,7 +63,7 @@ var AudioComponent = /*#__PURE__*/function () {
   };
 
   _proto.createDivTemplate = function createDivTemplate(divName) {
-    var divTemplate = "  \n        <audio id='" + divName + "Audio' src='lets begin.m4a'></audio>\n        <button class='btn btn-primary' id='" + divName + "soundButton' type='button'>Play " + divName + " Sounds</button>\n        <button class='btn btn-primary' id='" + divName + "stopSoundButton' type='button'>Stop " + divName + " sounds</button>\n        <button class='btn btn-remove' id='" + divName + "RemoveButton' style='background:red;color:white;'> Delete</button>\n        \n        <div class=\"slidecontainer " + divName + "Slider\">\n            " + divName + " Volume <br>\n        <input type=\"range\" min=\"1\" max=\"100\" value=\"100\" class=\"slider\" id=\"" + divName + "Volume\">\n        </div>\n\n        <div class='" + divName + "DelaySwitch'>\n            <label class=\"delay-switch\">\n                Add delay between sounds <input id='" + divName + "DelaySwitch' type=\"checkbox\"> \n                <span class=\"delay-slider round\"></span>\n            </label>\n            <div id='" + divName + "DelaySwitchSettings'> \n            </div>\n        </div>\n    \n        <div class='timePicker' style='padding-top:1%'>\n            <p>\n                <label>Stop playing at:</label>\n    \n                <input  id='" + divName + "Duration' type='time' class='time' />\n            </p>\n        </div>\n        \n        <p id='" + divName + "Text'></p>\n       ";
+    var divTemplate = "  \n        <audio id='" + divName + "Audio' src=''></audio>\n        <button class='btn btn-primary' id='" + divName + "soundButton' type='button'>Play " + divName + " Sounds</button>\n        <button class='btn btn-primary' id='" + divName + "stopSoundButton' type='button'>Stop " + divName + " sounds</button>\n        <button class='btn btn-remove' id='" + divName + "RemoveButton' style='background:red;color:white;'> Delete</button>\n        \n        <div class=\"slidecontainer " + divName + "Slider\">\n            " + divName + " Volume <br>\n        <input type=\"range\" min=\"1\" max=\"100\" value=\"100\" class=\"slider\" id=\"" + divName + "Volume\">\n        </div>\n\n        <div class='" + divName + "DelaySwitch'>\n            <label class=\"delay-switch\">\n                Add delay between sounds <input id='" + divName + "DelaySwitch' type=\"checkbox\"> \n                <span class=\"delay-slider round\"></span>\n            </label>\n            <div id='" + divName + "DelaySwitchSettings'> \n            </div>\n        </div>\n    \n        <div class='timePicker' style='padding-top:1%'>\n            <p>\n                <label>Stop playing at:</label>\n    \n                <input  id='" + divName + "Duration' type='time' class='time' />\n            </p>\n        </div>\n        \n        <p id='" + divName + "Text'></p>\n        <p id='" + divName + "PlayList'></p>\n       ";
     return divTemplate;
   };
 
@@ -180,6 +181,26 @@ var AudioComponent = /*#__PURE__*/function () {
     };
   };
 
+  _proto.viewPlayList = function viewPlayList() {
+    this.playList = document.getElementById(this.divName + 'PlayList');
+    this.playList.innerHTML = '<span style="color:white;font-weight:bolder">Play List: </span>';
+    var audioList = '';
+
+    for (var i = 0; i < this.soundTracks.length; i++) {
+      var lastPartOfURL = this.soundTracks[i].split('/').length - 1;
+      var title = this.soundTracks[i].split('/')[lastPartOfURL];
+
+      if (i == 0) {
+        audioList = title;
+        continue;
+      }
+
+      audioList = audioList + ', ' + title;
+    }
+
+    this.playList.innerHTML = this.playList.innerHTML + ' ' + audioList;
+  };
+
   _proto.playAudio = async function playAudio() {
     this.timepickerObject.setStopPlayingTime(this); // if(this.timepickerObject.checkStopInTime() === 0) {
     //     alert('The "Stop playing at" time is now. Change it or wait a minute');
@@ -191,7 +212,9 @@ var AudioComponent = /*#__PURE__*/function () {
     this.myAudio.play();
     console.log(this.divName + ': Playing new sound:', randomSound);
     var source = this.myAudio.getAttribute('src');
-    this.text.innerHTML = 'Playing: ' + source;
+    var lastPartOfURL = source.split('/').length - 1;
+    var title = source.split('/')[lastPartOfURL];
+    this.text.innerHTML = 'Playing: ' + title;
     this.audioStopped = false;
   };
 
