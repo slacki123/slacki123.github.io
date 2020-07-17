@@ -1,0 +1,8 @@
+class stateConfig {
+    constructor() {
+        
+
+    }
+
+
+}

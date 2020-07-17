@@ -39,5 +39,7 @@ addCustomButton.onclick = function () {
 var resetEverything = document.getElementById('resetEverything');
 
 resetEverything.onclick = function () {
+  var url = window.location.href;
+  localStorage.setItem(url+'_app_config', '');
   location.reload(); // reset localstorage config
 };
