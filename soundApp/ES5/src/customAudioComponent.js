@@ -12,7 +12,7 @@ var CustomAudioComponent = /*#__PURE__*/function (_AudioComponent) {
   function CustomAudioComponent(divName, settingsConfig) {
     var _this;
 
-    var initialSoundTracks = []; // In the future would want to extract from data base or local storage;
+    var initialSoundTracks = []; // TODO: In the future would want to extract from data base or local storage;
 
     _this = _AudioComponent.call(this, divName, initialSoundTracks, settingsConfig) || this;
     _this.isCustom = true;

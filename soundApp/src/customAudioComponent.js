@@ -5,7 +5,7 @@ class CustomAudioComponent extends AudioComponent {
     // divHTML;
 
     constructor(divName, settingsConfig) {
-        const initialSoundTracks = [] // In the future would want to extract from data base or local storage;
+        const initialSoundTracks = [] // TODO: In the future would want to extract from data base or local storage;
         super(divName, initialSoundTracks, settingsConfig);
         this.isCustom = true;
         this.divName = divName;
