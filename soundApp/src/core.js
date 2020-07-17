@@ -1,8 +1,19 @@
 let numOfCustomComponents = 0;
 const audioComponents = [];
-audioComponents.push(new CustomAudioComponent('custom'));
+const url = window.location.href;
+const originalConfig = localStorage.getItem(url+'_app_config');
+if(originalConfig){
+    const config = JSON.parse(originalConfig);
+    for(let i = 0; i < config.length; i++) {
+        if(config[i].isCustom == true) {
+            audioComponents.push(new CustomAudioComponent(config[i].divName, config[i]))
+        } else {
+            audioComponents.push(new AudioComponent(config[i].divName, config[i].soundTracks, config[i]));
+        }
+    }
+}
 
-
+const newConfig = new StateConfig();
 const presetFactory = new presetAudioPanelFactory();
 
 
@@ -44,3 +55,4 @@ resetEverything.onclick = () => {
     location.reload();
 
 }
+

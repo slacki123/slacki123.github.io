@@ -17,7 +17,7 @@ var AudioComponent = /*#__PURE__*/function () {
   // timepickerObject;
   // delayTickBox;
   // delaySettings;
-  function AudioComponent(divName, soundTracks) {
+  function AudioComponent(divName, soundTracks, settingsConfig) {
     this.audioStopped = false;
     this.maxVolumeFactorLocal = 1;
     this.maxVolumeFactorMaster = localStorage.getItem('masterVolume') / 100 || 1;
@@ -34,12 +34,35 @@ var AudioComponent = /*#__PURE__*/function () {
     this.initDelayTickbox();
     this.soundFade = new SoundFade(this); // TODO: if I want to have local volumes as local storage:
     // this.maxVolumeFactorLocal = localStorage.getItem(divName + 'LocalVolume');
+
+    this.configureLocalStorageSettings(settingsConfig);
   }
 
   var _proto = AudioComponent.prototype;
 
+  _proto.configureLocalStorageSettings = function configureLocalStorageSettings(settingsConfig) {
+    if (!settingsConfig) {
+      return;
+    }
+
+    this.timepicker.value = settingsConfig.timePickerValue;
+    this.timepickerObject.setStopPlayingTime(this);
+    this.delayTickBox.checked = settingsConfig.delayBetweenSounds;
+
+    if (this.delayTickBox.checked === true) {
+      this.delaySettings.show();
+      this.delaySettings.maxDelayInput.value = settingsConfig.maxDelay;
+      this.delaySettings.maxDelay = settingsConfig.maxDelay;
+      this.delaySettings.randomDelaySwitch.checked = settingsConfig.randomDelay;
+      this.delaySettings.randomChecked = settingsConfig.randomDelay;
+    }
+
+    this.maxVolumeFactorLocal = settingsConfig.maxVolumeFactorLocal;
+    this.volumeSlider.value = settingsConfig.maxVolumeFactorLocal * 100;
+  };
+
   _proto.createDivTemplate = function createDivTemplate(divName) {
-    var divTemplate = "  \n        <audio id='" + divName + "Audio' src=''></audio>\n        <button class='btn btn-primary' id='" + divName + "soundButton' type='button'>Play " + divName + " Sounds</button>\n        <button class='btn btn-primary' id='" + divName + "stopSoundButton' type='button'>Stop " + divName + " sounds</button>\n        <button class='btn btn-remove' id='" + divName + "RemoveButton' style='background:red;color:white;'> Delete</button>\n        \n        <div class=\"slidecontainer " + divName + "Slider\">\n            " + divName + " Volume <br>\n        <input type=\"range\" min=\"1\" max=\"100\" value=\"100\" class=\"slider\" id=\"" + divName + "Volume\">\n        </div>\n\n        <div class='" + divName + "DelaySwitch'>\n            <label class=\"delay-switch\">\n                Add delay between sounds <input id='" + divName + "DelaySwitch' type=\"checkbox\"> \n                <span class=\"delay-slider round\"></span>\n            </label>\n            <div id='" + divName + "DelaySwitchSettings'> \n            </div>\n        </div>\n    \n        <div class='timePicker' style='padding-top:1%'>\n            <p>\n                <label>Stop playing at:</label>\n    \n                <input  id='" + divName + "Duration' type='time' class='time' />\n            </p>\n        </div>\n        \n        <p id='" + divName + "Text'></p>\n       ";
+    var divTemplate = "  \n        <audio id='" + divName + "Audio' src='lets begin.m4a'></audio>\n        <button class='btn btn-primary' id='" + divName + "soundButton' type='button'>Play " + divName + " Sounds</button>\n        <button class='btn btn-primary' id='" + divName + "stopSoundButton' type='button'>Stop " + divName + " sounds</button>\n        <button class='btn btn-remove' id='" + divName + "RemoveButton' style='background:red;color:white;'> Delete</button>\n        \n        <div class=\"slidecontainer " + divName + "Slider\">\n            " + divName + " Volume <br>\n        <input type=\"range\" min=\"1\" max=\"100\" value=\"100\" class=\"slider\" id=\"" + divName + "Volume\">\n        </div>\n\n        <div class='" + divName + "DelaySwitch'>\n            <label class=\"delay-switch\">\n                Add delay between sounds <input id='" + divName + "DelaySwitch' type=\"checkbox\"> \n                <span class=\"delay-slider round\"></span>\n            </label>\n            <div id='" + divName + "DelaySwitchSettings'> \n            </div>\n        </div>\n    \n        <div class='timePicker' style='padding-top:1%'>\n            <p>\n                <label>Stop playing at:</label>\n    \n                <input  id='" + divName + "Duration' type='time' class='time' />\n            </p>\n        </div>\n        \n        <p id='" + divName + "Text'></p>\n       ";
     return divTemplate;
   };
 
@@ -123,7 +146,7 @@ var AudioComponent = /*#__PURE__*/function () {
     this.delayTickBox = document.getElementById(this.divName + 'DelaySwitch');
     this.delaySettings = new DelaySettings(this);
 
-    this.delayTickBox.onclick = function () {
+    this.delayTickBox.onchange = function () {
       if (_this4.delayTickBox.checked == false) {
         // counterintuitive, but when you first click before it ticks, it's actually false
         _this4.delaySettings.hide();

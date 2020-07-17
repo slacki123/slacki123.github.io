@@ -1,20 +1,35 @@
 var numOfCustomComponents = 0;
 var audioComponents = [];
-audioComponents.push(new CustomAudioComponent('custom'));
+var url = window.location.href;
+var originalConfig = localStorage.getItem(url + '_app_config');
+
+if (originalConfig) {
+  var config = JSON.parse(originalConfig);
+
+  for (var i = 0; i < config.length; i++) {
+    if (config[i].isCustom == true) {
+      audioComponents.push(new CustomAudioComponent(config[i].divName, config[i]));
+    } else {
+      audioComponents.push(new AudioComponent(config[i].divName, config[i].soundTracks, config[i]));
+    }
+  }
+}
+
+var newConfig = new StateConfig();
 var presetFactory = new presetAudioPanelFactory();
 var slider = document.getElementById("masterVolume"); // Update the current slider value (each time you drag the slider handle)
 
 slider.value = localStorage.getItem('masterVolume') || slider.value;
 
 slider.oninput = function () {
-  for (var i = 0; i < audioComponents.length; i++) {
-    var maxVolumeFactorLocal = audioComponents[i].maxVolumeFactorLocal;
+  for (var _i = 0; _i < audioComponents.length; _i++) {
+    var maxVolumeFactorLocal = audioComponents[_i].maxVolumeFactorLocal;
     var maxVolumeFactorMaster = this.value / 100;
-    audioComponents[i].maxVolumeFactorMaster = maxVolumeFactorMaster;
-    audioComponents[i].myAudio.volume = maxVolumeFactorMaster * maxVolumeFactorLocal;
+    audioComponents[_i].maxVolumeFactorMaster = maxVolumeFactorMaster;
+    audioComponents[_i].myAudio.volume = maxVolumeFactorMaster * maxVolumeFactorLocal;
 
     if (maxVolumeFactorMaster * maxVolumeFactorLocal % 2 === 0) {
-      console.log(audioComponents[i].divName + ": adjusted volume:", audioComponents[i].myAudio.volume);
+      console.log(audioComponents[_i].divName + ": adjusted volume:", audioComponents[_i].myAudio.volume);
     }
   }
 
@@ -24,8 +39,8 @@ slider.oninput = function () {
 var stopEverythingButton = document.getElementById("masterStopSounds");
 
 stopEverythingButton.onclick = function () {
-  for (var i = 0; i < audioComponents.length; i++) {
-    audioComponents[i].stopAudio();
+  for (var _i2 = 0; _i2 < audioComponents.length; _i2++) {
+    audioComponents[_i2].stopAudio();
   }
 };
 
@@ -40,6 +55,6 @@ var resetEverything = document.getElementById('resetEverything');
 
 resetEverything.onclick = function () {
   var url = window.location.href;
-  localStorage.setItem(url+'_app_config', '');
-  location.reload(); // reset localstorage config
+  localStorage.setItem(url + '_app_config', '');
+  location.reload();
 };

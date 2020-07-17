@@ -9,12 +9,13 @@ var CustomAudioComponent = /*#__PURE__*/function (_AudioComponent) {
   // audioUploadButton;
   // divName;
   // divHTML;
-  function CustomAudioComponent(divName) {
+  function CustomAudioComponent(divName, settingsConfig) {
     var _this;
 
     var initialSoundTracks = []; // In the future would want to extract from data base or local storage;
 
-    _this = _AudioComponent.call(this, divName, initialSoundTracks) || this;
+    _this = _AudioComponent.call(this, divName, initialSoundTracks, settingsConfig) || this;
+    _this.isCustom = true;
     _this.divName = divName;
 
     _this.generateAudioUploadTemplate(divName);

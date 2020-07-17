@@ -17,7 +17,7 @@ class AudioComponent {
     // delaySettings;
 
 
-    constructor (divName, soundTracks) {
+    constructor (divName, soundTracks, settingsConfig) {
         this.audioStopped = false;
         this.maxVolumeFactorLocal = 1;
         this.maxVolumeFactorMaster = localStorage.getItem('masterVolume')/100 || 1;
@@ -36,6 +36,28 @@ class AudioComponent {
         this.soundFade = new SoundFade(this);
         // TODO: if I want to have local volumes as local storage:
         // this.maxVolumeFactorLocal = localStorage.getItem(divName + 'LocalVolume');
+        this.configureLocalStorageSettings(settingsConfig);
+
+    }
+
+    configureLocalStorageSettings(settingsConfig) {
+        if(!settingsConfig){
+            return;
+        }
+        this.timepicker.value = settingsConfig.timePickerValue;
+        this.timepickerObject.setStopPlayingTime(this);
+
+        this.delayTickBox.checked = settingsConfig.delayBetweenSounds;
+        if(this.delayTickBox.checked === true) {
+            this.delaySettings.show();
+            this.delaySettings.maxDelayInput.value = settingsConfig.maxDelay;
+            this.delaySettings.maxDelay = settingsConfig.maxDelay;
+            this.delaySettings.randomDelaySwitch.checked = settingsConfig.randomDelay; 
+            this.delaySettings.randomChecked = settingsConfig.randomDelay;
+        }
+
+        this.maxVolumeFactorLocal = settingsConfig.maxVolumeFactorLocal;
+        this.volumeSlider.value = settingsConfig.maxVolumeFactorLocal*100;
     }
 
     createDivTemplate(divName) {
@@ -133,7 +155,7 @@ class AudioComponent {
     initDelayTickbox() {
         this.delayTickBox = document.getElementById(this.divName+'DelaySwitch');
         this.delaySettings = new DelaySettings(this);
-        this.delayTickBox.onclick = () => {
+        this.delayTickBox.onchange = () => {
             if(this.delayTickBox.checked == false) { // counterintuitive, but when you first click before it ticks, it's actually false
                 this.delaySettings.hide();
             console.log('checked true')
