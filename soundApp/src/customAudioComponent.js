@@ -38,6 +38,7 @@ class CustomAudioComponent extends AudioComponent {
                 console.log('files', source);
                 this.soundTracks.push(source);
             }
+            this.viewPlayList();
     
             // localStorage.setItem('customURLArray', JSON.stringify(urlArray)); // so that we could retrieve it later ;) // nah doesn't work
             // after reload new url ids are created anyway
