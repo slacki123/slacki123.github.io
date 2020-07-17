@@ -4,25 +4,35 @@
     <meta content="IE=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.10/jquery.timepicker.js"></script>
+    <script src='https://www.w3.org/TR/file-system-api/'></script>
     <link rel="stylesheet" href="css/timePickerCSS.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/switchToggle.css">
     <link rel='stylesheet' href='css/randomTimeInput.css'>
+    <link rel='stylesheet' href='css/preset-btn.css'>
 
 
 </head>
 
 <body style='padding:1%'>
+    <div id='presetButtons' class='preset-btn' style='padding-bottom:1%'> 
+        <!-- <button id='bumpPreset' name='bump' class='btn'>Add Bump Preset</button>
+        <button id='birdsPreset' name='birds' class='btn'>Add Birds Preset</button>
+        <button id='crowsPreset' name='crows' class='btn'>Add Crows Preset</button> -->
+    </div>
     <button class='btn' id='newComponent' style='background:green;color:white'>Add Custom +</button>
+    <div class='audioPanels' id='audioPanelsDiv' style='padding-top:1%'></div>
 
     <br>
-    <h1>Master Controls</h1>
-    <div class="slidecontainer">
-        Master Volume <br>
-        <input type="range" min="1" max="100" value="100" class="slider" id="masterVolume">
+    <div id='masterControls'>
+        <h1>Master Controls</h1>
+        <div class="slidecontainer">
+            Master Volume <br>
+            <input type="range" min="1" max="100" value="100" class="slider" id="masterVolume">
+        </div>
+        <br>
+        <button class='btn btn-primary' id='masterStopSounds'>Stop Everything</button>
     </div>
-    <br>
-    <button class='btn btn-primary' id='masterStopSounds'>Stop Everything</button>
 
 
 
@@ -33,6 +43,7 @@
 </body>
 <script src='src/util/sleep.js'></script>
 <script src='src/timePicker.js'></script>
+<script src='src/presetAudioPanelFactory.js'></script>
 <script src='src/delaySettingsComponent.js'></script>
 <script src='src/audioComponent.js'></script>
 <script src='src/customAudioComponent.js'></script>
@@ -46,6 +57,13 @@
     // TODO: (maybe in the future) - Make this a Freemium service, add payment system for premium features, advertise service with google ads
     // TODO: Dynamically display the number of recordings and each recording for each audio component
     // TODO: Fix precision of volume sliders. Eg. 0 should be volume 0
+
+    // TODO: Add more preset sound buttons
+    // TODO: Add a way to save the settings into global storage
+    // TODO: Add a database and build a log in system
+    // TODO: Add a way to show recording names for custom sounds
+    // TODO: Find a way to save new custom recordings into a local database
+    // TODO: Add a reset everything button to master controls
 
 </script>
 

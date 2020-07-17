@@ -25,8 +25,7 @@ class AudioComponent {
         this.divName = divName;
         this.soundTracks = soundTracks || ['bla'];
         this.div = this.createDivTemplate(divName);
-        const body = document.getElementsByTagName('body')[0];
-        body.insertAdjacentHTML('afterbegin', this.div);
+        this.appendToBody();
         this.myAudio = document.getElementById(divName+'Audio');
         this.text = document.getElementById(divName+'Text');
         this.initAudioEvents();
@@ -42,7 +41,6 @@ class AudioComponent {
     createDivTemplate(divName) {
         const divTemplate = 
         `  
-        <div id='${divName}Div' class='audioComponent' style='border-style: solid; padding: 1%; margin-bottom: 10px'>
         <audio id='${divName}Audio' src='lets begin.m4a'></audio>
         <button class='btn btn-primary' id='${divName}soundButton' type='button'>Play ${divName} Sounds</button>
         <button class='btn btn-primary' id='${divName}stopSoundButton' type='button'>Stop ${divName} sounds</button>
@@ -71,8 +69,6 @@ class AudioComponent {
         </div>
         
         <p id='${divName}Text'></p>
-    
-       </div>
        `
 
        return divTemplate;
@@ -96,6 +92,15 @@ class AudioComponent {
                 this.soundFade.fadeBetweenSounds(this.myAudio);
             }
         }
+    }
+
+    appendToBody() {
+        const newAudioPanelDiv = document.createElement('div');
+        newAudioPanelDiv.setAttribute('id', this.divName+'Div');
+        newAudioPanelDiv.setAttribute('style', 'border-style: solid; padding: 1%; margin-bottom: 10px');
+        newAudioPanelDiv.innerHTML = this.div;
+        const audioPanelsDiv = document.getElementById('audioPanelsDiv');
+        audioPanelsDiv.prepend(newAudioPanelDiv);
     }
 
     initButtons() {

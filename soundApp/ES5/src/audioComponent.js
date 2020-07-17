@@ -24,8 +24,7 @@ var AudioComponent = /*#__PURE__*/function () {
     this.divName = divName;
     this.soundTracks = soundTracks || ['bla'];
     this.div = this.createDivTemplate(divName);
-    var body = document.getElementsByTagName('body')[0];
-    body.insertAdjacentHTML('afterbegin', this.div);
+    this.appendToBody();
     this.myAudio = document.getElementById(divName + 'Audio');
     this.text = document.getElementById(divName + 'Text');
     this.initAudioEvents();
@@ -40,7 +39,7 @@ var AudioComponent = /*#__PURE__*/function () {
   var _proto = AudioComponent.prototype;
 
   _proto.createDivTemplate = function createDivTemplate(divName) {
-    var divTemplate = "  \n        <div id='" + divName + "Div' class='audioComponent' style='border-style: solid; padding: 1%; margin-bottom: 10px'>\n        <audio id='" + divName + "Audio' src='lets begin.m4a'></audio>\n        <button class='btn btn-primary' id='" + divName + "soundButton' type='button'>Play " + divName + " Sounds</button>\n        <button class='btn btn-primary' id='" + divName + "stopSoundButton' type='button'>Stop " + divName + " sounds</button>\n        <button class='btn btn-remove' id='" + divName + "RemoveButton' style='background:red;color:white;'> Delete</button>\n        \n        <div class=\"slidecontainer " + divName + "Slider\">\n            " + divName + " Volume <br>\n        <input type=\"range\" min=\"1\" max=\"100\" value=\"100\" class=\"slider\" id=\"" + divName + "Volume\">\n        </div>\n\n        <div class='" + divName + "DelaySwitch'>\n            <label class=\"delay-switch\">\n                Add delay between sounds <input id='" + divName + "DelaySwitch' type=\"checkbox\"> \n                <span class=\"delay-slider round\"></span>\n            </label>\n            <div id='" + divName + "DelaySwitchSettings'> \n            </div>\n        </div>\n    \n        <div class='timePicker' style='padding-top:1%'>\n            <p>\n                <label>Stop playing at:</label>\n    \n                <input  id='" + divName + "Duration' type='time' class='time' />\n            </p>\n        </div>\n        \n        <p id='" + divName + "Text'></p>\n    \n       </div>\n       ";
+    var divTemplate = "  \n        <audio id='" + divName + "Audio' src=''></audio>\n        <button class='btn btn-primary' id='" + divName + "soundButton' type='button'>Play " + divName + " Sounds</button>\n        <button class='btn btn-primary' id='" + divName + "stopSoundButton' type='button'>Stop " + divName + " sounds</button>\n        <button class='btn btn-remove' id='" + divName + "RemoveButton' style='background:red;color:white;'> Delete</button>\n        \n        <div class=\"slidecontainer " + divName + "Slider\">\n            " + divName + " Volume <br>\n        <input type=\"range\" min=\"1\" max=\"100\" value=\"100\" class=\"slider\" id=\"" + divName + "Volume\">\n        </div>\n\n        <div class='" + divName + "DelaySwitch'>\n            <label class=\"delay-switch\">\n                Add delay between sounds <input id='" + divName + "DelaySwitch' type=\"checkbox\"> \n                <span class=\"delay-slider round\"></span>\n            </label>\n            <div id='" + divName + "DelaySwitchSettings'> \n            </div>\n        </div>\n    \n        <div class='timePicker' style='padding-top:1%'>\n            <p>\n                <label>Stop playing at:</label>\n    \n                <input  id='" + divName + "Duration' type='time' class='time' />\n            </p>\n        </div>\n        \n        <p id='" + divName + "Text'></p>\n       ";
     return divTemplate;
   };
 
@@ -68,6 +67,15 @@ var AudioComponent = /*#__PURE__*/function () {
         _this.soundFade.fadeBetweenSounds(_this.myAudio);
       };
     };
+  };
+
+  _proto.appendToBody = function appendToBody() {
+    var newAudioPanelDiv = document.createElement('div');
+    newAudioPanelDiv.setAttribute('id', this.divName + 'Div');
+    newAudioPanelDiv.setAttribute('style', 'border-style: solid; padding: 1%; margin-bottom: 10px');
+    newAudioPanelDiv.innerHTML = this.div;
+    var audioPanelsDiv = document.getElementById('audioPanelsDiv');
+    audioPanelsDiv.prepend(newAudioPanelDiv);
   };
 
   _proto.initButtons = function initButtons() {
