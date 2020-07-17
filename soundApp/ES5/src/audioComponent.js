@@ -214,7 +214,7 @@ var AudioComponent = /*#__PURE__*/function () {
     var source = this.myAudio.getAttribute('src');
     var lastPartOfURL = source.split('/').length - 1;
     var title = source.split('/')[lastPartOfURL];
-    this.text.innerHTML = 'Playing: ' + title;
+    this.text.innerHTML = '<span style="color:white;font-weight:bolder">Play List: </span>' + title;
     this.audioStopped = false;
   };
 

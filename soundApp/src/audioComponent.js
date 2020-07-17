@@ -209,7 +209,7 @@ class AudioComponent {
         const source = this.myAudio.getAttribute('src');
         const lastPartOfURL = source.split('/').length - 1;
         const title = source.split('/')[lastPartOfURL];
-        this.text.innerHTML = 'Playing: ' + title;
+        this.text.innerHTML = '<span style="color:white;font-weight:bolder">Now Playing: </span>' + title;
         this.audioStopped = false;
     }
 
