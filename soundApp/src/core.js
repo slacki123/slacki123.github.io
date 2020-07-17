@@ -36,3 +36,9 @@ addCustomButton.onclick = () => {
     numOfCustomComponents++;
     audioComponents.push(new CustomAudioComponent('custom'+numOfCustomComponents));
 }
+
+const resetEverything = document.getElementById('resetEverything')
+resetEverything.onclick = () => {
+    location.reload();
+    // reset localstorage config
+}
