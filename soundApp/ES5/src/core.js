@@ -36,6 +36,14 @@ slider.oninput = function () {
   localStorage.setItem('masterVolume', this.value);
 };
 
+var playEverythingButton = document.getElementById('playEverything');
+
+playEverythingButton.onclick = function () {
+  for (var i = 0; i < audioComponents.length; i++) {
+    audioComponents[i].playAudio();
+  }
+};
+
 var stopEverythingButton = document.getElementById("masterStopSounds");
 
 stopEverythingButton.onclick = function () {

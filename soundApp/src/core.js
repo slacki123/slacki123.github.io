@@ -14,6 +14,7 @@ if(originalConfig){
 }
 
 const newConfig = new StateConfig();
+// newConfig.config is the config array. This can be sent to a database in the future when a log-in system works
 const presetFactory = new presetAudioPanelFactory();
 
 
@@ -35,6 +36,13 @@ slider.oninput = function() {
     localStorage.setItem('masterVolume', this.value);
 }
 
+const playEverythingButton = document.getElementById('playEverything');
+playEverythingButton.onclick = () => {
+    for(let i = 0; i < audioComponents.length; i++){ 
+        audioComponents[i].playAudio();
+    }
+}
+
 const stopEverythingButton = document.getElementById("masterStopSounds");
 stopEverythingButton.onclick = () => {
     for(let i = 0; i < audioComponents.length; i++){ 
@@ -53,6 +61,5 @@ resetEverything.onclick = () => {
     const url = window.location.href;
     localStorage.setItem(url+'_app_config', '');
     location.reload();
-
 }
 
