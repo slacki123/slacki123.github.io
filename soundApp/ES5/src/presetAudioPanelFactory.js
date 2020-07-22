@@ -24,7 +24,7 @@ var presetAudioPanelFactory = /*#__PURE__*/function () {
     key: "initBumpPreset",
     value: function initBumpPreset() {
       var componentName = 'bump';
-      var bumpAudio = ['audio/bumpSounds/thud1.mp3', 'audio/bumpSounds/thud2.mp3', 'audio/bumpSounds/thud3.mp3', 'audio/bumpSounds/thud4.mp3'];
+      var bumpAudio = ['audio/bumpSounds/thud1.mp3', 'audio/bumpSounds/thud3.mp3', 'audio/bumpSounds/thud4.mp3'];
       this.initComponent(componentName, bumpAudio);
     }
   }, {

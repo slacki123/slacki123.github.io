@@ -13,7 +13,6 @@ class presetAudioPanelFactory {
         const componentName = 'bump';
         const bumpAudio = [
             'audio/bumpSounds/thud1.mp3',
-            'audio/bumpSounds/thud2.mp3',
             'audio/bumpSounds/thud3.mp3',
             'audio/bumpSounds/thud4.mp3'
         ];
