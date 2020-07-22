@@ -37,14 +37,14 @@ var presetAudioPanelFactory = /*#__PURE__*/function () {
   }, {
     key: "initCrowsOpenPreset",
     value: function initCrowsOpenPreset() {
-      var componentName = 'Crows (Open Window)';
+      var componentName = 'crows-open-window';
       var crowsAudio = ['audio/crowSounds/Crows OPEN WET1.mp3'];
       this.initComponent(componentName, crowsAudio);
     }
   }, {
     key: "initCrowsClosedPreset",
     value: function initCrowsClosedPreset() {
-      var componentName = 'Crows (Closed Window)';
+      var componentName = 'crows-closed-window';
       var crowsAudio = ['audio/crowSounds/Crows CLOSED.mp3'];
       this.initComponent(componentName, crowsAudio);
     }

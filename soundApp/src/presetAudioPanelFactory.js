@@ -40,7 +40,7 @@ class presetAudioPanelFactory {
     }
 
     initCrowsOpenPreset() {
-        const componentName = 'Crows (Open Window)';
+        const componentName = 'crows_open_window';
         const crowsAudio = [
             'audio/crowSounds/Crows OPEN WET1.mp3'
         ]
@@ -49,7 +49,7 @@ class presetAudioPanelFactory {
     }
 
     initCrowsClosedPreset() {
-        const componentName = 'Crows (Closed Window)';
+        const componentName = 'crows_closed_window';
         const crowsAudio = [
             'audio/crowSounds/Crows CLOSED.mp3'
         ]
