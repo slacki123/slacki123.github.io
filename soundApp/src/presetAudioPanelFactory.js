@@ -1,10 +1,11 @@
 class presetAudioPanelFactory {
-
+    // The whole class needs to be rewritten to allow only adding one preset at a time....
     constructor() {
         this.presetBtnDiv = document.getElementById('presetButtons');
         this.initBumpPreset();
         this.initBirdsPreset();
-        this.initCrowsPreset();
+        this.initCrowsClosedPreset();
+        this.initCrowsOpenPreset();
 
     }
 
@@ -38,13 +39,21 @@ class presetAudioPanelFactory {
         this.initComponent(componentName, birdsAudio);
     }
 
-    initCrowsPreset() {
-        const componentName = 'crows';
+    initCrowsOpenPreset() {
+        const componentName = 'Crows (Open Window)';
         const crowsAudio = [
-            'audio/crowSounds/crows x4.mp3'
+            'audio/crowSounds/Crows OPEN WET1.mp3'
         ]
         this.initComponent(componentName, crowsAudio);
 
+    }
+
+    initCrowsClosedPreset() {
+        const componentName = 'Crows (Closed Window)';
+        const crowsAudio = [
+            'audio/crowSounds/Crows CLOSED.mp3'
+        ]
+        this.initComponent(componentName, crowsAudio);
     }
 
     initComponent(componentName, componentAudio) {
